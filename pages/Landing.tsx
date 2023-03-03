@@ -6,7 +6,7 @@ const Landing: NextPage = () => {
     return (
         <div className={styles.container}>
             <Head>
-                <title>GlobalWarmingSimulator</title>
+                <title>CarbonHero</title>
                 <meta name="description" content="Education game for Global Warming" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
