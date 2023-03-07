@@ -1,7 +1,17 @@
-interface Props {}
+import {Link} from "@chakra-ui/next-js";
 
-const LinkToNext = ({}: Props) => {
-    return <></>
+interface LinkToNextProps {
+    label: string;
+}
+
+const LinkToNext = ({
+    label
+                    }: LinkToNextProps) => {
+    return (
+        <Link href={'/Story'}>
+            {label}
+        </Link>
+    );
 }
 
 export default LinkToNext
