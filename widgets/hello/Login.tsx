@@ -1,7 +1,7 @@
 interface Props { }
 import styles from '../../styles/Login.module.css';
 import { auth } from "./Firebase";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useState } from "react";
 import Logout from './Logout';
 
