@@ -1,4 +1,5 @@
-import {Link} from "@chakra-ui/next-js";
+import {Link} from "@chakra-ui/react";
+import NextLink from "next/link";
 
 interface LinkToNextProps {
     label: string;
@@ -8,9 +9,9 @@ const LinkToNext = ({
     label
                     }: LinkToNextProps) => {
     return (
-        <Link href={'/Story'}>
-            {label}
-        </Link>
+        <NextLink href={`/${label}`} passHref>
+            <Link>{label}</Link>
+        </NextLink>
     );
 }
 
