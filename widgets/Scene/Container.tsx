@@ -6,7 +6,7 @@ import Presenter from "./Presenter";
 interface SceneParams {
     path?: string;
 }
-const SceneContainer = (sceneParams?: SceneParams) => {
+const LandingSceneContainer = (sceneParams?: SceneParams) => {
     const { isSuccess, isError, sceneData } = useScene();
 
     if (isSuccess) {
@@ -20,4 +20,4 @@ const SceneContainer = (sceneParams?: SceneParams) => {
     return <Loading />
 }
 
-export default SceneContainer
+export default LandingSceneContainer
