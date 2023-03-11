@@ -1,4 +1,3 @@
-import styles from "../../styles/Landing.module.css";
 import Heading1 from "../../components/Heading1";
 import LinkToNext from "../../components/LinkToNext";
 

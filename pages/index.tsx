@@ -3,7 +3,7 @@ import type { NextPage } from 'next'
 import Head from "next/head";
 import {ChakraProvider} from "@chakra-ui/provider";
 import {useRouter} from "next/router";
-import LandingSceneContainer from "../widgets/Scene/Container";
+import LandingSceneContainer from "../widgets/scene/Container";
 
 const Index: NextPage = () => {
     const router = useRouter();
