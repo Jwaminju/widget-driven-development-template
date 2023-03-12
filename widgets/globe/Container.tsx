@@ -1,15 +1,16 @@
 import Error from "./Error";
 import Loading from "./Loading";
 import Presenter from "./Presenter";
+import useGlobe from "../../hooks/useGlobe";
 
 const GlobeContainer = () => {
-    const { isSuccess, isError, globeData } = useGlobe();
+    const { isSuccess, globe, countries, polygonData, globeData } = useGlobe();
 
     if (isSuccess) {
-        return <Presenter />
+        return <Presenter globe={globe} countries={countries} polygonData={polygonData} globeData={globeData} />
     }
 
-    if (isError) {
+    if (!isSuccess) {
         return <Error />
     }
 
