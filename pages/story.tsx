@@ -10,7 +10,12 @@ loss of biodiversity, and adverse impacts on human health and livelihoods.
 Despite international efforts to mitigate global warming, such as the Paris Agreement, 
 the concentration of greenhouse gases continues to rise, and urgent action is needed to avoid catastrophic outcomes.`;
 
-const StoryBox: FC = ({}) => (
+interface StoryBoxProps {
+  storytxt: string;
+}
+const StoryBox: FC<StoryBoxProps> = ({
+  storytxt
+                      }) => (
     <div className={styles.story_box}>
         <p className={styles.story_txt}>
             {STORY_TXT}
