@@ -6,8 +6,8 @@ import GeoData from '../data/ne_110m_admin_0_countries.json';
 
 const initialGlobeData: GlobeData = {
   containerData: {
-    width: 500,
-    height: 500,
+    width: 1000,
+    height: 1000,
     backgroundColor: '#000',
   },
   globeLayerData: {
