@@ -7,7 +7,9 @@ interface SceneParams {
     path?: string;
 }
 const LandingSceneContainer = (sceneParams?: SceneParams) => {
-    const { isSuccess, isError, sceneData } = useScene();
+    const { isSuccess, isError, sceneData } = useScene({
+        sceneName: "Carbon Hero: Save the Planet",
+    });
 
     if (isSuccess) {
         return <Presenter sceneTitle={sceneData.sceneName} labelForLinkToNext={sceneData.nextPage}/>
