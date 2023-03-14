@@ -14,7 +14,6 @@ const Index: NextPage = () => {
                 <meta name="description" content="Education game for Global Warming" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            {/*main 요소 백그라운드에 이미지 정도 넣으면 되지 않을까 싶어요.*/}
             <LandingSceneContainer path={router.pathname} />
         </ChakraProvider>
     );

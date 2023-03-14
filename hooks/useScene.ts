@@ -1,6 +1,6 @@
 interface SceneData {
-  sceneName: string;
-  nextPage: string;
+  sceneName?: string;
+  nextPage?: string;
 }
 
 interface SceneResponse {
@@ -14,7 +14,7 @@ const useScene = (defaultData?: SceneData): SceneResponse => {
   const isSuccess = true;
   const sceneData: SceneData = {
     sceneName: defaultData?.sceneName || 'Landing',
-    nextPage: defaultData?.nextPage || 'Story'
+    nextPage: defaultData?.nextPage || 'story'
   }
 
   return {
