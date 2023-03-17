@@ -6,12 +6,13 @@ import GeoData from '../data/ne_110m_admin_0_countries.json';
 
 const initialGlobeData: GlobeData = {
   containerData: {
-    width: 1000,
-    height: 1000,
+    width: 1600,
+    height: 900,
     backgroundColor: '#000',
+    backgroundImageUrl: "/universe.jpg"
   },
   globeLayerData: {
-    globeImageUrl: "https://unpkg.com/three-globe@2.25.4/example/img/earth-dark.jpg",
+    globeImageUrl: "https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg",
     bumpImageUrl: "",
   }
 }
