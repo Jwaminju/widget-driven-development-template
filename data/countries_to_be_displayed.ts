@@ -1,4 +1,4 @@
-export const countries_to_displayed = [
-  'ko', 'us', 'fr', 'ger'
+export const COUNTRIES_TO_BE_DISPLAYED = [
+  'ko', 'us', 'jp', 'ger'
 ];
 
