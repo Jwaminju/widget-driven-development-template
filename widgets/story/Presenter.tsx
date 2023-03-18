@@ -7,6 +7,7 @@ import TextModalMultiPages from "../../components/TextModalMultiPages";
 import { SimpleGrid, Button, Spacer, Flex} from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/react"
 import Login from "../hello/Login";
+import useUserInfo from "../../hooks/useUserInfo";
 
 interface Props {
   sceneTitle?: string;
@@ -17,7 +18,8 @@ const Presenter = ({
   sceneTitle,
   labelForLinkToNext
                    }: Props) => {
-
+                    
+  const userInfo = useUserInfo()
   const { isOpen, onOpen, onClose } = useDisclosure({ defaultIsOpen: true, })
 
   return ( 
@@ -39,17 +41,25 @@ const Presenter = ({
         </Container>
 
         <Container>
-          <Flex justifyContent='center'>
-                <LinkToNext
-                label={labelForLinkToNext} 
-                title={'Login to Start'}
-                color={'yellow'}/>
+          <Flex justifyContent='center'>  
+            <Login/>
           </Flex>
         </Container>
 
-        <Container>
-          {/* <Login/> */}
-        </Container>
+
+        {userInfo ? 
+          
+          // <Container>
+          //   <Flex justifyContent='center'>
+          //     <LinkToNext
+          //     label={labelForLinkToNext} 
+          //     title={'Game Start'}
+          //     color={'yellow'}/>
+          //   </Flex>
+          // </Container>
+          <></>
+
+        : <></>}
 
         <Spacer />
       </SimpleGrid>
