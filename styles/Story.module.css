@@ -26,8 +26,7 @@
 
 .story_box {
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  vertical-align: center;
   width: 90%;
 }
 

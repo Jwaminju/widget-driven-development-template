@@ -25,19 +25,3 @@ const useWindowDimensions = (): WindowDimentions => {
 };
 
 export default useWindowDimensions;
-
-
-// // Hook
-// function WindowSize() {
-
-//     const [windowSize, setWindowSize] = useState({width:0, height:0})
-//     useEffect(() => {
-//         const handleResize = () => setWindowSize({width:window.innerWidth, height:window.innerHeight})
-//         window.addEventListener('resize', handleResize)
-//         return () => window.removeEventListener('resize', handleResize)
-//         // eslint-disable-next-line react-hooks/exhaustive-deps
-//     }, [])
-//     return windowSize
-//   }
-
-// export default WindowSize
