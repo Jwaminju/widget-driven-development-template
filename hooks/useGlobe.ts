@@ -9,7 +9,6 @@ const initialGlobeData: GlobeData = {
     width: 1600,
     height: 900,
     backgroundColor: '#000',
-    backgroundImageUrl: "/universe.jpg"
   },
   globeLayerData: {
     globeImageUrl: "https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg",
