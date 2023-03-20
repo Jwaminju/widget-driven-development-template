@@ -1,0 +1,24 @@
+{
+  "gamestate": {
+    "id": 0,
+    "username": "dan",
+    "playtime": 2023,
+    "greenhouseeffect": 50,
+    "greenhousegases": [
+      { "type": "co2", "measurement": 20 },
+      { "type": "no2", "measurement": 30 },
+      { "type": "ch4", "measurement": 10 }
+    ],
+    "items": {
+      "personal": [
+        { "name": "watertapoff", "isActivated": false }
+      ],
+      "enterprise": [
+        { "name": "sustainableenergy", "isActivated": false }
+      ],
+      "national": [
+        { "name": "agreement", "isActivated": false }
+      ]
+    }
+  }
+}
