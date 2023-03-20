@@ -1,7 +1,8 @@
-import { initializeApp, getApp } from "firebase/app";
+import {FirebaseApp, getApp, initializeApp} from "firebase/app";
 import "firebase/auth";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
-import { getFirestore, collection, getDocs } from "firebase/firestore/lite";
+import {Auth, getAuth} from "firebase/auth";
+import {Firestore, getFirestore} from "firebase/firestore/lite";
+import {FirebaseOptions} from "@firebase/app-types";
 
 
 const firebaseConfig = {
@@ -13,6 +14,22 @@ const firebaseConfig = {
     appId: process.env.NEXT_PUBLIC_APP_ID,
     measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID,
 };
+
+export class FirebaseDB {
+  private config: FirebaseOptions;
+  private firebaseApp: FirebaseApp;
+  private firebaseDb: Firestore;
+  private firebaseAuth: Auth;
+
+  constructor(config: FirebaseOptions) {
+    this.config = config;
+    this.firebaseApp = initializeApp(this.config);
+    this.firebaseAuth = getAuth(this.firebaseApp);
+    this.firebaseDb = getFirestore(this.firebaseApp);
+  }
+
+  public getInstance(): Firestore { return this.firebaseDb; }
+}
 
 function initializeAppIfNecessary() {
     try {
