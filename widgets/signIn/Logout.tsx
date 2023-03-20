@@ -1,8 +1,8 @@
-import { signOut } from 'firebase/auth';
+import {signOut} from 'firebase/auth';
 import styles from '../../styles/Login.module.css';
-import { auth } from "./Firebase";
-import { useState } from "react";
-import { ChakraProvider } from "@chakra-ui/provider";
+import {auth} from "./Firebase";
+import {useState} from "react";
+import {ChakraProvider} from "@chakra-ui/provider";
 
 const Logout = () => {
     const [isLogin, setIsLogin] = useState<any | null>(null);

@@ -1,4 +1,4 @@
-import {FC, useState, useEffect} from "react";
+import {useEffect, useState} from "react";
 
 const PageMove = (i:number, maxlen:number):number => {
     const [ pageIdx, setPageIdx ] = useState(0);

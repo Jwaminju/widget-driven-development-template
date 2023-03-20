@@ -1,6 +1,6 @@
 import {useEffect, useRef, useState} from "react";
 import {GlobeData} from "../models/globe-layer.types";
-import { PolygonData } from "../models/polygon-layer.types";
+import {PolygonData} from "../models/polygon-layer.types";
 import {GeoDataInterface} from "../data/geoData.interface";
 import GeoData from '../data/ne_110m_admin_0_countries.json';
 

@@ -2,6 +2,7 @@ import Heading1 from "../../components/Heading1";
 import LinkToNext from "../../components/LinkToNext";
 import {Center} from "@chakra-ui/layout";
 import {Container} from "@chakra-ui/react";
+
 interface Props {
   sceneTitle?: string;
   labelForLinkToNext?: string;

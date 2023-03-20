@@ -1,9 +1,9 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import {ComponentMeta, ComponentStory} from '@storybook/react';
 import Presenter from './Presenter';
 
 export default {
-    title: 'Presenter/hello',
+    title: 'Presenter/auth',
     component: Presenter,
 } as ComponentMeta<typeof Presenter>;
 

@@ -1,8 +1,10 @@
-interface Props { }
+interface Props {
+}
+
 import styles from '../../styles/Login.module.css';
-import { auth } from "./Firebase";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { useState } from "react";
+import {auth} from "./Firebase";
+import {GoogleAuthProvider, signInWithPopup} from "firebase/auth";
+import {useState} from "react";
 import Logout from './Logout';
 
 const Login = ({ }: Props) => {

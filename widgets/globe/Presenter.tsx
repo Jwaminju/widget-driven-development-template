@@ -1,6 +1,6 @@
 import {RefObject} from "react";
 import {GlobeData} from "../../models/globe-layer.types";
-import { PolygonData } from "../../models/polygon-layer.types";
+import {PolygonData} from "../../models/polygon-layer.types";
 import {GeoDataInterface} from "../../data/geoData.interface";
 import dynamic from "next/dynamic";
 import {Center} from "@chakra-ui/layout";

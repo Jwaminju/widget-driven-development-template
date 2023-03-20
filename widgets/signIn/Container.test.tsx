@@ -1,6 +1,5 @@
 import '@testing-library/jest-dom'
-import { render, screen } from '@testing-library/react'
-import userEvent from "@testing-library/user-event";
+import {render} from '@testing-library/react'
 import test from "node:test";
 import Container from "./Container";
 
@@ -13,6 +12,6 @@ test('loads and displays greeting', async () => {
     // await screen.findByRole('heading')
 
     // ASSERT
-    // expect(screen.getByRole('heading')).toHaveTextContent('hello there')
+    // expect(screen.getByRole('heading')).toHaveTextContent('auth there')
     // expect(screen.getByRole('button')).toBeDisabled()
 })

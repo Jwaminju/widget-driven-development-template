@@ -1,15 +1,4 @@
-import {
-  Flex,
-  Button,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  Box,
-  ModalOverlay,
-  ModalFooter,
-  Center
-} from "@chakra-ui/react";
+import {Box, Button, Flex, Modal, ModalBody, ModalContent, ModalFooter, ModalOverlay} from "@chakra-ui/react";
 import {useState} from "react";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 
