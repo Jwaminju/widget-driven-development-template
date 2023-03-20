@@ -11,7 +11,7 @@ import {
   Center
 } from "@chakra-ui/react";
 import {useState} from "react";
-import useWindowDimensions from "../../hooks/screenSize";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 interface TextModalProps {
   textContents: string[];

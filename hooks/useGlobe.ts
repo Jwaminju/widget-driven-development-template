@@ -6,28 +6,46 @@ import GeoData from '../data/ne_110m_admin_0_countries.json';
 
 const initialGlobeData: GlobeData = {
   containerData: {
-    width: 1600,
-    height: 900,
+    width: 0,
+    height: 0,
     backgroundColor: '#000',
-    backgroundImageUrl: "/universe.jpg"
   },
   globeLayerData: {
     globeImageUrl: "https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg",
     bumpImageUrl: "",
   }
 }
+
 const initialPolygonData: PolygonData = {
   polygonsData: [],
   polygonLabel: '',
   polygonCapColor: '#ffffaa',
   polygonSideColor: '#000'
 };
+
 const useGlobe = () => {
   const globe = useRef();
   const [isSuccess, setIsSuccess] = useState<boolean>(true);
   const [countries, setCountries] = useState<GeoDataInterface>(GeoData);
   const [globeData, setGlobeData] = useState<GlobeData>(initialGlobeData)
   const [polygonData, setPolygonData] = useState<PolygonData>(initialPolygonData);
+
+  useEffect(() => {
+    globeData.containerData.width = window.innerWidth;
+    globeData.containerData.height = window.innerHeight;
+    setGlobeData((prevData) => {
+      return {
+        containerData: {
+          ...prevData.containerData,
+          width: window.innerWidth,
+          height: window.innerHeight
+        },
+        globeLayerData: {
+          ...prevData.globeLayerData
+        }
+      }
+    })
+  }, []);
 
   return {
     isSuccess,
