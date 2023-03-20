@@ -1,9 +1,9 @@
 import type { NextPage } from 'next'
 import Head from "next/head";
 import {ChakraProvider} from "@chakra-ui/provider";
-import GlobeContainer from "../widgets/globe/Container";
 import {RecoilRoot} from "recoil";
 import {GameStateData, useGameState} from "../hooks/useGameState";
+import GlobeContainer from "../widgets/globe/Container";
 import game_data from "../public/game_data.json";
 
 const Main: NextPage<any> = ({ gameState }) => {
