@@ -3,13 +3,13 @@ import {Button, Container, Flex, SimpleGrid, Spacer, useDisclosure} from "@chakr
 import Heading2 from "../../components/Heading2";
 import {STORY_TXT} from "../../data/main_story";
 import TextModalMultiPages from "../../components/TextModalMultiPages";
-import {UserCredential} from "firebase/auth";
+import {User} from "firebase/auth";
 import LinkToNext from "../../components/LinkToNext";
 import AuthContainer from "../auth/Container";
 
 interface Props {
   sceneTitle?: string;
-  user: UserCredential | null;
+  user: User | null | undefined;
   labelForLinkToNext?: string;
 }
 
