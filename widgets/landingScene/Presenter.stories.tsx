@@ -3,7 +3,7 @@ import {ComponentMeta, ComponentStory} from '@storybook/react';
 import Presenter from './Presenter';
 
 export default {
-    title: 'Presenter/scene',
+    title: 'Presenter/landingScene',
     component: Presenter,
 } as ComponentMeta<typeof Presenter>;
 

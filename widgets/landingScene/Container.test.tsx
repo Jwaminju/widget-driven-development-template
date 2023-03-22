@@ -13,5 +13,5 @@ test('loads and displays greeting', async () => {
 
     // ASSERT
     // expect(screen.getByRole('heading')).toHaveTextContent('auth there')
-    // expect(screen.getByRole('button')).toBeDisabled()
+    // expect(screen.getByRole('CommonButton')).toBeDisabled()
 })

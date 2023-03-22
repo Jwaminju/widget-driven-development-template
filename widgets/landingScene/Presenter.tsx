@@ -5,18 +5,18 @@ import {Container} from "@chakra-ui/react";
 
 interface Props {
   sceneTitle?: string;
-  labelForLinkToNext?: string;
+  nextPageRoute?: string;
 }
 
 const Presenter = ({
   sceneTitle,
-  labelForLinkToNext
+  nextPageRoute
                    }: Props) => {
     return (
       <Center w={'100vw'} h={'100vh'} backgroundImage={'url(/melting_ice_northpole.jpg)'} backgroundRepeat={'no-repeat'} backgroundPosition={'center'}>
         <Container>
           <Heading1 label={sceneTitle} />
-          <LinkToNext label={labelForLinkToNext} />
+          <LinkToNext label={"See the Story"} nextPageRoute={nextPageRoute}/>
         </Container>
       </Center>
     );

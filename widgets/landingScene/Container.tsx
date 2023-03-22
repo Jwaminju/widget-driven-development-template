@@ -12,7 +12,7 @@ const LandingSceneContainer = (sceneParams?: SceneParams) => {
     });
 
     if (isSuccess) {
-        return <Presenter sceneTitle={sceneData.sceneName} labelForLinkToNext={sceneData.nextPage}/>
+        return <Presenter sceneTitle={sceneData.sceneName} nextPageRoute={sceneData.nextPage}/>
     }
 
     if (isError) {
