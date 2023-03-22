@@ -1,5 +1,5 @@
 import "firebase/auth";
-import {auth} from "../widgets/signIn/Firebase";
+import {auth} from "../widgets/auth/Firebase";
 import {useEffect, useState} from "react";
 import {UserCredential} from "firebase/auth";
 
