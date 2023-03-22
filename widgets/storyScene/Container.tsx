@@ -3,22 +3,25 @@ import Error from "./Error";
 import Loading from "./Loading";
 import Presenter from "./Presenter";
 import useUserInfo from "../../hooks/useUserInfo";
+import {userInfo} from "os";
+import {useFirebaseAuthState} from "../../hooks/useFirebase";
 
 interface SceneParams {
     path?: string;
 }
 const StorySceneContainer = () => {
     const { isSuccess, isError, sceneData } = useScene({
-        sceneName: "Click here to open story",
+        sceneName: "story",
         nextPage: "main"
     });
-    const userInfo = useUserInfo();
+    const {user, loading, error} = useFirebaseAuthState();
 
     if (isSuccess) {
         return <Presenter
-                userInfo={userInfo}
+                user={user}
                 sceneTitle={sceneData.sceneName} 
-                labelForLinkToNext={sceneData.nextPage}/>
+                labelForLinkToNext={sceneData.nextPage}
+        />
     }
 
     if (isError) {

@@ -5,16 +5,17 @@ import {STORY_TXT} from "../../data/main_story";
 import TextModalMultiPages from "../../components/TextModalMultiPages";
 import {UserCredential} from "firebase/auth";
 import LinkToNext from "../../components/LinkToNext";
+import AuthContainer from "../auth/Container";
 
 interface Props {
   sceneTitle?: string;
-  userInfo: UserCredential['user'] | null;
+  user: UserCredential | null;
   labelForLinkToNext?: string;
 }
 
 const Presenter = ({
   sceneTitle,
-  userInfo,
+  user,
   labelForLinkToNext
                    }: Props) => {
   const { isOpen, onOpen, onClose } = useDisclosure({ defaultIsOpen: true, });
@@ -35,22 +36,8 @@ const Presenter = ({
               onClose={onClose}/>
             <Spacer />
           </Flex>
+          {user ? <LinkToNext label={"Play Game"} nextPageRoute={"main"} /> : <AuthContainer />}
         </Container>
-
-          <Container>
-            <Flex justifyContent='center'>
-              {
-                !userInfo ?
-                <Login/>
-                :
-                <LinkToNext
-                  label={labelForLinkToNext}
-                  title={'Game Start'}
-                  color={'yellow'}
-                />
-              }
-            </Flex>
-          </Container>
         <Spacer />
       </SimpleGrid>
     </Center>
