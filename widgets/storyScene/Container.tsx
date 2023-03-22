@@ -2,8 +2,6 @@ import useScene from "../../hooks/useScene";
 import Error from "./Error";
 import Loading from "./Loading";
 import Presenter from "./Presenter";
-import useUserInfo from "../../hooks/useUserInfo";
-import {userInfo} from "os";
 import {useFirebaseAuthState} from "../../hooks/useFirebase";
 
 interface SceneParams {

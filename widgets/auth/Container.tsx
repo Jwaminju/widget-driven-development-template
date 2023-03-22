@@ -1,8 +1,6 @@
 import Error from "./Error";
 import Loading from "./Loading";
 import Presenter from "./Presenter";
-import {useSignInWithGoogle} from "react-firebase-hooks/auth";
-import {signOut} from "firebase/auth";
 import {useFirebaseSignIn, useFirebaseSignOut} from "../../hooks/useFirebase";
 
 const AuthContainer = () => {
