@@ -3,20 +3,20 @@ import {Button, Container, Flex, SimpleGrid, Spacer, useDisclosure} from "@chakr
 import Heading2 from "../../components/Heading2";
 import {STORY_TXT} from "../../data/main_story";
 import TextModalMultiPages from "../../components/TextModalMultiPages";
-import Login from "../auth/Login";
-import useUserInfo from "../../hooks/useUserInfo";
+import {UserCredential} from "firebase/auth";
+import LinkToNext from "../../components/LinkToNext";
 
 interface Props {
   sceneTitle?: string;
+  userInfo: UserCredential['user'] | null;
   labelForLinkToNext?: string;
 }
 
 const Presenter = ({
   sceneTitle,
+  userInfo,
   labelForLinkToNext
                    }: Props) => {
-                    
-  const userInfo = useUserInfo();
   const { isOpen, onOpen, onClose } = useDisclosure({ defaultIsOpen: true, });
 
   return ( 
@@ -37,27 +37,20 @@ const Presenter = ({
           </Flex>
         </Container>
 
-        <Container>
-          <Flex justifyContent='center'>  
-            <Login/>
-          </Flex>
-        </Container>
-
-
-        {userInfo ? 
-          
-          // <Container>
-          //   <Flex justifyContent='center'>
-          //     <LinkToNext
-          //     label={labelForLinkToNext} 
-          //     title={'Game Start'}
-          //     color={'yellow'}/>
-          //   </Flex>
-          // </Container>
-          <></>
-
-        : <></>}
-
+          <Container>
+            <Flex justifyContent='center'>
+              {
+                !userInfo ?
+                <Login/>
+                :
+                <LinkToNext
+                  label={labelForLinkToNext}
+                  title={'Game Start'}
+                  color={'yellow'}
+                />
+              }
+            </Flex>
+          </Container>
         <Spacer />
       </SimpleGrid>
     </Center>

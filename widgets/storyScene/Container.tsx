@@ -2,6 +2,7 @@ import useScene from "../../hooks/useScene";
 import Error from "./Error";
 import Loading from "./Loading";
 import Presenter from "./Presenter";
+import useUserInfo from "../../hooks/useUserInfo";
 
 interface SceneParams {
     path?: string;
@@ -11,9 +12,11 @@ const StorySceneContainer = () => {
         sceneName: "Click here to open story",
         nextPage: "main"
     });
+    const userInfo = useUserInfo();
 
     if (isSuccess) {
-        return <Presenter  
+        return <Presenter
+                userInfo={userInfo}
                 sceneTitle={sceneData.sceneName} 
                 labelForLinkToNext={sceneData.nextPage}/>
     }
