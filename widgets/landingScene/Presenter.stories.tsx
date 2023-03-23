@@ -1,13 +1,13 @@
 import React from 'react';
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import {ComponentMeta, ComponentStory} from '@storybook/react';
 import Presenter from './Presenter';
 
 export default {
-    title: 'Presenter/hello',
+    title: 'Presenter/landingScene',
     component: Presenter,
 } as ComponentMeta<typeof Presenter>;
 
 const Template: ComponentStory<typeof Presenter> = (args) => <Presenter {...args} />;
-export const hello = Template.bind({})
+export const Scene = Template.bind({})
 
-hello.args = {}
+Scene.args = {}

@@ -1,15 +1,4 @@
-import {
-  Flex,
-  Button,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  Box,
-  ModalOverlay,
-  ModalFooter,
-  Center
-} from "@chakra-ui/react";
+import {Box, Button, Flex, Modal, ModalBody, ModalContent, ModalFooter, ModalOverlay} from "@chakra-ui/react";
 import {useState} from "react";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 
@@ -18,6 +7,7 @@ interface TextModalProps {
   initOpen?:boolean;
   isOpen: boolean;
   onClose: () => void;
+  footerItems?: JSX.Element[];
 }
 
 const TextModalMultiPages = ({
@@ -25,6 +15,7 @@ const TextModalMultiPages = ({
   initOpen,
   isOpen,
   onClose,
+  footerItems
                    }: TextModalProps) => {
 
   const { width, height } = useWindowDimensions();
@@ -51,10 +42,7 @@ const TextModalMultiPages = ({
               </Flex>
           </ModalBody>
           <ModalFooter>
-            <Button colorScheme='blue' mr={3} onClick={onClose}>
-              Game Start
-            </Button>
-            {/* <Button variant='ghost'>Game Start</Button> */}
+            {footerItems}
           </ModalFooter>
         </ModalContent>
     </Modal>

@@ -1,4 +1,4 @@
-import {Heading, Highlight} from "@chakra-ui/react";
+import {Heading} from "@chakra-ui/react";
 
 interface Heading1Props {
     label?: string;

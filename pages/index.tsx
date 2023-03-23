@@ -1,9 +1,9 @@
 "use client"
-import type { NextPage } from 'next'
+import type {NextPage} from 'next'
 import Head from "next/head";
 import {ChakraProvider} from "@chakra-ui/provider";
 import {useRouter} from "next/router";
-import LandingSceneContainer from "../widgets/scene/Container";
+import LandingSceneContainer from "../widgets/landingScene/Container";
 
 const Index: NextPage = () => {
     const router = useRouter();

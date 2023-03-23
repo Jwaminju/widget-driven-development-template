@@ -1,4 +1,4 @@
-import {atom, selector, useSetRecoilState} from "recoil";
+import {atom, selector} from "recoil";
 import {GasFactory} from "../models/greenhousegas";
 
 export interface GameStateData {

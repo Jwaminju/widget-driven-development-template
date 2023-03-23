@@ -1,4 +1,4 @@
-import type { NextPage } from 'next'
+import type {NextPage} from 'next'
 import styles from "../styles/Landing.module.css";
 import Head from "next/head";
 

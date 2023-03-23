@@ -1,7 +1,7 @@
-import type { NextPage } from 'next'
+import type {NextPage} from 'next'
 import Head from "next/head";
-import StorySceneContainer from "../widgets/story/Container";
-import { ChakraProvider} from "@chakra-ui/react";
+import StorySceneContainer from "../widgets/storyScene/Container";
+import {ChakraProvider} from "@chakra-ui/react";
 
 const Story: NextPage = () => {
 
