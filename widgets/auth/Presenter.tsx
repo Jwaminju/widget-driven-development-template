@@ -1,26 +1,20 @@
 import styles from "../../styles/Login.module.css";
-import {UserCredential} from "firebase/auth";
+import {User, UserCredential} from "firebase/auth";
 import CommonButton from "../../components/CommonButton";
 
 interface Props {
-  user: UserCredential;
-  signIn:  (args: any) => any;
-  signOut: (args: any) => any;
+  user: User | null | undefined;
+  signIn:  (args?: any) => any;
+  signOut: (args?: any) => any;
 }
 
 const Presenter = ({ user, signIn, signOut }: Props) => {
     return (
-          <div className={styles.circle}>
-              <div className={styles.maskb}>
-                {
-                  user ?
-                  <CommonButton label={"SignOut"} onClick={signOut}/>
-                  :
-                  <CommonButton label={"SignIn"} onClick={signIn}/>
-                }
-              </div>
-          </div>
-    )
+      user ?
+      <CommonButton label={"SignOut"} onClick={() => signOut()}/>
+      :
+      <CommonButton label={"SignIn"} onClick={() => signIn()}/>
+    );
 }
 
 export default Presenter
