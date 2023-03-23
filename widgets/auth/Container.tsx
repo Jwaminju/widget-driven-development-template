@@ -1,21 +1,18 @@
 import Error from "./Error";
 import Loading from "./Loading";
 import Presenter from "./Presenter";
-import {useFirebaseSignIn, useFirebaseSignOut} from "../../hooks/useFirebase";
+import {useFirebaseAuthState, useFirebaseSignIn, useFirebaseSignOut} from "../../hooks/useFirebase";
 
 const AuthContainer = () => {
-    const {signInWithGoogle, user, error} = useFirebaseSignIn();
+    const {signIn, error} = useFirebaseSignIn();
     const {signOut, loading} = useFirebaseSignOut();
+    const {user} = useFirebaseAuthState();
 
-    if (user) {
-        return <Presenter user={user} signIn={signInWithGoogle} signOut={signOut} />
-    }
+    if (error) return <Error />
 
-    if (error) {
-        return <Error />
-    }
+    if (loading) return <Loading />
 
-    return <Loading />
+    return <Presenter user={user} signIn={signIn} signOut={signOut} />
 }
 
 export default AuthContainer
