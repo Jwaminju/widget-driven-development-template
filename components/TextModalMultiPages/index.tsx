@@ -7,6 +7,7 @@ interface TextModalProps {
   initOpen?:boolean;
   isOpen: boolean;
   onClose: () => void;
+  footerItems?: JSX.Element[];
 }
 
 const TextModalMultiPages = ({
@@ -14,6 +15,7 @@ const TextModalMultiPages = ({
   initOpen,
   isOpen,
   onClose,
+  footerItems
                    }: TextModalProps) => {
 
   const { width, height } = useWindowDimensions();
@@ -40,10 +42,7 @@ const TextModalMultiPages = ({
               </Flex>
           </ModalBody>
           <ModalFooter>
-            <Button colorScheme='blue' mr={3} onClick={onClose}>
-              Game Start
-            </Button>
-            {/* <Button variant='ghost'>Game Start</Button> */}
+            {footerItems}
           </ModalFooter>
         </ModalContent>
     </Modal>
