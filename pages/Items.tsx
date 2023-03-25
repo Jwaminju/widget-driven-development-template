@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import styles from "../styles/Items.module.css";
 import Head from "next/head";
-import { SimpleGrid, Center, ChakraProvider, Button, Spacer, Flex, Badge, Text, Box, Tooltip } from "@chakra-ui/react";
+import { SimpleGrid, Center, ChakraProvider, Button, Spacer, Flex, VStack, Text, Box, Tooltip } from "@chakra-ui/react";
 import useWindowDimensions from '../hooks/useWindowDimensions';
 import {
     Modal,
@@ -13,6 +13,7 @@ import {
   } from "@chakra-ui/react"
 import { url } from 'inspector';
 import React, { forwardRef, useRef } from "react";
+import ItemsSceneContainer from "../widgets/items/Container";
 
 // const CustomButton = React.forwardRef(({title}) => (
 //     <Button borderRadius={1} borderRightColor='black' textColor='black'>
@@ -43,61 +44,7 @@ const Items: NextPage = () => {
                     <link rel="icon" href="/favicon.ico"/>
                 </Head>
                 <main className={styles.main}>
-                    <SimpleGrid spacing={height!/100*80}> 
-                        <Flex>
-                            <Spacer />
-                            <Tooltip label='Select item'>
-                                <Button onClick={onOpen}> Item Box </Button>
-                            </Tooltip>
-                            <Modal isOpen={isOpen} onClose={onClose}>
-                                <ModalOverlay bgColor='black' />
-                                <ModalContent 
-                                    p='1%' 
-                                    minHeight={height!/100*95} 
-                                    minWidth={width!/100*95} 
-                                    alignSelf='center'
-                                    bgImage={`https://i.stack.imgur.com/SvWWN.png`} >
-                                <ModalBody >
-                                    <ModalCloseButton backgroundColor='white'/>
-                                    <SimpleGrid> 
-                                        <Flex minHeight={height!/100*68}>
-                                            <Box borderWidth='1px' borderTopLeftRadius='lg' minWidth={width!/100*70} >
-
-                                                {/* <Flex color='white'>
-                                                </Flex> */}
-                                            </Box>
-
-                                            <Box borderTopWidth='1px' borderRightWidth='1px' borderTopRightRadius='lg' minWidth={width!/100*20.5}>
-                                                <SimpleGrid spacing='30%'> 
-                                                    <Spacer />
-                                                    <Flex color='white' maxW='' justifyContent='center'>
-                                                        <Button minW='30%' borderRadius={1} borderRightColor='black' textColor='black' >Box 1</Button>
-                                                        <Button minW='30%' borderRadius={1} borderRightColor='black' textColor='black'>Box 2</Button>
-                                                        <Button minW='30%' borderRadius={1} borderRightColor='black' textColor='black'>Box 3</Button>
-                                                    </Flex>
-                                                </SimpleGrid> 
-                                            </Box>
-
-                                        </Flex>
-                                        <Flex minHeight={height!/100*20}>
-                                            <Box borderWidth='1px' borderBottomLeftRadius='lg' minWidth={width!/100*70}> sdf </Box>
-                                            <Box borderRightWidth='1px' borderBottomWidth='1px' borderBottomRightRadius='lg' minWidth={width!/100*20.5}>  </Box>
-                                        </Flex>
-                                    </SimpleGrid>
-
-                                    <Flex>
-                                    {/* <Button variant='solid' height='' onClick={() => pageMove(pageIdx - 1)}> {'<'} </Button>
-                                    {/* <StoryBox content={STORY_TXT[pageIdx].txt} /> */}
-                                    {/* <Button variant='solid' height='' > {'>'} </Button>  */}
-                                    </Flex>
-                                </ModalBody>
-                                </ModalContent>
-                            </Modal>
-                            <Spacer />
-                        </Flex>
-                        
-                    
-                    </SimpleGrid>
+                    <ItemsSceneContainer/>
                 </main>
             </div>
         </ChakraProvider>

@@ -4,8 +4,7 @@ import Head from "next/head";
 import {ChakraProvider} from "@chakra-ui/provider";
 import {useRouter} from "next/router";
 import LandingSceneContainer from "../widgets/landingScene/Container";
-import Items
- from './Items';
+import Items from './Items';
 const Index: NextPage = () => {
     const router = useRouter();
     return (
