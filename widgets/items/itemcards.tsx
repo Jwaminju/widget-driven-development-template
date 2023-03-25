@@ -39,7 +39,7 @@ const ItemCards = ({property}:itemsSpec) => {
                 <WrapItem>
                     {Array(4).fill('').map((_, i) => (
                         // eslint-disable-next-line react/jsx-key
-                        <Avatar size='2xl' name='Dan Abrahmov' src='https://bit.ly/dan-abramov' p='1%'>
+                        <Avatar size='2xl' name={property.name} src={property.img} p='1%'>
                             <AvatarBadge boxSize='1.25em' bg='teal.300'> {property.tier} </AvatarBadge> 
                         </Avatar>
                     ))}
@@ -48,7 +48,7 @@ const ItemCards = ({property}:itemsSpec) => {
                 <WrapItem>
                     {Array(4).fill('').map((_, i) => (
                         // eslint-disable-next-line react/jsx-key
-                        <Avatar size='2xl' name='Dan Abrahmov' src='https://bit.ly/dan-abramov' p='1%'>
+                        <Avatar size='2xl' name={property.name} src={property.img} p='1%'>
                             <AvatarBadge boxSize='1.25em' bg='teal.300'> {property.tier} </AvatarBadge> 
                         </Avatar>
                     ))}
@@ -57,7 +57,7 @@ const ItemCards = ({property}:itemsSpec) => {
                 <WrapItem padding='1%'>
                     {Array(4).fill('').map((_, i) => (
                         // eslint-disable-next-line react/jsx-key
-                        <Avatar size='2xl' name='Dan Abrahmov' src='https://bit.ly/dan-abramov' p='1%'>
+                        <Avatar size='2xl' name={property.name} src={property.img} p='1%'>
                             <AvatarBadge boxSize='1.25em' bg='teal.300'> {property.tier} </AvatarBadge> 
                         </Avatar>
                     ))}

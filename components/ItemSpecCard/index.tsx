@@ -24,19 +24,20 @@ const ItemSpecCard = ({property}:itemsSpec) => {
                 alt='Recycling Trash'/>
             <Stack>
                 <CardBody>
-                <Badge ml='1' colorScheme='teal' fontSize='md'  px='2'>
-                    {Array(4).fill('').map((_, i) => (
-                        <StarIcon
-                            key={i}
-                            color={i < property.tier ? 'teal.500' : 'gray.300'}
-                        />
-                    ))}
-                </Badge>
-                <Heading size='md'> {property.name} </Heading>
-                <Text fontSize='lg' py='1%'> {property.story} </Text>
+                    <Badge colorScheme='teal' fontSize='md'>
+                        {Array(4).fill('').map((_, i) => (
+                            <StarIcon
+                                key={i}
+                                color={i < property.tier ? 'teal.500' : 'gray.300'}
+                            />
+                        ))}
+                    </Badge>
+                    <Badge colorScheme='red' fontSize='md' ml='1%' borderRadius='full' > Retention For {1} Year </Badge>
+                    <Heading paddingTop='1%' size='md'> {property.name} </Heading>
+                    <Text fontSize='lg' py='1%'> {property.story} </Text>
                 </CardBody>
                 <CardFooter>
-                <Button variant='solid' colorScheme='blue'> Select</Button>
+                    <Button variant='solid' colorScheme='blue'> Select</Button>
                 </CardFooter>
             </Stack>
         </Card>  

@@ -2,7 +2,6 @@ import styles from "../../styles/Landing.module.css";
 import Heading1 from "../../components/Heading1";
 import LinkToNext from "../../components/LinkToNext";
 import ItemCards from "./itemcards";
-import { PERSON_ITEMS } from "../../data/items/personal_item";
 import ItemSpecCard from "../../components/ItemSpecCard";
 
 import { SimpleGrid, Center, ChakraProvider, Button, Spacer, Flex, VStack, Text, Box, Tooltip, Container, Heading } from "@chakra-ui/react";
@@ -16,12 +15,23 @@ import {
     useDisclosure,
   } from "@chakra-ui/react"
 
+
+interface items {
+    name: string;
+    img: string;
+    story: string;
+    tier: number;
+    valid_year: number;
+};
+
+
 interface Props {
   sceneTitle?: string;
+  data: items;
 //   labelForLinkToNext: string;
 }
 
-const Presenter = ({ sceneTitle} : Props) => {
+const Presenter = ({ sceneTitle, data } : Props) => {
 
     const { width, height } = useWindowDimensions();
     const { isOpen, onOpen, onClose } = useDisclosure({ defaultIsOpen: true, })
@@ -45,10 +55,10 @@ const Presenter = ({ sceneTitle} : Props) => {
                     <SimpleGrid spacing='1%'>  
                         <Heading size='lg' > {sceneTitle} </Heading> 
                         <Box minWidth="90%" minHeight={height!/100*55}> {/* minHeight={height!/100*60} */}
-                            <ItemCards property={PERSON_ITEMS[0]}> </ItemCards> 
+                            <ItemCards property={data}> </ItemCards> 
                         </Box>
                         <Box minWidth={width!/100*90}> 
-                            <ItemSpecCard property={PERSON_ITEMS[0]}></ItemSpecCard>
+                            <ItemSpecCard property={data}></ItemSpecCard>
                         </Box>
                     </SimpleGrid>
                     <Spacer/>
