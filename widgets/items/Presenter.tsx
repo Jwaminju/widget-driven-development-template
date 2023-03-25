@@ -25,7 +25,7 @@ const Presenter = ({ sceneTitle} : Props) => {
 
     const { width, height } = useWindowDimensions();
     const { isOpen, onOpen, onClose } = useDisclosure({ defaultIsOpen: true, })
-                
+    
     return (
         <Container> 
             <Tooltip label='Select item'>
@@ -44,12 +44,10 @@ const Presenter = ({ sceneTitle} : Props) => {
                     <ModalCloseButton backgroundColor='white'/>
                     <SimpleGrid spacing='1%'>  
                         <Heading size='lg' > {sceneTitle} </Heading> 
-                        <Spacer/>
-                        <Box minWidth="90%" minHeight={height!/100*58}> 
-                            <ItemCards> </ItemCards> 
+                        <Box minWidth="90%" minHeight={height!/100*55}> {/* minHeight={height!/100*60} */}
+                            <ItemCards property={PERSON_ITEMS[0]}> </ItemCards> 
                         </Box>
-                        <Spacer/>
-                        <Box borderBottomLeftRadius='lg' minWidth={width!/100*90}> 
+                        <Box minWidth={width!/100*90}> 
                             <ItemSpecCard property={PERSON_ITEMS[0]}></ItemSpecCard>
                         </Box>
                     </SimpleGrid>

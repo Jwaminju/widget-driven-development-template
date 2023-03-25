@@ -24,17 +24,15 @@ const ItemSpecCard = ({property}:itemsSpec) => {
                 alt='Recycling Trash'/>
             <Stack>
                 <CardBody>
-                <Heading size='md'>
-                    {property.name}
-                    <Badge ml='1' colorScheme='teal' fontSize='md'  px='2'>
-                        {Array(4).fill('').map((_, i) => (
-                            <StarIcon
-                                key={i}
-                                color={i < property.tier ? 'teal.500' : 'gray.300'}
-                            />
-                        ))}
-                    </Badge>
-                </Heading>
+                <Badge ml='1' colorScheme='teal' fontSize='md'  px='2'>
+                    {Array(4).fill('').map((_, i) => (
+                        <StarIcon
+                            key={i}
+                            color={i < property.tier ? 'teal.500' : 'gray.300'}
+                        />
+                    ))}
+                </Badge>
+                <Heading size='md'> {property.name} </Heading>
                 <Text fontSize='lg' py='1%'> {property.story} </Text>
                 </CardBody>
                 <CardFooter>
