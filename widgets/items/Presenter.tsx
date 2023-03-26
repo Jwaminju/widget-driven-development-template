@@ -3,7 +3,7 @@ import Heading1 from "../../components/Heading1";
 import LinkToNext from "../../components/LinkToNext";
 import ItemCards from "./itemcards";
 import ItemSpecCard from "../../components/ItemSpecCard";
-
+import { ItemDataInterface } from "../../data/items.interface";
 import { SimpleGrid, Center, ChakraProvider, Button, Spacer, Flex, VStack, Text, Box, Tooltip, Container, Heading } from "@chakra-ui/react";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import {
@@ -14,24 +14,14 @@ import {
     ModalCloseButton,
     useDisclosure,
   } from "@chakra-ui/react"
-
-
-interface items {
-    name: string;
-    img: string;
-    story: string;
-    tier: number;
-    valid_year: number;
-};
-
+import React from 'react';
 
 interface Props {
   sceneTitle?: string;
-  data: items;
-//   labelForLinkToNext: string;
+  data: ItemDataInterface;
 }
 
-const Presenter = ({ sceneTitle, data } : Props) => {
+const Presenter = ( props : Props) => {
 
     const { width, height } = useWindowDimensions();
     const { isOpen, onOpen, onClose } = useDisclosure({ defaultIsOpen: true, })
@@ -53,12 +43,12 @@ const Presenter = ({ sceneTitle, data } : Props) => {
                 <ModalBody >
                     <ModalCloseButton backgroundColor='white'/>
                     <SimpleGrid spacing='1%'>  
-                        <Heading size='lg' > {sceneTitle} </Heading> 
+                        <Heading size='lg' > {props.sceneTitle} </Heading> 
                         <Box minWidth="90%" minHeight={height!/100*55}> {/* minHeight={height!/100*60} */}
-                            <ItemCards property={data}> </ItemCards> 
+                            <ItemCards property={props.data}> </ItemCards> 
                         </Box>
                         <Box minWidth={width!/100*90}> 
-                            <ItemSpecCard property={data}></ItemSpecCard>
+                            <ItemSpecCard property={props.data}></ItemSpecCard>
                         </Box>
                     </SimpleGrid>
                     <Spacer/>

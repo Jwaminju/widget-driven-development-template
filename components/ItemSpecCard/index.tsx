@@ -1,19 +1,13 @@
 import {  Text, Image, Badge, Button, Card, Stack, CardBody, CardFooter, Heading, } from '@chakra-ui/react'
 import { StarIcon } from '@chakra-ui/icons'
-
-interface items {
-        name: string;
-        img: string;
-        story: string;
-        tier: number;
-        valid_year: number;
-};
+import { ItemDataInterface } from '../../data/items.interface';
 
 interface itemsSpec {
-    property: items;
+    property: ItemDataInterface;
 };
 
 const ItemSpecCard = ({property}:itemsSpec) => {
+    console.log("ItemSpecCard", property.img)
     return (
 
         <Card direction={{ base: 'column', sm: 'row' }} overflow='hidden' variant='outline'>

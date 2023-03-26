@@ -2,17 +2,11 @@ import { Wrap, WrapItem, Tabs, TabList, Tab, TabPanels, TabPanel, useColorModeVa
 import { Image } from '@chakra-ui/react'
 import { Avatar, AvatarBadge, AvatarGroup } from '@chakra-ui/react'
 import { useState } from "react";
-
-interface items {
-    name: string;
-    img: string;
-    story: string;
-    tier: number;
-    valid_year: number;
-};
+import { ItemDataInterface } from "../../data/items.interface";
 
 interface itemsSpec {
-    property: items;
+    children: React.ReactNode;
+    property: ItemDataInterface;
 };
 
 const ItemCards = ({property}:itemsSpec) => {
@@ -80,28 +74,3 @@ const ItemCards = ({property}:itemsSpec) => {
 }
 
 export default ItemCards
-
-
-
-                {/*<WrapItem>
-                    <Avatar size='2xl' name='Dan Abrahmov' src='https://bit.ly/dan-abramov' >
-                        <AvatarBadge boxSize='1.25em' bg='teal.300'> {property.tier} </AvatarBadge> 
-                    </Avatar>
-
-                    <Avatar name='Kola Tioluwani' src='https://bit.ly/tioluwani-kolawole' />
-                </WrapItem>
-                <WrapItem>
-                    <Avatar name='Kent Dodds' src='https://bit.ly/kent-c-dodds' />
-                </WrapItem>
-                <WrapItem>
-                    <Avatar name='Ryan Florence' src='https://bit.ly/ryan-florence' />
-                </WrapItem>
-                <WrapItem>
-                    <Avatar name='Prosper Otemuyiwa' src='https://bit.ly/prosper-baba' />
-                </WrapItem>
-                <WrapItem>
-                    <Avatar name='Christian Nwamba' src='https://bit.ly/code-beast' />
-                </WrapItem>
-                <WrapItem>
-                    <Avatar name='Segun Adebayo' src='https://bit.ly/sage-adebayo' />
-                </WrapItem> */}
