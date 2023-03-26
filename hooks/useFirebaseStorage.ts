@@ -14,20 +14,12 @@ export const useFirebaseImage = () => {
         getDownloadURL(pathReference).then((url:string) => {
             console.log("GET success", url)
             setUrl(url);     
-            return url;  
         })
         .catch((error) => {
             console.log("firebase GET image error")
             return ''
         });
+        return url;
     }
-    return {getImage, url};
+    return {getImage};
 }
-
-// export const useFirebaseSignIn = () => {
-//   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-//   const signIn = () => {
-//     return signInWithGoogle();
-//   }
-//   return {signIn, user, loading, error};
-// }

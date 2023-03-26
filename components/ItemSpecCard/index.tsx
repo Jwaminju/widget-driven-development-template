@@ -1,16 +1,50 @@
-import {  Text, Image, Badge, Button, Card, Stack, CardBody, CardFooter, Heading, } from '@chakra-ui/react'
+import {  Text, Image, Badge, Button, Card, Stack, CardBody, CardFooter, Heading,Container,Center } from '@chakra-ui/react'
 import { StarIcon } from '@chakra-ui/icons'
 import { ItemDataInterface } from '../../data/items.interface';
+import { useToast, useDisclosure} from '@chakra-ui/react'
+import {useEffect, useRef, useState} from "react";
 
+import {
+    AlertDialog,
+    AlertDialogBody,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogContent,
+    AlertDialogOverlay,
+  } from '@chakra-ui/react'
+  
 interface itemsSpec {
-    property: ItemDataInterface;
+    property: any;
+    select: (arg1?: any, arg2?: any) => any;
+    selected: Number[];
 };
 
-const ItemSpecCard = ({property}:itemsSpec) => {
+const ItemSpecCard = ({property, select, selected}:itemsSpec) => {
     console.log("ItemSpecCard", property.img)
+    const toast = useToast()
+    console.log("ItemSpecCard", selected, property.tier)
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const cancelRef = useRef(null)
+
+    const myClick=()=>{
+        onClose();
+        select(0, property.tier);
+    }
+   
     return (
 
-        <Card direction={{ base: 'column', sm: 'row' }} overflow='hidden' variant='outline'>
+        <Card minH='100%' direction={{ base: 'column', sm: 'row' }} overflow='hidden' variant='outline'>
+            {
+            Object.keys(property).length === 0 
+            ?
+            <>
+            <Stack>
+                <CardBody alignItems='center'>
+                    <Heading alignSelf='center' size='ml' textColor='gray.400'>Select an item</Heading>
+                </CardBody>
+            </Stack>
+            </>
+            :<>
             <Image 
                 objectFit='cover'
                 maxW={{ base: '100%', sm: '20%'}}
@@ -31,9 +65,51 @@ const ItemSpecCard = ({property}:itemsSpec) => {
                     <Text fontSize='lg' py='1%'> {property.story} </Text>
                 </CardBody>
                 <CardFooter>
-                    <Button variant='solid' colorScheme='blue'> Select</Button>
+                    {   property.tier > (Number(selected[0])-1) ?
+                        <>
+                        <Button variant='solid' colorScheme='blue' onClick={onOpen}> Select</Button>
+                        <AlertDialog
+                            isOpen={isOpen}
+                            leastDestructiveRef={cancelRef}
+                            onClose={onClose}
+                        > 
+                            <AlertDialogOverlay>
+                            <AlertDialogContent>
+                                <AlertDialogHeader fontSize='lg' fontWeight='bold'>
+                                Select Item
+                                </AlertDialogHeader>
+
+                                <AlertDialogBody>
+                                {`Are you sure? You can't undo this action afterwards.`}
+                                </AlertDialogBody>
+
+                                <AlertDialogFooter>
+                                <Button ref={cancelRef} onClick={onClose}>
+                                    Cancel
+                                </Button>
+                                <Button colorScheme='green' onClick={myClick} ml={3}>
+                                    Select
+                                </Button>
+                                </AlertDialogFooter>
+                            </AlertDialogContent>
+                            </AlertDialogOverlay>
+                        </AlertDialog>
+                        </>
+                        :<Button variant='solid' colorScheme='gray'
+                            onClick={() =>
+                                toast({
+                                title: 'Already selected.',
+                                description: "The item is used.",
+                                status: 'success',
+                                duration: 3000,
+                                isClosable: true,
+                                })
+                            }> Select</Button>
+                    }   
                 </CardFooter>
             </Stack>
+            </>
+            }
         </Card>  
     )
 }

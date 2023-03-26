@@ -19,7 +19,13 @@ import React from 'react';
 interface Props {
   sceneTitle?: string;
   data: ItemDataInterface;
+  select: (arg1?: any, arg2?: any) => any;
+  itemSelected: Number[];
+  currItem: {};
+  getCurrItem: (arg1?: any) => any;
 }
+
+
 
 const Presenter = ( props : Props) => {
 
@@ -45,10 +51,15 @@ const Presenter = ( props : Props) => {
                     <SimpleGrid spacing='1%'>  
                         <Heading size='lg' > {props.sceneTitle} </Heading> 
                         <Box minWidth="90%" minHeight={height!/100*55}> {/* minHeight={height!/100*60} */}
-                            <ItemCards property={props.data}> </ItemCards> 
+                            <ItemCards 
+                                property={props.data}
+                                getCurrItem={props.getCurrItem}> </ItemCards> 
                         </Box>
-                        <Box minWidth={width!/100*90}> 
-                            <ItemSpecCard property={props.data}></ItemSpecCard>
+                        <Box minWidth={width!/100*90} minHeight={height!/100*25}> 
+                            <ItemSpecCard 
+                                property={props.currItem} 
+                                select={props.select} 
+                                selected={props.itemSelected}></ItemSpecCard>
                         </Box>
                     </SimpleGrid>
                     <Spacer/>
