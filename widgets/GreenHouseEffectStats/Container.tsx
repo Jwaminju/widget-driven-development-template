@@ -2,7 +2,7 @@ import Error from "./Error";
 import Loading from "./Loading";
 import Presenter from "./Presenter";
 
-const Container = () => {
+const GreenHouseEffectStatsContainer = () => {
     const success = true
     const error = true
 
@@ -17,4 +17,4 @@ const Container = () => {
     return <Loading />
 }
 
-export default Container
+export default GreenHouseEffectStatsContainer
