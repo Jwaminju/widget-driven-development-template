@@ -1,6 +1,11 @@
 import {RefObject} from "react";
 import {GlobeData} from "../../models/globe-layer.types";
-import {PolygonData, selectPolygonCapColor} from "../../models/polygon-layer.types";
+import {
+  FeatureCollection,
+  GeoNationProperty,
+  PolygonData,
+  selectPolygonCapColor
+} from "../../models/polygon-layer.types";
 import dynamic from "next/dynamic";
 import {Center} from "@chakra-ui/layout";
 import {GreenHouseGas} from "../../models/greenhousegas";
@@ -8,18 +13,12 @@ import {GreenHouseGas} from "../../models/greenhousegas";
 const Globe = dynamic(() => import("react-globe.gl"), {
   ssr: false
 });
-interface FeatureCollection {
-  features: GeoNationProperty[];
-}
 interface Props {
     globe: RefObject<any>;
     countries: FeatureCollection;
     polygonData: PolygonData;
     globeData: GlobeData;
     currentGreenHouseGases: GreenHouseGas[];
-}
-interface GeoNationProperty {
-  properties: any;
 }
 const Presenter = ({
   globe,

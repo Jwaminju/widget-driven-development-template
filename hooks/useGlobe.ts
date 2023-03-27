@@ -1,7 +1,6 @@
 import {useEffect, useRef, useState} from "react";
 import {GlobeData} from "../models/globe-layer.types";
-import {PolygonData} from "../models/polygon-layer.types";
-import {GeoDataInterface} from "../data/geoData.interface";
+import {FeatureCollection, PolygonData} from "../models/polygon-layer.types";
 import GeoData from '../data/ne_110m_admin_0_countries.json';
 
 const initialGlobeData: GlobeData = {
@@ -19,14 +18,14 @@ const initialGlobeData: GlobeData = {
 const initialPolygonData: PolygonData = {
   polygonsData: [],
   polygonLabel: '',
-  polygonCapColor: '#ffffaa',
+  polygonCapColor: '#fc2e1b',
   polygonSideColor: '#000'
 };
 
 const useGlobe = () => {
   const globe = useRef();
   const [isSuccess, setIsSuccess] = useState<boolean>(true);
-  const [countries, setCountries] = useState<GeoDataInterface>(GeoData);
+  const [countries, setCountries] = useState<FeatureCollection>(GeoData);
   const [globeData, setGlobeData] = useState<GlobeData>(initialGlobeData)
   const [polygonData, setPolygonData] = useState<PolygonData>(initialPolygonData);
 
