@@ -1,4 +1,5 @@
 import countryCodes from "../data/country_code.json";
+import {SerializedGas} from "../hooks/useGameState";
 // 각각의 온실가스 측정량은 ppm 단위 입니다.
 // 온실 효과 계산에 영향을 주는 요소.
 // 1. atmospheric lifetime
@@ -44,10 +45,17 @@ export abstract class GreenHouseGas {
   abstract concentration: number;
   abstract absorption: number;
   abstract lifetime: number;
+  lastChangeRate: number = 0.0;
 
   public commitment(): number {
     return this.concentration*this.absorption*this.lifetime;
   };
+
+  public changeConcentrationByRate(rate: number) {
+    // rate in range of -10 to 10
+    this.concentration += this.concentration * (rate/100);
+    this.lastChangeRate = rate;
+  }
 }
 
 // concentration: 온실가스의 대기 중 농도 단위는 %
@@ -123,5 +131,9 @@ export class GasFactory {
       default:
         return new H2o(concentration);
     }
+  }
+
+  public deserializeGases(greenHouseGases: SerializedGas[]) {
+    return Array.from(greenHouseGases).map(serializedGas => this.createGas(serializedGas.type, serializedGas.concentration));
   }
 }
