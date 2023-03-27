@@ -4,10 +4,10 @@ import {ChakraProvider} from "@chakra-ui/provider";
 import {RecoilRoot} from "recoil";
 import {GameStateData, useGameState} from "../hooks/useGameState";
 import GlobeContainer from "../widgets/globe/Container";
-import game_data from "../public/game_data.json";
+import {GreenHouseEffectStats} from "../widgets/GreenHouseEffectStats/Presenter.stories";
 
 const Main: NextPage<any> = ({ gameState }) => {
-    const { currentGameState, userInfo, playTime, greenHouseGases, greenHouseEffect, items } = useGameState(gameState);
+    // const { currentGameState, userInfo, playTime, greenHouseGases, items } = useGameState(gameState);
     return (
         <>
           <Head>
@@ -17,6 +17,7 @@ const Main: NextPage<any> = ({ gameState }) => {
           </Head>
           <ChakraProvider>
               <RecoilRoot>
+                <GreenHouseEffectStats />
                 <GlobeContainer />
               </RecoilRoot>
           </ChakraProvider>
@@ -24,9 +25,9 @@ const Main: NextPage<any> = ({ gameState }) => {
     );
 }
 
-Main.getInitialProps = async (context) => {
-  const gameState: GameStateData = game_data;
-  return { gameState };
-}
+// Main.getInitialProps = async (context) => {
+//   const gameState: GameStateData = game_data;
+//   return { gameState };
+// }
 
 export default Main
