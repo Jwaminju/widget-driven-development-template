@@ -2,9 +2,10 @@ import { useAuthState, useSignInWithGoogle, useSignOut } from "react-firebase-ho
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../configs/firebase.config";
 import { getAuth } from "firebase/auth";
-import { getDatabase, ref, set, onValue } from "firebase/database";
+import { getDatabase, ref, set, onValue, child } from "firebase/database";
 import { GameState } from "./useGameState";
 import { getFirestore, collection, getDocs, doc, getDoc, query } from 'firebase/firestore';
+import { useState } from "react";
 
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
@@ -28,10 +29,30 @@ export const useFirebaseAuthState = () => {
   return { user, loading, error };
 }
 
-export const useFirebaseSaveData = (gamestage: GameState) => {
-  return set(ref(database, 'gamedatas/' + gamestage.id), gamestage);
+export const useFirebaseSaveData = (gamestate: GameState) => {
+  const [user, loading, error] = useAuthState(auth);
+  if (user != null) {
+    return set(ref(database, 'gamedatas/' + user.getIdToken), gamestate);
+  }
+
+  return error;
+
 }
 
+export const useFirebaseGetData = () => {
+  const [user, loading, error] = useAuthState(auth);
+  if (user != null) {
+    let gameState: GameState;
+    const starCountRef = ref(database, 'gamedatas/' + user.getIdToken)
+    onValue(starCountRef, (snapshot) => {
+      const data = snapshot.val();
+      gameState = data;
+      return gameState;
+    })
+  }
+
+  return error;
+}
 
 
 
