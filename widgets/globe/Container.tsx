@@ -2,14 +2,22 @@ import Error from "./Error";
 import Loading from "./Loading";
 import Presenter from "./Presenter";
 import useGlobe from "../../hooks/useGlobe";
-import {useAtmosphere} from "../../hooks/useAtmosphere";
+import {useGreenHouseEffect} from "../../hooks/useGreenHouseEffect";
 
 const GlobeContainer = () => {
     const { isSuccess, globe, countries, polygonData, globeData } = useGlobe();
-    const { atmosphereState, currentGreenHouseGases } = useAtmosphere();
+    const { currentGreenHouseGases } = useGreenHouseEffect();
 
     if (isSuccess) {
-        return <Presenter globe={globe} countries={countries} polygonData={polygonData} globeData={globeData} />
+        return (
+          <Presenter
+            globe={globe}
+            countries={countries}
+            currentGreenHouseGases={currentGreenHouseGases}
+            polygonData={polygonData}
+            globeData={globeData}
+        />
+        )
     }
 
     if (!isSuccess) {

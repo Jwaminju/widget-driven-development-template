@@ -1,21 +1,20 @@
-import {atom, selector} from "recoil";
 import {GasFactory} from "../models/greenhousegas";
+import {atom} from "recoil";
 
 export interface GameStateData {
   "gamestate": GameState
 }
 
 export interface GameState {
-  "id": number;
   "username": string;
   "playtime": number;
-  "greenhouseeffect": number;
-  "greenhousegases": GreenHouseGases;
+  "greenHouseGases": GreenHouseGases;
   "items": Items;
 }
+
 export type Gas = {
   "type": string,
-  "measurement": number
+  "concentration": number,
 }
 
 export type GreenHouseGases = Gas[];
@@ -29,55 +28,69 @@ export interface Items {
   "enterprise": Item[];
   "national": Item[];
 }
+export const defaultGameState = {
+  "name": "username",
+  "playtime": 2023,
+  "greenHouseGases": [
+    {
+      "type": "co2",
+      "concentration": 0.0415
+    },
+    {
+      "type": "n2o",
+      "concentration": 0.0000332
+    },
+    {
+      "type": "ch4",
+      "concentration": 0.000187
+    },
+    {
+      "type": "cfcs",
+      "concentration": 0.0000000385
+    }
+  ],
+  "items": [
+    {
+      "name": 'Riding public transportation',
+      "isActivated": false,
+    }
+  ]
+}
 
-export const useGameState = (gameStateData: GameStateData) => {
+export const useGameState = (gameState: GameState) => {
 //   게임 데이터는 페이지 단위에서 가져옴
 //   현재 스테이트(상태)랑 동기화 하기
-  const gameState = atom<GameStateData>({
+//   const {getGameStateFromDB, updateGameState, createGameState} = useRealtimeDB();
+  const {username, playtime, greenHouseGases, items} = Object(JSON.stringify(defaultGameState));
+  const gamestate = atom<GameState>({
     key: "gameState",
-    default: gameStateData
-  });
-
-  const userInfo = selector({
-    key: "userInfo",
-    get: ({get}) => {
-      const currentGameState = get(gameState)["gamestate"];
-      return { id: currentGameState["id"], username: currentGameState["username"]};
-    }
+    default: gameState
   });
 
   const playTime = selector({
     key: "playtime",
     get: ({get}) => {
-      const currentGameState = get(gameState)["gamestate"];
+      const currentGameState = get(gamestate);
       return currentGameState["playtime"];
-    }
-  })
-
-  const greenHouseEffect = selector({
-    key: "greenHouseEffect",
-    get: ({get}) => {
-      const currentGameState = get(gameState)["gamestate"];
-      return currentGameState["greenhouseeffect"];
     }
   })
 
   const greenHouseGases = selector({
     key: "greenHouseGases",
     get: ({get}) => {
-      const greenhousegases = Object(get(gameState)["gamestate"]["greenhousegases"]);
+      const greenhousegases = Object(get(gamestate)["greenHouseGases"]);
       const gasFactory: GasFactory = new GasFactory();
-      return greenhousegases.map((gas: Gas) => gasFactory.createGas(gas["type"], gas["measurement"]));
+      return greenhousegases.map((gas: Gas) => gasFactory.createGas(gas["type"], gas["concentration"]));
     }
   })
 
   const items = selector({
     key: "items",
     get: ({get}) => {
-      const items: Items = get(gameState)["gamestate"]["items"];
+      const items: Items = get(gamestate)["items"];
       return items;
     }
   })
 
-  return { currentGameState: gameState, userInfo, playTime, greenHouseEffect, greenHouseGases, items }
+  return { greenHouseGases, greenHouseEffect, changeRates, items }
 }
