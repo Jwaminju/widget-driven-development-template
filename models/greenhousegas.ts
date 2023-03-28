@@ -1,4 +1,3 @@
-import countryCodes from "../data/country_code.json";
 import {SerializedGas} from "../hooks/useGameState";
 // 각각의 온실가스 측정량은 ppm 단위 입니다.
 // 온실 효과 계산에 영향을 주는 요소.

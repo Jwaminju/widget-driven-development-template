@@ -1,9 +1,5 @@
 import {Center} from "@chakra-ui/layout";
-import {
-  Card,
-  CardHeader,
-  CardBody, CardFooter, Text
-} from "@chakra-ui/react";
+import {Card, CardBody, CardFooter, CardHeader, Text} from "@chakra-ui/react";
 import Heading2 from "../../components/Heading2";
 import {STORY_TXT} from "../../data/main_story";
 import {User} from "firebase/auth";

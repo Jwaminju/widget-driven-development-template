@@ -1,4 +1,4 @@
-import {Stat, StatArrow, StatGroup, StatHelpText, StatLabel} from "@chakra-ui/stat";
+import {StatGroup} from "@chakra-ui/stat";
 import StatIndicator from "../../components/StatIndicator";
 import {defaultGreenHouseGases, GreenHouseGas} from "../../models/greenhousegas";
 

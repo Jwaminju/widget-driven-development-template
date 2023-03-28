@@ -1,6 +1,6 @@
-import {calculateGreenHouseEffect, defaultGreenHouseGases, GasFactory, GreenHouseGas} from "../models/greenhousegas";
+import {calculateGreenHouseEffect, defaultGreenHouseGases, GasFactory} from "../models/greenhousegas";
 import {useEffect, useMemo, useState} from "react";
-import {auth, database, useFirebaseAuthState} from "./useFirebase";
+import {auth, database} from "./useFirebase";
 import {onValue, ref, set} from "firebase/database";
 
 export interface GameStateData {

@@ -1,4 +1,3 @@
-import {atom, selector} from "recoil";
 import {calculateGreenHouseEffect, Cfcs, Ch4, Co2, concentrations, GreenHouseGas, N2o} from "../models/greenhousegas";
 import {useMemo, useState} from "react";
 
