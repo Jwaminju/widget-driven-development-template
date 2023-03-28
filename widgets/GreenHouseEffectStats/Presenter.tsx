@@ -19,13 +19,14 @@ const Presenter = ({
       <StatGroup
         position={'fixed'}
         top={'5%'}
-        left={'5%'}
+        left={'2.5%'}
         zIndex={100}
         backgroundColor={"#fff"}
         borderRadius={10}
         borderColor={"lightslategrey"}
         gap={12}
         padding={5}
+        boxShadow={"outline"}
       >
           <StatIndicator label={"GreenHouseEffect"} statNumber={greenHouseEffect||0} changeRate={changeRates?.get("greenHouseEffect")||0} />
           <Divider orientation={"vertical"} />

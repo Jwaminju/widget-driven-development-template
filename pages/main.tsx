@@ -4,6 +4,7 @@ import {ChakraProvider} from "@chakra-ui/provider";
 import GlobeContainer from "../widgets/globe/Container";
 import GreenHouseEffectStatsContainer from "../widgets/GreenHouseEffectStats/Container";
 import {customTheme} from "../theme/theme";
+import PlayTimeContainer from "../widgets/playtimeIndicator/Container";
 
 const Main: NextPage<any> = () => {
     return (
@@ -15,6 +16,7 @@ const Main: NextPage<any> = () => {
           </Head>
           <ChakraProvider theme={customTheme}>
             <GreenHouseEffectStatsContainer />
+            <PlayTimeContainer />
             <GlobeContainer />
           </ChakraProvider>
         </>

@@ -1,13 +1,14 @@
 import Error from "./Error";
 import Loading from "./Loading";
 import Presenter from "./Presenter";
+import {usePlayTime} from "../../hooks/useGameState";
 
-const Container = () => {
+const PlayTimeContainer = () => {
     const success = true
     const error = true
-
+    const {playTime} = usePlayTime();
     if (success) {
-        return <Presenter />
+        return <Presenter playTime={playTime} />
     }
 
     if (error) {
@@ -17,4 +18,4 @@ const Container = () => {
     return <Loading />
 }
 
-export default Container
+export default PlayTimeContainer
