@@ -9,16 +9,12 @@ const Index: NextPage = () => {
     const router = useRouter();
     return (
         <ChakraProvider>
-            <Head>
-                <title>CarbonHero</title>
-                <meta name="description" content="Education game for Global Warming" />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
-            {/* <Story/> */}
-            <Items/>
-            {/* <LandingSceneContainer></LandingSceneContainer> */}
-            {/*main 요소 백그라운드에 이미지 정도 넣으면 되지 않을까 싶어요.*/}
-            {/* <SceneContainer path={router.pathname} /> */}
+          <Head>
+            <title>CarbonHero</title>
+            <meta name="description" content="Education game for Global Warming" />
+            <link rel="icon" href="/favicon.ico" />
+          </Head>
+          <LandingSceneContainer />
         </ChakraProvider>
     );
 }
