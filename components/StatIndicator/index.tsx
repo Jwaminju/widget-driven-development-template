@@ -12,7 +12,7 @@ const StatIndicator = ({
   changeRate
                        }: Props) => {
     return (
-      <Stat>
+      <Stat variant={"great"}>
           <StatLabel>{label}</StatLabel>
           <StatNumber>{statNumber}</StatNumber>
           <StatHelpText>
