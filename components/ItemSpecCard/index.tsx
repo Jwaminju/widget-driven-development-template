@@ -1,6 +1,6 @@
 import {  Text, Image, Badge, Button, Card, Stack, CardBody, CardFooter, Heading,Container,Center } from '@chakra-ui/react'
 import { StarIcon } from '@chakra-ui/icons'
-import { ItemDataInterface } from '../../data/items.interface';
+import { ItemDataInterface, ItemSelectInterface } from '../../data/items.interface';
 import { useToast, useDisclosure} from '@chakra-ui/react'
 import {useEffect, useRef, useState} from "react";
 
@@ -14,23 +14,33 @@ import {
   } from '@chakra-ui/react'
   
 interface itemsSpec {
-    property: any;
+    property: ItemDataInterface;
     select: (arg1?: any, arg2?: any) => any;
-    selected: Number[];
+    selected: ItemSelectInterface;
 };
 
+type OnlyKeys = keyof ItemDataInterface;
+
 const ItemSpecCard = ({property, select, selected}:itemsSpec) => {
-    console.log("ItemSpecCard", property.img)
+    console.log("ItemSpecCard1", property.img)
     const toast = useToast()
-    console.log("ItemSpecCard", selected, property.tier)
+    console.log("ItemSpecCard2", selected, property.tier)
     const { isOpen, onOpen, onClose } = useDisclosure()
     const cancelRef = useRef(null)
+    const itemType = property.type;
 
     const myClick=()=>{
         onClose();
-        select(0, property.tier);
+        let new_select = selected
+        new_select[property.type][property.tier-1] += 1
+        select(new_select);
+        console.log("new_select", new_select)
     }
    
+    function str(type: any) {
+        throw new Error('Function not implemented.');
+    }
+
     return (
 
         <Card minH='100%' direction={{ base: 'column', sm: 'row' }} overflow='hidden' variant='outline'>
@@ -65,7 +75,8 @@ const ItemSpecCard = ({property, select, selected}:itemsSpec) => {
                     <Text fontSize='lg' py='1%'> {property.story} </Text>
                 </CardBody>
                 <CardFooter>
-                    {   property.tier > (Number(selected[0])-1) ?
+                    {   
+                        selected && (property.tier > (selected[itemType][property.group-1]-1)) ?
                         <>
                         <Button variant='solid' colorScheme='blue' onClick={onOpen}> Select</Button>
                         <AlertDialog
