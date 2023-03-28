@@ -31,7 +31,10 @@ const ItemSpecCard = ({property, select, selected}:itemsSpec) => {
 
     const myClick=()=>{
         onClose();
-        select(0, property.tier);
+        let new_select = selected
+        new_select[property.type][property.tier-1] += 1
+        select(new_select);
+        console.log("new_select", new_select)
     }
    
     function str(type: any) {
@@ -73,7 +76,7 @@ const ItemSpecCard = ({property, select, selected}:itemsSpec) => {
                 </CardBody>
                 <CardFooter>
                     {   
-                        selected && (property.tier > (selected[itemType][property.group]-1)) ?
+                        selected && (property.tier > (selected[itemType][property.group-1]-1)) ?
                         <>
                         <Button variant='solid' colorScheme='blue' onClick={onOpen}> Select</Button>
                         <AlertDialog

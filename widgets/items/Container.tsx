@@ -54,7 +54,7 @@ const ItemsMenuContainer = () => {
     if (isSuccess) {
         return <Presenter 
                     sceneTitle={sceneData.sceneName} 
-                    data={PERSON_ITEMS[0]} // ? 
+                    data={PERSON_ITEMS} // ? 
                     
                     itemSelected={select}
                     select={getItemSelect}

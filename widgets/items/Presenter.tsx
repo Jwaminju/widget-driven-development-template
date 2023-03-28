@@ -18,7 +18,7 @@ import React from 'react';
 
 interface Props {
   sceneTitle?: string;
-  data: ItemDataInterface;
+  data: ItemDataInterface[];
   select: (arg1?: any, arg2?: any) => any;
   itemSelected: ItemSelectInterface;
   currItem: ItemDataInterface;
@@ -53,7 +53,8 @@ const Presenter = ( props : Props) => {
                         <Box minWidth="90%" minHeight={height!/100*55}> {/* minHeight={height!/100*60} */}
                             <ItemCards 
                                 property={props.data}
-                                getCurrItem={props.getCurrItem}> </ItemCards> 
+                                getCurrItem={props.getCurrItem}
+                                selected={props.itemSelected}> </ItemCards> 
                         </Box>
                         <Box minWidth={width!/100*90} minHeight={height!/100*25}> 
                             <ItemSpecCard 
