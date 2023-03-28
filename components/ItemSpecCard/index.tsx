@@ -32,7 +32,8 @@ const ItemSpecCard = ({property, select, selected}:itemsSpec) => {
     const myClick=()=>{
         onClose();
         let new_select = selected
-        new_select[property.type][property.tier-1] += 1
+        console.log("new_select before property", property)
+        new_select[property.type][property.group-1] += 1
         select(new_select);
         console.log("new_select", new_select)
     }
