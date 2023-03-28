@@ -7,10 +7,10 @@ import { GameState } from "./useGameState";
 import { getFirestore, collection, getDocs, doc, getDoc, query } from 'firebase/firestore';
 
 const firebaseApp = initializeApp(firebaseConfig);
-const auth = getAuth(firebaseApp);
+export const auth = getAuth(firebaseApp);
 
-const database = getDatabase(firebaseApp);
-const db = getFirestore(firebaseApp);
+export const database = getDatabase(firebaseApp);
+
 export const useFirebaseSignIn = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
   const signIn = () => signInWithGoogle();

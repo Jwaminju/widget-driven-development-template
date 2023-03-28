@@ -1,5 +1,7 @@
-import {GasFactory} from "../models/greenhousegas";
-import {atom} from "recoil";
+import {calculateGreenHouseEffect, defaultGreenHouseGases, GasFactory, GreenHouseGas} from "../models/greenhousegas";
+import {useEffect, useMemo, useState} from "react";
+import {auth, database, useFirebaseAuthState} from "./useFirebase";
+import {onValue, ref, set} from "firebase/database";
 
 export interface GameStateData {
   "gamestate": GameState
@@ -12,12 +14,12 @@ export interface GameState {
   "items": Items;
 }
 
-export type Gas = {
+export type SerializedGas = {
   "type": string,
   "concentration": number,
 }
 
-export type GreenHouseGases = Gas[];
+export type GreenHouseGases = SerializedGas[];
 
 export type Item = {
   "name": string;
@@ -29,7 +31,6 @@ export interface Items {
   "national": Item[];
 }
 export const defaultGameState = {
-  "name": "username",
   "playtime": 2023,
   "greenHouseGases": [
     {
@@ -57,40 +58,45 @@ export const defaultGameState = {
   ]
 }
 
-export const useGameState = (gameState: GameState) => {
-//   게임 데이터는 페이지 단위에서 가져옴
-//   현재 스테이트(상태)랑 동기화 하기
-//   const {getGameStateFromDB, updateGameState, createGameState} = useRealtimeDB();
-  const {username, playtime, greenHouseGases, items} = Object(JSON.stringify(defaultGameState));
-  const gamestate = atom<GameState>({
-    key: "gameState",
-    default: gameState
-  });
+const greenHouseGasNames = ["co2", "n2o", "ch4", "cfcs"];
 
-  const playTime = selector({
-    key: "playtime",
-    get: ({get}) => {
-      const currentGameState = get(gamestate);
-      return currentGameState["playtime"];
-    }
-  })
+// 이 디폴트 값이 디비에서 조회한 값이 됩니다.
+// 값이 없으면(조회된) 디비에 기본 값을 생성하고 기본값을 사용합니다.
 
-  const greenHouseGases = selector({
-    key: "greenHouseGases",
-    get: ({get}) => {
-      const greenhousegases = Object(get(gamestate)["greenHouseGases"]);
-      const gasFactory: GasFactory = new GasFactory();
-      return greenhousegases.map((gas: Gas) => gasFactory.createGas(gas["type"], gas["concentration"]));
-    }
-  })
-
-  const items = selector({
-    key: "items",
-    get: ({get}) => {
-      const items: Items = get(gamestate)["items"];
-      return items;
-    }
-  })
-
-  return { greenHouseGases, greenHouseEffect, changeRates, items }
+export const usePlayTime = () => {
+  const playTimeRef = ref(database, auth.currentUser?.uid + "/playtime");
+  const [playTime, setPlayTime] = useState(2023);
+  useEffect(() => {
+    onValue(playTimeRef, (snapshot) => {
+      const playtime = snapshot.val();
+      if (playtime) {setPlayTime(playtime)}
+      else {set(playTimeRef, 2023)}
+    })
+  }, []);
+  return {playTime, setPlayTime}
 }
+
+export const useGreenHouseGases = () => {
+  const greenHouseGasesRef = ref(database, auth.currentUser?.uid + "/greenHouseGases");
+  const [greenHouseGases, setGreenHouseGases] = useState(defaultGreenHouseGases);
+  const greenHouseEffect = useMemo(() => calculateGreenHouseEffect(greenHouseGases), [greenHouseGases]);
+  const changeRates = useMemo(() => {
+    const lastChangeRates = greenHouseGases.map(gas => gas.lastChangeRate);
+    return new Map(greenHouseGasNames.map((name,index )=> [name, lastChangeRates[index]]));
+  }, [greenHouseGases]);
+
+  useEffect(() => {
+    onValue(greenHouseGasesRef, (snapshot) => {
+      const greenHouseGases = snapshot.val();
+      if (greenHouseGases) {setGreenHouseGases(new GasFactory().deserializeGases(greenHouseGases))}
+      else {set(greenHouseGasesRef, defaultGameState.greenHouseGases)}
+    })
+  }, []);
+
+  return {greenHouseGases, setGreenHouseGases, greenHouseEffect, changeRates};
+}
+
+// const actionItems = atom<ItemDataInterface[] | null>({
+//   key: "items",
+//   default: null
+// })

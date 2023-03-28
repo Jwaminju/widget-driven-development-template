@@ -7,38 +7,6 @@ import {SerializedGas} from "../hooks/useGameState";
 // 3. absorption properties => 특성
 // 4. vertical distribution
 // 5. feedback mechanisms
-export const calculateGreenHouseEffect = (greenHouseGases: GreenHouseGas[]): number => (
-  greenHouseGases
-    .reduce((greenHouseEffect, greenHouseGas) => (
-      greenHouseEffect+greenHouseGas.commitment()
-    ) ,0)
-);
-
-interface CountryCode {
-  Code: string;
-  Name: string;
-}
-
-// concentration(농도)는 부피당 ppm으로 계산
-// 대기중 차지하는 비율로 환산하여 사용
-// 이하 2021년까지의 측정량
-export const concentrations = {
-  "co2": 0.0415,
-  "n2o": 0.0000332,
-  "ch4": 0.000187,
-  "cfcs": 0.0000000385
-}
-
-const greenHouseGasForEachCountry = countryCodes.map(cc => ({
-  ...cc,
-  greenHouseGases: [
-    new Co2(concentrations["co2"]),
-    new N2o(concentrations["n2o"]),
-    new Ch4(concentrations["ch4"]),
-    new Cfcs(concentrations["cfcs"])
-  ]
-}));
-
 
 export abstract class GreenHouseGas {
   abstract name: string;
@@ -137,3 +105,32 @@ export class GasFactory {
     return Array.from(greenHouseGases).map(serializedGas => this.createGas(serializedGas.type, serializedGas.concentration));
   }
 }
+
+export const calculateGreenHouseEffect = (greenHouseGases: GreenHouseGas[]): number => (
+  greenHouseGases
+    .reduce((greenHouseEffect, greenHouseGas) => (
+      greenHouseEffect+greenHouseGas.commitment()
+    ) ,0)
+);
+
+interface CountryCode {
+  Code: string;
+  Name: string;
+}
+
+// concentration(농도)는 부피당 ppm으로 계산
+// 대기중 차지하는 비율로 환산하여 사용
+// 이하 2021년까지의 측정량
+export const concentrations = {
+  "co2": 0.0415,
+  "n2o": 0.0000332,
+  "ch4": 0.000187,
+  "cfcs": 0.0000000385
+}
+
+export const defaultGreenHouseGases = [
+  new Co2(concentrations["co2"]),
+  new N2o(concentrations["n2o"]),
+  new Ch4(concentrations["ch4"]),
+  new Cfcs(concentrations["cfcs"])
+]

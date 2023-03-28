@@ -18,7 +18,7 @@ interface Props {
     countries: FeatureCollection;
     polygonData: PolygonData;
     globeData: GlobeData;
-    currentGreenHouseGases: GreenHouseGas[];
+    currentGreenHouseGases: GreenHouseGas[] | null;
 }
 const Presenter = ({
   globe,
@@ -46,7 +46,7 @@ const Presenter = ({
             return geoNationProperty !== 'AQ';
           })}
           polygonLabel={polygonLabel}
-          polygonCapColor={() => selectPolygonCapColor(currentGreenHouseGases)}
+          polygonCapColor={() => selectPolygonCapColor(currentGreenHouseGases || [])}
           polygonSideColor={polygonSideColor}
         />
       </Center>
