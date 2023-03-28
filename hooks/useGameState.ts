@@ -1,7 +1,7 @@
 import {calculateGreenHouseEffect, defaultGreenHouseGases, GasFactory} from "../models/greenhousegas";
 import {useEffect, useMemo, useState} from "react";
 import {auth, database} from "./useFirebase";
-import {onValue, ref, set} from "firebase/database";
+import {onValue, ref, set, update} from "firebase/database";
 
 export interface GameStateData {
   "gamestate": GameState
@@ -73,6 +73,13 @@ export const usePlayTime = () => {
       else {set(playTimeRef, 2023)}
     })
   }, []);
+
+  useEffect(() => {
+    update(ref(database, auth.currentUser?.uid), {
+      playtime: playTime
+    })
+  }, [playTime]);
+
   return {playTime, setPlayTime}
 }
 
@@ -92,6 +99,13 @@ export const useGreenHouseGases = () => {
       else {set(greenHouseGasesRef, defaultGameState.greenHouseGases)}
     })
   }, []);
+
+  useEffect(() => {
+    update(ref(database, auth.currentUser?.uid), {
+      greenHouseGases: greenHouseGases.map(greenHouseGas => ({type: greenHouseGas.name, concentration: greenHouseGas.concentration}))
+    })
+  }, [greenHouseGases]);
+
 
   return {greenHouseGases, setGreenHouseGases, greenHouseEffect, changeRates};
 }
