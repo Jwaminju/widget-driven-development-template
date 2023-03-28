@@ -5,4 +5,5 @@ export interface ItemDataInterface {
     tier: number;
     valid_year: number;
     ima_tag: string;
+    group: number;
 };
