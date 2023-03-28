@@ -14,7 +14,7 @@ const StatIndicator = ({
     return (
       <Stat variant={"great"}>
           <StatLabel>{label}</StatLabel>
-          <StatNumber>{statNumber}</StatNumber>
+          <StatNumber>{label === "cfcs" ? statNumber.toFixed(10) : statNumber}</StatNumber>
           <StatHelpText>
               <StatArrow type={changeRate >= 0 ? "increase" : "decrease"} />
               {changeRate+'%'}
