@@ -3,7 +3,7 @@ import Heading1 from "../../components/Heading1";
 import LinkToNext from "../../components/LinkToNext";
 import ItemCards from "./itemcards";
 import ItemSpecCard from "../../components/ItemSpecCard";
-import { ItemDataInterface } from "../../data/items.interface";
+import { ItemDataInterface, ItemSelectInterface } from "../../data/items.interface";
 import { SimpleGrid, Center, ChakraProvider, Button, Spacer, Flex, VStack, Text, Box, Tooltip, Container, Heading } from "@chakra-ui/react";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import {
@@ -18,10 +18,10 @@ import React from 'react';
 
 interface Props {
   sceneTitle?: string;
-  data: ItemDataInterface;
+  data: ItemDataInterface[];
   select: (arg1?: any, arg2?: any) => any;
-  itemSelected: Number[];
-  currItem: {};
+  itemSelected: ItemSelectInterface;
+  currItem: ItemDataInterface;
   getCurrItem: (arg1?: any) => any;
 }
 
@@ -53,7 +53,8 @@ const Presenter = ( props : Props) => {
                         <Box minWidth="90%" minHeight={height!/100*55}> {/* minHeight={height!/100*60} */}
                             <ItemCards 
                                 property={props.data}
-                                getCurrItem={props.getCurrItem}> </ItemCards> 
+                                getCurrItem={props.getCurrItem}
+                                selected={props.itemSelected}> </ItemCards> 
                         </Box>
                         <Box minWidth={width!/100*90} minHeight={height!/100*25}> 
                             <ItemSpecCard 
@@ -66,9 +67,7 @@ const Presenter = ( props : Props) => {
                     </ModalBody>
                 </ModalContent>
             </Modal>
-        </Container> 
-
-            
+        </Container>
     );
 }
 
