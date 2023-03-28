@@ -15,7 +15,7 @@ export class Atmosphere implements IAtmosphere {
 
   public getGreenHouseMeasurement(): number {
     return this.greenHouseGases
-      .map((greenHouseGas) => greenHouseGas.measurement)
+      .map((greenHouseGas) => greenHouseGas.concentration)
       .reduce((totalMeasurement, measurement) => (totalMeasurement + measurement));
   }
 }
