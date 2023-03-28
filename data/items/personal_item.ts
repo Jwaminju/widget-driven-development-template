@@ -8,7 +8,7 @@ export const PERSON_ITEMS = [
         ima_tag:'/person/riding-public-transportation.jpg',
         group: 1,
         type: 'person',
-        greenGasType: 'CO2',   
+        greenGasType: 'co2',   
     	Concentration: -5,
     },
     {

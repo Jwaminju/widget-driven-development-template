@@ -29,13 +29,16 @@ const ItemSpecCard = ({property, select, selected}:itemsSpec) => {
     const cancelRef = useRef(null)
     const itemType = property.type;
 
-    const myClick=()=>{
+    const myClick=()=>{ // Container 레벨로 올리면 좋긴 함(로직이니까)
         onClose();
         let new_select = selected
         console.log("new_select before property", property)
         new_select[property.type][property.group-1] += 1
         select(new_select);
         console.log("new_select", new_select)
+        // 온실가스 concentration 로직을 추가하기 -> firebase에 userID/GrennGasType/{greenGasType, concentration} update
+        // DB에 업데이트하고, state랑 동기화 시키는 로직이 추가될 예쩡
+        // 온실가스 바뀌는 로직만 추가 ? 
     }
    
     function str(type: any) {
