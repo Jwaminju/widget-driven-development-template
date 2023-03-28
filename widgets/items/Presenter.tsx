@@ -56,7 +56,7 @@ const Presenter = ( props : Props) => {
                                 getCurrItem={props.getCurrItem}
                                 selected={props.itemSelected}> </ItemCards> 
                         </Box>
-                        <Box minWidth={width!/100*90} minHeight={height!/100*25}> 
+                        <Box minWidth={width!/100*90} minHeight={height!/100*20}> 
                             <ItemSpecCard 
                                 property={props.currItem} 
                                 select={props.select} 
