@@ -2,7 +2,7 @@ import {  Text, Image, Badge, Button, Card, Stack, CardBody, CardFooter, Heading
 import { StarIcon } from '@chakra-ui/icons'
 import { ItemDataInterface, ItemSelectInterface } from '../../data/items.interface';
 import { useToast, useDisclosure} from '@chakra-ui/react'
-import {useEffect, useRef, useState} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 
 import {
     AlertDialog,
@@ -12,30 +12,39 @@ import {
     AlertDialogContent,
     AlertDialogOverlay,
   } from '@chakra-ui/react'
+import { ItemContext } from '../../hooks/useLastSelectionContext';
   
 interface itemsSpec {
     property: ItemDataInterface;
     select: (arg1?: any, arg2?: any) => any;
     selected: ItemSelectInterface;
+    getLastSelection: (arg1?: any) => any;
 };
 
-type OnlyKeys = keyof ItemDataInterface;
-
-const ItemSpecCard = ({property, select, selected}:itemsSpec) => {
-    console.log("ItemSpecCard1", property.img)
+const ItemSpecCard = ({
+    property, select,selected,
+    getLastSelection}:itemsSpec) => {
+        
     const toast = useToast()
-    console.log("ItemSpecCard2", selected, property.tier)
     const { isOpen, onOpen, onClose } = useDisclosure()
     const cancelRef = useRef(null)
     const itemType = property.type;
 
+    console.log("ItemSpecCard1", property.img)
+    console.log("ItemSpecCard2", selected, property.tier)
+
     const myClick=()=>{ // Container 레벨로 올리면 좋긴 함(로직이니까)
+        
+        // 선택된 tier 업데이트
         onClose();
         let new_select = selected
         console.log("new_select before property", property)
         new_select[property.type][property.group-1] += 1
         select(new_select);
         console.log("new_select", new_select)
+        
+        // 마지막으로 선택된 아이템 업데이트
+        getLastSelection(property);
         // 온실가스 concentration 로직을 추가하기 -> firebase에 userID/GrennGasType/{greenGasType, concentration} update
         // DB에 업데이트하고, state랑 동기화 시키는 로직이 추가될 예쩡
         // 온실가스 바뀌는 로직만 추가 ? 
@@ -44,6 +53,9 @@ const ItemSpecCard = ({property, select, selected}:itemsSpec) => {
     function str(type: any) {
         throw new Error('Function not implemented.');
     }
+
+    // context 사용하는 부분 
+    // const {lastSelection, setLastSelection}  = useContext(ItemContext);
 
     return (
 
