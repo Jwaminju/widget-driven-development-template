@@ -3,7 +3,7 @@ import Heading1 from "../../components/Heading1";
 import LinkToNext from "../../components/LinkToNext";
 import ItemCards from "./itemcards";
 import ItemSpecCard from "../../components/ItemSpecCard";
-import { ItemDataInterface } from "../../data/items.interface";
+import { ItemDataInterface, ItemSelectInterface } from "../../data/items.interface";
 import { SimpleGrid, Center, ChakraProvider, Button, Spacer, Flex, VStack, Text, Box, Tooltip, Container, Heading } from "@chakra-ui/react";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import {
@@ -20,8 +20,8 @@ interface Props {
   sceneTitle?: string;
   data: ItemDataInterface;
   select: (arg1?: any, arg2?: any) => any;
-  itemSelected: Number[];
-  currItem: {};
+  itemSelected: ItemSelectInterface;
+  currItem: ItemDataInterface;
   getCurrItem: (arg1?: any) => any;
 }
 
@@ -66,9 +66,7 @@ const Presenter = ( props : Props) => {
                     </ModalBody>
                 </ModalContent>
             </Modal>
-        </Container> 
-
-            
+        </Container>
     );
 }
 

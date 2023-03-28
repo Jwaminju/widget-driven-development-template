@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 import { PERSON_ITEMS } from "../data/items/personal_item";
 
 
-const firebaseApp = initializeApp(firebaseConfig);
-const storage = getStorage(firebaseApp, 'gs://green-5be28.appspot.com/');
+export const firebaseApp = initializeApp(firebaseConfig);
+export const storage = getStorage(firebaseApp, 'gs://green-5be28.appspot.com/');
 const images = ['']
 
 // export class Storage {
@@ -90,5 +90,13 @@ export const useFirebaseImage = () => { // 1개의 img url을 가져옴 -> 파�
 //     console.log("GET images:", images)
 //     for (let i in images) {
 //         PERSON_ITEMS[i].img = images[i]
+//     }
+// }
+
+// const images = useRef(['']);
+
+// const getImages = () => {
+//     for (let img of image){
+//         images.current = [...images.current, img]
 //     }
 // }
