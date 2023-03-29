@@ -99,9 +99,7 @@ export const useGreenHouseGases = () => {
   }, []);
 
   useEffect(() => {
-    update(ref(database, auth.currentUser?.uid), {
-      greenHouseGases: greenHouseGases.map(greenHouseGas => ({type: greenHouseGas.name, concentration: greenHouseGas.concentration}))
-    })
+    set(ref(database, auth.currentUser?.uid + "/greenHouseGases"), greenHouseGases.map(greenHouseGas => ({type: greenHouseGas.name, concentration: greenHouseGas.concentration})));
   }, [greenHouseGases]);
 
   return {greenHouseGases, setGreenHouseGases, greenHouseEffect, changeRates};
