@@ -36,7 +36,16 @@ const Presenter = ( props : Props) => {
     return (
         <Container> 
             <Tooltip label='Select item'>
-                <Button onClick={onOpen}> Item Box </Button>
+                <Button
+                  position={"fixed"}
+                  right={"5%"}
+                  bottom={"10%"}
+                  zIndex={100}
+                  onClick={onOpen}
+                  padding={10}
+                  fontSize={"2rem"}
+                  fontWeight={"extrabold"}
+                >Take Action!</Button>
             </Tooltip>
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay bgColor='blackAlpha.700' />

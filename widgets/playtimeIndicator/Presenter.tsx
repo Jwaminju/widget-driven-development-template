@@ -16,6 +16,7 @@ const Presenter = ({playTime}: Props) => {
         padding={10}
         borderRadius={"50%"}
         boxShadow={"outline"}
+        fontWeight={"extrabold"}
       >
         <StatLabel>This Year is</StatLabel>
         <StatNumber>{playTime}</StatNumber>
