@@ -17,7 +17,7 @@ export const COUNTRY_ITEMS = [
     {
         name: 'UN Environment Program',
         img: '',
-        story: 'Seeks to enhance international cooperation and support for environmental issues, increase the international community's awareness and coping abilities, and promote sustainable development through various initiatives.        '
+        story: `Seeks to enhance international cooperation and support for environmental issues, increase the international community's awareness and coping abilities, and promote sustainable development through various initiatives.`
     },
     {
         name: 'Land and crop management',

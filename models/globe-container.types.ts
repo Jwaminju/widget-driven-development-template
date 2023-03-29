@@ -1,4 +1,4 @@
-export type ContainerLayoutTypes = {
+export type GlobeContainerTypes = {
   width?: number;
   height?: number;
   backgroundColor?: string;

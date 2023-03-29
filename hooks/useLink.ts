@@ -1,4 +1,4 @@
-interface SceneData {
+interface LinkData {
   sceneName?: string;
   nextPage?: string;
 }
@@ -6,13 +6,13 @@ interface SceneData {
 interface SceneResponse {
   isError: boolean;
   isSuccess: boolean;
-  sceneData: SceneData;
+  sceneData: LinkData;
 }
 
-const useScene = (defaultData?: SceneData): SceneResponse => {
+const useLink = (defaultData?: LinkData): SceneResponse => {
   const isError = false;
   const isSuccess = true;
-  const sceneData: SceneData = {
+  const sceneData: LinkData = {
     sceneName: defaultData?.sceneName || 'Landing',
     nextPage: defaultData?.nextPage || 'story'
   }
@@ -24,4 +24,4 @@ const useScene = (defaultData?: SceneData): SceneResponse => {
   }
 }
 
-export default useScene;
+export default useLink;

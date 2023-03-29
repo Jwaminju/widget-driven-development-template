@@ -1,18 +1,8 @@
-import type { NextPage } from 'next'
+import type {NextPage} from 'next'
 import styles from "../styles/Items.module.css";
 import Head from "next/head";
-import { SimpleGrid, Center, ChakraProvider, Button, Spacer, Flex, VStack, Text, Box, Tooltip } from "@chakra-ui/react";
-import useWindowDimensions from '../hooks/useWindowDimensions';
-import {
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalBody,
-    ModalCloseButton,
-    useDisclosure,
-  } from "@chakra-ui/react"
-import { url } from 'inspector';
-import React, { forwardRef, useRef } from "react";
+import {ChakraProvider} from "@chakra-ui/react";
+import React from "react";
 import ItemsMenuContainer from '../widgets/items/Container';
 
 const Items: NextPage = () => {

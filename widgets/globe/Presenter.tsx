@@ -1,4 +1,4 @@
-import {RefObject} from "react";
+import {FC, MutableRefObject, RefObject} from "react";
 import {GlobeData} from "../../models/globe-layer.types";
 import {
   FeatureCollection,
@@ -9,18 +9,19 @@ import {
 import dynamic from "next/dynamic";
 import {Center} from "@chakra-ui/layout";
 import {GreenHouseGas} from "../../models/greenhousegas";
+import {GlobeMethods} from "react-globe.gl";
 
 const Globe = dynamic(() => import("react-globe.gl"), {
   ssr: false
 });
 interface Props {
-    globe: RefObject<any>;
+    globe: MutableRefObject<GlobeMethods | undefined>;
     countries: FeatureCollection;
     polygonData: PolygonData;
     globeData: GlobeData;
-    currentGreenHouseGases: GreenHouseGas[];
+    currentGreenHouseGases: GreenHouseGas[] | null;
 }
-const Presenter = ({
+const Presenter: FC<Props> = ({
   globe,
   countries,
   polygonData,
@@ -32,6 +33,7 @@ const Presenter = ({
     const {globeImageUrl} = globeLayerData;
     const {polygonsData, polygonLabel, polygonAltitude, polygonCapColor, polygonSideColor} = polygonData;
     const nations = countries?.features as GeoNationProperty[];
+
     return (
       <Center w={'100%'} h={'100%'}>
         <Globe
@@ -46,7 +48,7 @@ const Presenter = ({
             return geoNationProperty !== 'AQ';
           })}
           polygonLabel={polygonLabel}
-          polygonCapColor={() => selectPolygonCapColor(currentGreenHouseGases)}
+          polygonCapColor={() => selectPolygonCapColor(currentGreenHouseGases || [])}
           polygonSideColor={polygonSideColor}
         />
       </Center>

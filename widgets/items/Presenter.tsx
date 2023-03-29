@@ -23,6 +23,7 @@ interface Props {
   itemSelected: ItemSelectInterface;
   currItem: ItemDataInterface;
   getCurrItem: (arg1?: any) => any;
+  getLastSelection: (arg1?: any) => any;
 }
 
 
@@ -30,12 +31,21 @@ interface Props {
 const Presenter = ( props : Props) => {
 
     const { width, height } = useWindowDimensions();
-    const { isOpen, onOpen, onClose } = useDisclosure({ defaultIsOpen: true, })
+    const { isOpen, onOpen, onClose } = useDisclosure({ defaultIsOpen: false, })
     
     return (
         <Container> 
             <Tooltip label='Select item'>
-                <Button onClick={onOpen}> Item Box </Button>
+                <Button
+                  position={"fixed"}
+                  right={"5%"}
+                  bottom={"10%"}
+                  zIndex={100}
+                  onClick={onOpen}
+                  padding={10}
+                  fontSize={"2rem"}
+                  fontWeight={"extrabold"}
+                >Take Action!</Button>
             </Tooltip>
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay bgColor='blackAlpha.700' />
@@ -54,13 +64,16 @@ const Presenter = ( props : Props) => {
                             <ItemCards 
                                 property={props.data}
                                 getCurrItem={props.getCurrItem}
-                                selected={props.itemSelected}> </ItemCards> 
+                                selected={props.itemSelected}>
+                            </ItemCards>
                         </Box>
-                        <Box minWidth={width!/100*90} minHeight={height!/100*25}> 
+                        <Box minWidth={width!/100*90} minHeight={height!/100*20}> 
                             <ItemSpecCard 
                                 property={props.currItem} 
                                 select={props.select} 
-                                selected={props.itemSelected}></ItemSpecCard>
+                                selected={props.itemSelected}
+                                getLastSelection={props.getLastSelection}
+                            ></ItemSpecCard>
                         </Box>
                     </SimpleGrid>
                     <Spacer/>

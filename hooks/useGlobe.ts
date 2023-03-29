@@ -2,6 +2,7 @@ import {useEffect, useRef, useState} from "react";
 import {GlobeData} from "../models/globe-layer.types";
 import {FeatureCollection, PolygonData} from "../models/polygon-layer.types";
 import GeoData from '../data/ne_110m_admin_0_countries.json';
+import {GlobeMethods} from "react-globe.gl";
 
 const initialGlobeData: GlobeData = {
   containerData: {
@@ -23,7 +24,7 @@ const initialPolygonData: PolygonData = {
 };
 
 const useGlobe = () => {
-  const globe = useRef();
+  const globe = useRef<GlobeMethods | undefined>();
   const [isSuccess, setIsSuccess] = useState<boolean>(true);
   const [countries, setCountries] = useState<FeatureCollection>(GeoData);
   const [globeData, setGlobeData] = useState<GlobeData>(initialGlobeData)
@@ -43,7 +44,7 @@ const useGlobe = () => {
           ...prevData.globeLayerData
         }
       }
-    })
+    });
   }, []);
 
   return {
