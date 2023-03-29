@@ -1,3 +1,5 @@
+import {GreenHouseGasType} from "../hooks/useGameState";
+
 export interface ItemDataInterface {
     name: string;
     img: string;
@@ -7,7 +9,7 @@ export interface ItemDataInterface {
     ima_tag: string;
     group: number;
     type: string;
-    greenGasType: string;
+    greenGasType: GreenHouseGasType;
 	  concentration: number;
 };
 
