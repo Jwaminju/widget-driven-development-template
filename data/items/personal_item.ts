@@ -20,7 +20,7 @@ export const PERSON_ITEMS = [
         ima_tag:'/person/recycle-237874_640.jpg',
         group: 1,
         type: 'person',
-        greenGasType: 'N2O',   
+        greenGasType: 'n2o',
     	  concentration: -2,
     },
     {
@@ -32,7 +32,7 @@ export const PERSON_ITEMS = [
         ima_tag:'/person/electric-car-2783573_640.jpg',
         group: 1,
         type: 'person',
-        greenGasType: 'CO2',   
+        greenGasType: 'co2',
     	  concentration: -7,
     },
     {
@@ -44,7 +44,7 @@ export const PERSON_ITEMS = [
         ima_tag:'/person/airport-2373727_640.jpg',
         group: 1,
         type: 'person',
-        greenGasType: 'CO2',   
+        greenGasType: 'co2',
     	  concentration: -8,
     },
     {
@@ -56,7 +56,7 @@ export const PERSON_ITEMS = [
         ima_tag:'/person/spoons-65660_640.jpg',
         group: 2,
         type: 'person',
-        greenGasType: 'CH4',   
+        greenGasType: 'ch4',
     	  concentration: -2,
     },
     {
@@ -68,7 +68,7 @@ export const PERSON_ITEMS = [
         ima_tag:'/person/feet-937698_640.jpg',
         group: 2,
         type: 'person',
-        greenGasType: 'CO2',   
+        greenGasType: 'co2',
     	  concentration: -6,
     },
     {
@@ -80,7 +80,7 @@ export const PERSON_ITEMS = [
         ima_tag:'/person/fruits-50423_640.jpg',
         group: 2,
         type: 'person',
-        greenGasType: 'CH4',   
+        greenGasType: 'ch4',
     	  concentration: -4,
     },
     {
@@ -92,7 +92,7 @@ export const PERSON_ITEMS = [
         ima_tag:'/person/methane-5233178_640.jpg',
         group: 2,
         type: 'person',
-        greenGasType: 'CH4',   
+        greenGasType: 'ch4',
     	  concentration: -5,
     },
     {
@@ -104,7 +104,7 @@ export const PERSON_ITEMS = [
         ima_tag:'/person/air-conditioner-6605973_640.jpg',
         group: 3,
         type: 'person',
-        greenGasType: 'CFCs',   
+        greenGasType: 'cfcs',
     	  concentration: -2,
     },
     {
@@ -116,7 +116,7 @@ export const PERSON_ITEMS = [
         ima_tag:'/person/energy-7551283_640.jpg',
         group: 3,
         type: 'person',
-        greenGasType: 'CO2',   
+        greenGasType: 'co2',
     	  concentration: -6,
     },
     {
@@ -128,7 +128,7 @@ export const PERSON_ITEMS = [
         ima_tag:'/person/tap-791172_640.jpg',
         group: 3,
         type: 'person',
-        greenGasType: 'CFCs',   
+        greenGasType: 'cfcs',
     	  concentration: -4,
     },
     {
@@ -140,7 +140,7 @@ export const PERSON_ITEMS = [
         ima_tag:'/person/gas-bottle-94194_640.jpg',
         group: 3,
         type: 'person',
-        greenGasType: 'CFCs',   
+        greenGasType: 'cfcs',
     	  concentration: -5,
     }
 ]
