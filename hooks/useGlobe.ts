@@ -24,7 +24,7 @@ const initialPolygonData: PolygonData = {
 };
 
 const useGlobe = () => {
-  const globe = useRef();
+  const globe = useRef<GlobeMethods | undefined>();
   const [isSuccess, setIsSuccess] = useState<boolean>(true);
   const [countries, setCountries] = useState<FeatureCollection>(GeoData);
   const [globeData, setGlobeData] = useState<GlobeData>(initialGlobeData)
@@ -44,7 +44,7 @@ const useGlobe = () => {
           ...prevData.globeLayerData
         }
       }
-    })
+    });
   }, []);
 
   return {
