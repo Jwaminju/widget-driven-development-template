@@ -70,14 +70,12 @@ export const usePlayTime = () => {
     onValue(playTimeRef, (snapshot) => {
       const playtime = snapshot.val();
       if (playtime) {setPlayTime(playtime)}
-      else {set(playTimeRef, 2023)}
+      else if (auth.currentUser?.uid) {set(playTimeRef, 2023)}
     })
   }, []);
 
   useEffect(() => {
-    update(ref(database, auth.currentUser?.uid), {
-      playtime: playTime
-    })
+    set(ref(database, auth.currentUser?.uid + "/playtime"), playTime);
   }, [playTime]);
 
   return {playTime, setPlayTime}
@@ -96,7 +94,7 @@ export const useGreenHouseGases = () => {
     onValue(greenHouseGasesRef, (snapshot) => {
       const greenHouseGases = snapshot.val();
       if (greenHouseGases) {setGreenHouseGases(new GasFactory().deserializeGases(greenHouseGases))}
-      else {set(greenHouseGasesRef, defaultGameState.greenHouseGases)}
+      else if (auth.currentUser?.uid) {set(greenHouseGasesRef, defaultGameState.greenHouseGases)}
     })
   }, []);
 
@@ -105,7 +103,6 @@ export const useGreenHouseGases = () => {
       greenHouseGases: greenHouseGases.map(greenHouseGas => ({type: greenHouseGas.name, concentration: greenHouseGas.concentration}))
     })
   }, [greenHouseGases]);
-
 
   return {greenHouseGases, setGreenHouseGases, greenHouseEffect, changeRates};
 }
