@@ -1,4 +1,4 @@
-import useScene from "../../hooks/useScene";
+import useLink from "../../hooks/useLink";
 import Error from "./Error";
 import Loading from "./Loading";
 import Presenter from "./Presenter";
@@ -8,7 +8,7 @@ interface SceneParams {
     path?: string;
 }
 const StorySceneContainer = () => {
-    const { isSuccess, isError, sceneData } = useScene({
+    const { isSuccess, isError, sceneData } = useLink({
         sceneName: "story",
         nextPage: "main"
     });
