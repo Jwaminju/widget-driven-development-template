@@ -6,8 +6,11 @@ import GreenHouseEffectStatsContainer from "../widgets/GreenHouseEffectStats/Con
 import {customTheme} from "../theme/theme";
 import PlayTimeContainer from "../widgets/playtimeIndicator/Container";
 import ItemsMenuContainer from "../widgets/items/Container";
+import {useFirebaseAuthState} from "../hooks/useFirebase";
+import AuthContainer from "../widgets/auth/Container";
 
 const Main: NextPage<any> = () => {
+    const {user} = useFirebaseAuthState();
     return (
         <>
           <Head>
@@ -16,10 +19,16 @@ const Main: NextPage<any> = () => {
               <link rel="icon" href="/favicon.ico" />
           </Head>
           <ChakraProvider theme={customTheme}>
-            <GreenHouseEffectStatsContainer />
-            <PlayTimeContainer />
-            <GlobeContainer />
-            <ItemsMenuContainer />
+            {user ?
+              <>
+                <GreenHouseEffectStatsContainer />
+                <PlayTimeContainer />
+                <GlobeContainer />
+                <ItemsMenuContainer />
+              </>
+              :
+              <AuthContainer />
+            }
           </ChakraProvider>
         </>
     );
