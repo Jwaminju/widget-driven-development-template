@@ -1,12 +1,8 @@
-import {calculateGreenHouseEffect, defaultGreenHouseGases, GasFactory} from "../models/greenhousegas";
+import {calculateGreenHouseEffect, defaultGreenHouseGases, GasFactory, GreenHouseGas} from "../models/greenhousegas";
 import {useEffect, useMemo, useState} from "react";
 import {auth, database} from "./useFirebase";
 import {onValue, ref, set} from "firebase/database";
 import {ItemDataInterface, ItemSelectInterface} from "../data/items.interface";
-
-export interface GameStateData {
-  "gamestate": GameState
-}
 
 export interface GameState {
   "username": string;
@@ -114,6 +110,14 @@ export const usePlayTime = () => {
   return {playTime, setPlayTime, changePlayTime}
 }
 
+export type GreenHouseGasType = "co2" | "n2o" | "ch4" | "cfcs";
+export const greenHouseGasIndex = {
+  "co2": 0,
+  "n2o": 1,
+  "ch4": 2,
+  "cfcs": 3
+}
+
 export const useGreenHouseGases = () => {
   const greenHouseGasesRef = ref(database, auth.currentUser?.uid + "/greenHouseGases");
   const [greenHouseGases, setGreenHouseGases] = useState(defaultGreenHouseGases);
@@ -137,7 +141,20 @@ export const useGreenHouseGases = () => {
         {type: greenHouseGas.name, concentration: greenHouseGas.concentration})));
   }, [greenHouseGases]);
 
-  return {greenHouseGases, setGreenHouseGases, greenHouseEffect, changeRates};
+  const updateConcentration = (greenHouseGasType: GreenHouseGasType, concentrationChange: number) => {
+    const index = greenHouseGasIndex[greenHouseGasType];
+    const oldConcentration: number = greenHouseGases[index].concentration;
+    const newConcentration: number = oldConcentration + oldConcentration * (concentrationChange/100);
+    const newGreenHouseGas: GreenHouseGas = new GasFactory().createGas(greenHouseGasType, newConcentration);
+    newGreenHouseGas.lastChangeRate = concentrationChange;
+    setGreenHouseGases((prevGases) => {
+      const newGases = [...prevGases];
+      newGases[index] = newGreenHouseGas;
+      return newGases;
+    });
+  }
+
+  return {greenHouseGases, updateConcentration, greenHouseEffect, changeRates};
 }
 
 
@@ -165,10 +182,11 @@ const defaultItemState = {
   'country': [1,1,1],
 }
 export const useActionItems = () => {
-  const [actionItems, setActionItems] = useState([]);
+  // const [actionItems, setActionItems] = useState([]);
   const [lastSelection, setLastSelection] = useState({} as ItemDataInterface);
   const [currItem, setCurrItem] = useState({} as ItemDataInterface);
   const [select, setSelect] = useState(defaultItemState)
+  const {updateConcentration} = useGreenHouseGases();
 
   useEffect(() => {
     const itemStateRef = ref(database, auth.currentUser?.uid+"/itemState");
@@ -183,7 +201,11 @@ export const useActionItems = () => {
     set(ref(database, auth.currentUser?.uid+"/itemState"), JSON.stringify(select));
   }, [select])
 
-  const {setGreenHouseGases} = useGreenHouseGases();
+  useEffect(() => {
+    updateConcentration(lastSelection.greenGasType, lastSelection.concentration);
+  }, [lastSelection]);
+
+
   // 가장 최근 사용한(선택)한 아이템
   const getLastSelection = (item: ItemDataInterface) => {setLastSelection(item)}
 
