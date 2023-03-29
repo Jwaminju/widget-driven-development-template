@@ -1,6 +1,6 @@
 import {COLOR} from "./points-data.types";
 import {MeshPhongMaterial} from "three";
-import {ContainerLayoutTypes} from "./container-layout.types";
+import {GlobeContainerTypes} from "./globe-container.types";
 
 export interface Coordinate {
   lat: number;
@@ -26,6 +26,6 @@ export type GlobeLayerTypes = {
 }
 
 export interface GlobeData {
-  containerData: ContainerLayoutTypes;
+  containerData: GlobeContainerTypes;
   globeLayerData: GlobeLayerTypes;
 }

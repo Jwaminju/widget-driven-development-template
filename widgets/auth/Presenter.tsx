@@ -1,5 +1,4 @@
-import styles from "../../styles/Login.module.css";
-import {User, UserCredential} from "firebase/auth";
+import {User} from "firebase/auth";
 import CommonButton from "../../components/CommonButton";
 
 interface Props {

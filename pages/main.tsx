@@ -1,13 +1,16 @@
 import type {NextPage} from 'next'
 import Head from "next/head";
 import {ChakraProvider} from "@chakra-ui/provider";
-import {RecoilRoot} from "recoil";
-import {GameStateData, useGameState} from "../hooks/useGameState";
 import GlobeContainer from "../widgets/globe/Container";
 import GreenHouseEffectStatsContainer from "../widgets/GreenHouseEffectStats/Container";
+import {customTheme} from "../theme/theme";
+import PlayTimeContainer from "../widgets/playtimeIndicator/Container";
+import ItemsMenuContainer from "../widgets/items/Container";
+import {useFirebaseAuthState} from "../hooks/useFirebase";
+import AuthContainer from "../widgets/auth/Container";
 
-const Main: NextPage<any> = ({ gameState }) => {
-    // const { currentGameState, userInfo, playTime, greenHouseGases, items } = useGameState(gameState);
+const Main: NextPage<any> = () => {
+    const {user} = useFirebaseAuthState();
     return (
         <>
           <Head>
@@ -15,19 +18,20 @@ const Main: NextPage<any> = ({ gameState }) => {
               <meta name="description" content="Education game for Global Warming" />
               <link rel="icon" href="/favicon.ico" />
           </Head>
-          <ChakraProvider>
-              <RecoilRoot>
+          <ChakraProvider theme={customTheme}>
+            {user ?
+              <>
                 <GreenHouseEffectStatsContainer />
+                <PlayTimeContainer />
                 <GlobeContainer />
-              </RecoilRoot>
+                <ItemsMenuContainer />
+              </>
+              :
+              <AuthContainer />
+            }
           </ChakraProvider>
         </>
     );
 }
-
-// Main.getInitialProps = async (context) => {
-//   const gameState: GameStateData = game_data;
-//   return { gameState };
-// }
 
 export default Main

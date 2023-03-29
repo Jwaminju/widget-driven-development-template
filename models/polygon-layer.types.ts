@@ -62,10 +62,11 @@ export const indicatorColors = [
 
 const zeroToTen = new Array(10).fill(0).map((num, index) => index);
 export const colorMap = new Map(zeroToTen.map((eachNum,index) => [eachNum, indicatorColors[index]]));
-export const selectPolygonCapColor = (currentGreenHouseGases: GreenHouseGas[]): string => {
+export const selectPolygonCapColor = (currentGreenHouseGases?: GreenHouseGas[]): string => {
+  if (!currentGreenHouseGases) return indicatorColors[4];
   const greenHouseEffect: number = calculateGreenHouseEffect(currentGreenHouseGases);
   const level = Math.floor(Math.round(greenHouseEffect / 10));
-  return colorMap.get(level) || indicatorColors[0];
+  return colorMap.get(level) || indicatorColors[4];
 }
 
 export interface FeatureCollection {

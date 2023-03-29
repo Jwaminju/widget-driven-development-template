@@ -1,4 +1,6 @@
-export const PERSON_ITEMS = [
+import {ItemDataInterface} from "../items.interface";
+
+export const PERSON_ITEMS: ItemDataInterface[] = [
     {
         name: 'Riding public transportation',
         img: 'https://firebasestorage.googleapis.com/v0/b/green-5be28.appspot.com/o/itemsImg%2Fperson%2Friding-public-transportation.jpg?alt=media&token=e72095e5-fc13-43df-a195-4220c4a5be9f',
@@ -9,7 +11,7 @@ export const PERSON_ITEMS = [
         group: 1,
         type: 'person',
         greenGasType: 'co2',   
-    	Concentration: -5,
+    	  concentration: -5,
     },
     {
         name: 'Recycling trash',
@@ -20,8 +22,8 @@ export const PERSON_ITEMS = [
         ima_tag:'/person/recycle-237874_640.jpg',
         group: 1,
         type: 'person',
-        greenGasType: 'N2O',   
-    	Concentration: -2,
+        greenGasType: 'n2o',
+    	  concentration: -2,
     },
     {
         name: 'Use of electric vehicles',
@@ -32,8 +34,8 @@ export const PERSON_ITEMS = [
         ima_tag:'/person/electric-car-2783573_640.jpg',
         group: 1,
         type: 'person',
-        greenGasType: 'CO2',   
-    	Concentration: -7,
+        greenGasType: 'co2',
+    	  concentration: -7,
     },
     {
         name: 'Reduced travel demand',
@@ -44,8 +46,8 @@ export const PERSON_ITEMS = [
         ima_tag:'/person/airport-2373727_640.jpg',
         group: 1,
         type: 'person',
-        greenGasType: 'CO2',   
-    	Concentration: -8,
+        greenGasType: 'co2',
+    	  concentration: -8,
     },
     {
         name: 'Reduce the use of disposable products',
@@ -56,8 +58,8 @@ export const PERSON_ITEMS = [
         ima_tag:'/person/spoons-65660_640.jpg',
         group: 2,
         type: 'person',
-        greenGasType: 'CH4',   
-    	Concentration: -2,
+        greenGasType: 'ch4',
+    	  concentration: -2,
     },
     {
         name: 'By foot/bicycle',
@@ -68,8 +70,8 @@ export const PERSON_ITEMS = [
         ima_tag:'/person/feet-937698_640.jpg',
         group: 2,
         type: 'person',
-        greenGasType: 'CO2',   
-    	Concentration: -6,
+        greenGasType: 'co2',
+    	  concentration: -6,
     },
     {
         name: 'Use items produced at close range',
@@ -80,8 +82,8 @@ export const PERSON_ITEMS = [
         ima_tag:'/person/fruits-50423_640.jpg',
         group: 2,
         type: 'person',
-        greenGasType: 'CH4',   
-    	Concentration: -4,
+        greenGasType: 'ch4',
+    	  concentration: -4,
     },
     {
         name: 'Use of low-carbon footprint products',
@@ -92,8 +94,8 @@ export const PERSON_ITEMS = [
         ima_tag:'/person/methane-5233178_640.jpg',
         group: 2,
         type: 'person',
-        greenGasType: 'CH4',   
-    	Concentration: -5,
+        greenGasType: 'ch4',
+    	  concentration: -5,
     },
     {
         name: 'Refrain from excessive cooling/heating',
@@ -104,8 +106,8 @@ export const PERSON_ITEMS = [
         ima_tag:'/person/air-conditioner-6605973_640.jpg',
         group: 3,
         type: 'person',
-        greenGasType: 'CFCs',   
-    	Concentration: -2,
+        greenGasType: 'cfcs',
+    	  concentration: -2,
     },
     {
         name: 'Saving energy',
@@ -116,8 +118,8 @@ export const PERSON_ITEMS = [
         ima_tag:'/person/energy-7551283_640.jpg',
         group: 3,
         type: 'person',
-        greenGasType: 'CO2',   
-    	Concentration: -6,
+        greenGasType: 'co2',
+    	  concentration: -6,
     },
     {
         name: 'Reduce unnecessary water use',
@@ -128,8 +130,8 @@ export const PERSON_ITEMS = [
         ima_tag:'/person/tap-791172_640.jpg',
         group: 3,
         type: 'person',
-        greenGasType: 'CFCs',   
-    	Concentration: -4,
+        greenGasType: 'cfcs',
+    	  concentration: -4,
     },
     {
         name: 'Reduce gas use',
@@ -140,8 +142,8 @@ export const PERSON_ITEMS = [
         ima_tag:'/person/gas-bottle-94194_640.jpg',
         group: 3,
         type: 'person',
-        greenGasType: 'CFCs',   
-    	Concentration: -5,
+        greenGasType: 'cfcs',
+    	  concentration: -5,
     }
 ]
 
