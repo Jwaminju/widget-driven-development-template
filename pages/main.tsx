@@ -5,6 +5,7 @@ import GlobeContainer from "../widgets/globe/Container";
 import GreenHouseEffectStatsContainer from "../widgets/GreenHouseEffectStats/Container";
 import {customTheme} from "../theme/theme";
 import PlayTimeContainer from "../widgets/playtimeIndicator/Container";
+import ItemsMenuContainer from "../widgets/items/Container";
 
 const Main: NextPage<any> = () => {
     return (
@@ -18,6 +19,7 @@ const Main: NextPage<any> = () => {
             <GreenHouseEffectStatsContainer />
             <PlayTimeContainer />
             <GlobeContainer />
+            <ItemsMenuContainer />
           </ChakraProvider>
         </>
     );
