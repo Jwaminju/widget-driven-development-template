@@ -1,4 +1,6 @@
-export const PERSON_ITEMS = [
+import {ItemDataInterface} from "../items.interface";
+
+export const PERSON_ITEMS: ItemDataInterface[] = [
     {
         name: 'Riding public transportation',
         img: 'https://firebasestorage.googleapis.com/v0/b/green-5be28.appspot.com/o/itemsImg%2Fperson%2Friding-public-transportation.jpg?alt=media&token=e72095e5-fc13-43df-a195-4220c4a5be9f',
