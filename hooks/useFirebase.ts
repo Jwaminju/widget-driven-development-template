@@ -1,13 +1,13 @@
 import {useAuthState, useSignInWithGoogle, useSignOut} from "react-firebase-hooks/auth";
 import {initializeApp} from "firebase/app";
 import {firebaseConfig} from "../configs/firebase.config";
-import {getAuth} from "firebase/auth";
+import {browserSessionPersistence, getAuth} from "firebase/auth";
 import {getDatabase, onValue, ref, set} from "firebase/database";
 import {GameState} from "./useGameState";
 
 const firebaseApp = initializeApp(firebaseConfig);
 export const auth = getAuth(firebaseApp);
-
+auth.setPersistence(browserSessionPersistence);
 export const database = getDatabase(firebaseApp);
 
 export const useFirebaseSignIn = () => {
