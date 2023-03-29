@@ -23,6 +23,7 @@ interface Props {
   itemSelected: ItemSelectInterface;
   currItem: ItemDataInterface;
   getCurrItem: (arg1?: any) => any;
+  getLastSelection: (arg1?: any) => any;
 }
 
 
@@ -56,11 +57,12 @@ const Presenter = ( props : Props) => {
                                 getCurrItem={props.getCurrItem}
                                 selected={props.itemSelected}> </ItemCards> 
                         </Box>
-                        <Box minWidth={width!/100*90} minHeight={height!/100*25}> 
+                        <Box minWidth={width!/100*90} minHeight={height!/100*20}> 
                             <ItemSpecCard 
                                 property={props.currItem} 
                                 select={props.select} 
-                                selected={props.itemSelected}></ItemSpecCard>
+                                selected={props.itemSelected}
+                                getLastSelection={props.getLastSelection}></ItemSpecCard>
                         </Box>
                     </SimpleGrid>
                     <Spacer/>

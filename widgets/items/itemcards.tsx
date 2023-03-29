@@ -22,16 +22,16 @@ const ItemCards = (props:itemsSpec) => {
     const [tabIndex, setTabIndex] = useState(0)
     const bg = colors[tabIndex]
 
-    // const myClick = (item:ItemDataInterface) => {
-    //     props.getCurrItem(item)
-    // }
+    const myClick = () => {
+        props.getCurrItem({})
+    }
     return (
 
     <Tabs isFitted variant='enclosed' onChange={(index) => setTabIndex(index)} bg={bg} borderTopRadius='lg' minH="100%">
     <TabList mb='1em'>
-        <Tab fontWeight='bold'>Individual Action</Tab>
-        <Tab fontWeight='bold'>Business Action</Tab>
-        <Tab fontWeight='bold'>National Action</Tab>
+        <Tab fontWeight='bold' onClick={myClick}>Individual Action</Tab>
+        <Tab fontWeight='bold' onClick={myClick}>Business Action</Tab>
+        <Tab fontWeight='bold' onClick={myClick}>National Action</Tab>
     </TabList>
     <TabPanels>
         <TabPanel padding='1%'> 
@@ -42,10 +42,18 @@ const ItemCards = (props:itemsSpec) => {
         </TabPanel>
 
         <TabPanel>
-       
+            {/* <ItemCardWrap 
+                property={props.property} 
+                getCurrItem={props.getCurrItem} 
+                selected={props.selected['person']}></ItemCardWrap> */}
+        
         </TabPanel>
 
         <TabPanel>
+            {/* <ItemCardWrap 
+                property={props.property} 
+                getCurrItem={props.getCurrItem} 
+                selected={props.selected['person']}></ItemCardWrap> */}
         
         </TabPanel>
     

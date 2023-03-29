@@ -7,6 +7,8 @@ export interface ItemDataInterface {
     ima_tag: string;
     group: number;
     type: string;
+    greenGasType: string;
+	Concentration: number;
 };
 
 export interface ItemSelectInterface {
