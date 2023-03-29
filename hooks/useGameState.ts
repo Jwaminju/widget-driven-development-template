@@ -1,4 +1,7 @@
-import {calculateGreenHouseEffect, defaultGreenHouseGases, GasFactory, GreenHouseGas} from "../models/greenhousegas";
+import {
+  calculateGreenHouseEffect, defaultGreenHouseGases,
+  GasFactory, GreenHouseGas
+} from "../models/greenhousegas";
 import {useEffect, useMemo, useState} from "react";
 import {auth, database} from "./useFirebase";
 import {onValue, ref, set} from "firebase/database";
@@ -130,7 +133,7 @@ export const useGreenHouseGases = () => {
   useEffect(() => {
     onValue(greenHouseGasesRef, (snapshot) => {
       const greenHouseGases = snapshot.val();
-      if (greenHouseGases) {setGreenHouseGases(new GasFactory().deserializeGases(greenHouseGases))}
+      if (greenHouseGases) {setGreenHouseGases(GasFactory.deserializeGases(greenHouseGases))}
       else if (auth.currentUser?.uid) {set(greenHouseGasesRef, defaultGameState.greenHouseGases)}
     })
   }, []);
@@ -145,7 +148,7 @@ export const useGreenHouseGases = () => {
     const index = greenHouseGasIndex[greenHouseGasType];
     const oldConcentration: number = greenHouseGases[index].concentration;
     const newConcentration: number = oldConcentration + oldConcentration * (concentrationChange/100);
-    const newGreenHouseGas: GreenHouseGas = new GasFactory().createGas(greenHouseGasType, newConcentration);
+    const newGreenHouseGas: GreenHouseGas = GasFactory.createGas(greenHouseGasType, newConcentration);
     newGreenHouseGas.lastChangeRate = concentrationChange;
     setGreenHouseGases((prevGases) => {
       const newGases = [...prevGases];
@@ -202,6 +205,7 @@ export const useActionItems = () => {
   }, [select])
 
   useEffect(() => {
+    if (Object.keys(lastSelection).length === 0) return;
     updateConcentration(lastSelection.greenGasType, lastSelection.concentration);
   }, [lastSelection]);
 

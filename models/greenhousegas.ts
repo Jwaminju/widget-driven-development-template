@@ -78,8 +78,8 @@ export class H2o extends GreenHouseGas {
     this.concentration = concentration;
   }
 }
-export class GasFactory {
-  public createGas(type: string, concentration: number): GreenHouseGas {
+export abstract class GasFactory {
+  static createGas(type: string, concentration: number): GreenHouseGas {
     switch (type) {
       case "co2":
         return new Co2(concentration);
@@ -94,7 +94,7 @@ export class GasFactory {
     }
   }
 
-  public deserializeGases(greenHouseGases: SerializedGas[]) {
+  static deserializeGases(greenHouseGases: SerializedGas[]) {
     return Array.from(greenHouseGases).map(serializedGas => this.createGas(serializedGas.type, serializedGas.concentration));
   }
 }
