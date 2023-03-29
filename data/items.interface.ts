@@ -8,7 +8,7 @@ export interface ItemDataInterface {
     group: number;
     type: string;
     greenGasType: string;
-	Concentration: number;
+	  concentration: number;
 };
 
 export interface ItemSelectInterface {

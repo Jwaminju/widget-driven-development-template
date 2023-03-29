@@ -31,7 +31,7 @@ interface Props {
 const Presenter = ( props : Props) => {
 
     const { width, height } = useWindowDimensions();
-    const { isOpen, onOpen, onClose } = useDisclosure({ defaultIsOpen: true, })
+    const { isOpen, onOpen, onClose } = useDisclosure({ defaultIsOpen: false, })
     
     return (
         <Container> 
@@ -55,14 +55,16 @@ const Presenter = ( props : Props) => {
                             <ItemCards 
                                 property={props.data}
                                 getCurrItem={props.getCurrItem}
-                                selected={props.itemSelected}> </ItemCards> 
+                                selected={props.itemSelected}>
+                            </ItemCards>
                         </Box>
                         <Box minWidth={width!/100*90} minHeight={height!/100*20}> 
                             <ItemSpecCard 
                                 property={props.currItem} 
                                 select={props.select} 
                                 selected={props.itemSelected}
-                                getLastSelection={props.getLastSelection}></ItemSpecCard>
+                                getLastSelection={props.getLastSelection}
+                            ></ItemSpecCard>
                         </Box>
                     </SimpleGrid>
                     <Spacer/>

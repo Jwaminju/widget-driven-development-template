@@ -9,7 +9,7 @@ export const PERSON_ITEMS = [
         group: 1,
         type: 'person',
         greenGasType: 'co2',   
-    	Concentration: -5,
+    	  concentration: -5,
     },
     {
         name: 'Recycling trash',
@@ -21,7 +21,7 @@ export const PERSON_ITEMS = [
         group: 1,
         type: 'person',
         greenGasType: 'N2O',   
-    	Concentration: -2,
+    	  concentration: -2,
     },
     {
         name: 'Use of electric vehicles',
@@ -33,7 +33,7 @@ export const PERSON_ITEMS = [
         group: 1,
         type: 'person',
         greenGasType: 'CO2',   
-    	Concentration: -7,
+    	  concentration: -7,
     },
     {
         name: 'Reduced travel demand',
@@ -45,7 +45,7 @@ export const PERSON_ITEMS = [
         group: 1,
         type: 'person',
         greenGasType: 'CO2',   
-    	Concentration: -8,
+    	  concentration: -8,
     },
     {
         name: 'Reduce the use of disposable products',
@@ -57,7 +57,7 @@ export const PERSON_ITEMS = [
         group: 2,
         type: 'person',
         greenGasType: 'CH4',   
-    	Concentration: -2,
+    	  concentration: -2,
     },
     {
         name: 'By foot/bicycle',
@@ -69,7 +69,7 @@ export const PERSON_ITEMS = [
         group: 2,
         type: 'person',
         greenGasType: 'CO2',   
-    	Concentration: -6,
+    	  concentration: -6,
     },
     {
         name: 'Use items produced at close range',
@@ -81,7 +81,7 @@ export const PERSON_ITEMS = [
         group: 2,
         type: 'person',
         greenGasType: 'CH4',   
-    	Concentration: -4,
+    	  concentration: -4,
     },
     {
         name: 'Use of low-carbon footprint products',
@@ -93,7 +93,7 @@ export const PERSON_ITEMS = [
         group: 2,
         type: 'person',
         greenGasType: 'CH4',   
-    	Concentration: -5,
+    	  concentration: -5,
     },
     {
         name: 'Refrain from excessive cooling/heating',
@@ -105,7 +105,7 @@ export const PERSON_ITEMS = [
         group: 3,
         type: 'person',
         greenGasType: 'CFCs',   
-    	Concentration: -2,
+    	  concentration: -2,
     },
     {
         name: 'Saving energy',
@@ -117,7 +117,7 @@ export const PERSON_ITEMS = [
         group: 3,
         type: 'person',
         greenGasType: 'CO2',   
-    	Concentration: -6,
+    	  concentration: -6,
     },
     {
         name: 'Reduce unnecessary water use',
@@ -129,7 +129,7 @@ export const PERSON_ITEMS = [
         group: 3,
         type: 'person',
         greenGasType: 'CFCs',   
-    	Concentration: -4,
+    	  concentration: -4,
     },
     {
         name: 'Reduce gas use',
@@ -141,7 +141,7 @@ export const PERSON_ITEMS = [
         group: 3,
         type: 'person',
         greenGasType: 'CFCs',   
-    	Concentration: -5,
+    	  concentration: -5,
     }
 ]
 
