@@ -76,14 +76,12 @@ export const usePlayTime = () => {
     onValue(playTimeRef, (snapshot) => {
       const playtime = snapshot.val();
       if (playtime) {setPlayTime(playtime)}
-      else if (auth.currentUser?.uid) {set(playTimeRef, 2023)}
     })
   }, []);
 
-  useEffect(() => {
-    set(ref(database, auth.currentUser?.uid + "/playtime"), playTime);
-  }, [playTime]);
-
+  const updatePlayTimeOnDB = (newPlayTime: number) => {
+    set(ref(database, auth.currentUser?.uid + "/playtime"), newPlayTime);
+  }
   const changePlayTime = (actionItem: ItemDataInterface) => {
     const actionType = actionItem.type;
     switch (actionType) {
@@ -105,12 +103,12 @@ export const usePlayTime = () => {
     }
     const totalCount = Object.values(actionCount).reduce((totalCount, count) => totalCount += count);
     if ((totalCount === 1 && actionCount.country === 1) || (totalCount === 0)) {
-      setPlayTime(playTime+1);
+      updatePlayTimeOnDB(playTime+1);
       setActionCount(defaultActionCount);
     }
   }
 
-  return {playTime, setPlayTime, changePlayTime}
+  return {playTime, changePlayTime}
 }
 
 export type GreenHouseGasType = "co2" | "n2o" | "ch4" | "cfcs";
@@ -129,12 +127,12 @@ export const useGreenHouseGases = () => {
     const lastChangeRates = greenHouseGases.map(gas => gas.lastChangeRate);
     return new Map(greenHouseGasNames.map((name,index )=> [name, lastChangeRates[index]]));
   }, [greenHouseGases]);
+  const [greenHouseEffectChangeRate, setGHCR]= useState(0);
 
   useEffect(() => {
     onValue(greenHouseGasesRef, (snapshot) => {
       const greenHouseGases = snapshot.val();
       if (greenHouseGases) {setGreenHouseGases(GasFactory.deserializeGases(greenHouseGases))}
-      else if (auth.currentUser?.uid) {set(greenHouseGasesRef, defaultGameState.greenHouseGases)}
     })
   }, []);
 
@@ -155,9 +153,13 @@ export const useGreenHouseGases = () => {
       newGases[index] = newGreenHouseGas;
       return newGases;
     });
+    setGHCR((prevState) => {
+      const newGHE = calculateGreenHouseEffect(greenHouseGases);
+      return (greenHouseEffect - newGHE) / greenHouseEffect;
+    })
   }
 
-  return {greenHouseGases, updateConcentration, greenHouseEffect, changeRates};
+  return {greenHouseGases, updateConcentration, greenHouseEffect, greenHouseEffectChangeRate};
 }
 
 
@@ -196,7 +198,6 @@ export const useActionItems = () => {
     onValue(itemStateRef, (snapshot) => {
       const itemState = snapshot.val();
       if (itemState) {setSelect(JSON.parse(itemState))}
-      else if (auth.currentUser?.uid) {set(itemStateRef, JSON.stringify(defaultItemState))}
     })
   }, []);
 
