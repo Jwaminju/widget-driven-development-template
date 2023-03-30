@@ -13,7 +13,7 @@ const StatIndicator = ({
                        }: Props) => {
     return (
       <Stat variant={"great"}>
-          <StatLabel>{label}</StatLabel>
+          <StatLabel>{label.toUpperCase()}</StatLabel>
           <StatNumber>{label === "Cfcs" ? statNumber.toFixed(10) : statNumber}</StatNumber>
           <StatHelpText>
               <StatArrow type={changeRate >= 0 ? "increase" : "decrease"} />
