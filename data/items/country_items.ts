@@ -1,4 +1,7 @@
-export const COUNTRY_ITEMS = [
+import { ItemDataInterface } from "../items.interface";
+
+// valid_year total: 23 years
+export const COUNTRY_ITEMS: ItemDataInterface[] = [
     {
         name: 'International Methane Gas Reduction Program under the United Nations',
         img: 'https://firebasestorage.googleapis.com/v0/b/green-5be28.appspot.com/o/itemsImg%2Fcountry%2Fenvironmental-protection-326923_640.jpg?alt=media&token=bec57e32-c6cd-4431-a34b-6ba2136a844a',
@@ -16,7 +19,7 @@ export const COUNTRY_ITEMS = [
         img: 'https://firebasestorage.googleapis.com/v0/b/green-5be28.appspot.com/o/itemsImg%2Fcountry%2Fcoins-5971086_640.jpg?alt=media&token=808c9848-baf3-4ac0-8805-5a41ab011a40',
         story: 'This system aims to reduce greenhouse gas emissions by setting a cap on the amount of carbon emissions that a country or company can release. Emission allowances can be traded, creating a market-based incentive to reduce emissions.',
         tier: 1,
-        valid_year: 1,
+        valid_year: 3,
         ima_tag:'/country/coins-5971086_640.jpg',
         group: 2,
         type: 'country',
@@ -28,7 +31,7 @@ export const COUNTRY_ITEMS = [
         img: 'https://firebasestorage.googleapis.com/v0/b/green-5be28.appspot.com/o/itemsImg%2Fcountry%2Fsustainable-development-4137481_640.jpg?alt=media&token=f8b55281-f424-425c-878b-967f7fa5a51b',
         story: 'An environmental protection plan consisting of 17 goals to address various environmental issues related to poverty, food security, education, health, water and energy, and climate change.',
         tier: 1,
-        valid_year: 1,
+        valid_year: 2,
         ima_tag:'/country/sustainable-development-4137481_640.jpg',
         group: 3,
         type: 'country',
@@ -40,7 +43,7 @@ export const COUNTRY_ITEMS = [
         img: 'https://firebasestorage.googleapis.com/v0/b/green-5be28.appspot.com/o/itemsImg%2Fcountry%2Funiversity-105709_640.jpg?alt=media&token=9aa0cf76-2927-4315-a4d9-4d29b45eb946',
         story: `Seeks to enhance international cooperation and support for environmental issues, increase the international community's awareness and coping abilities, and promote sustainable development through various initiatives.`,
         tier: 2,
-        valid_year: 1,
+        valid_year: 3,
         ima_tag:'/country/university-105709_640.jpg',
         group: 1,
         type: 'country',
@@ -52,7 +55,7 @@ export const COUNTRY_ITEMS = [
         img: 'https://firebasestorage.googleapis.com/v0/b/green-5be28.appspot.com/o/itemsImg%2Fcountry%2Fsky-2595261_640.jpg?alt=media&token=cfac9438-f9eb-4f54-bc11-26a0b84d2914',
         story: 'This involves adopting sustainable land management practices that promote soil health and biodiversity while reducing greenhouse gas emissions from agriculture. Examples include reducing tillage, using cover crops, and incorporating organic matter into soil.',
         tier: 2,
-        valid_year: 1,
+        valid_year: 2,
         ima_tag:'/country/sky-2595261_640.jpg.jpg',
         group: 2,
         type: 'country',
@@ -76,7 +79,7 @@ export const COUNTRY_ITEMS = [
         img: 'https://firebasestorage.googleapis.com/v0/b/green-5be28.appspot.com/o/itemsImg%2Fcountry%2Fhandshake-3298455_640.jpg?alt=media&token=266a1eb3-32a6-45b8-9c6c-e88578c203f4',
         story: 'This is an international treaty signed by almost all countries to address the issue of climate change. The treaty aims to stabilize greenhouse gas concentrations in the atmosphere at a level that will prevent dangerous human interference with the climate system. The UNFCCC has led to several agreements, including the Kyoto Protocol and the Paris Agreement, which aim to reduce emissions and mitigate the impacts of climate change.',
         tier: 3,
-        valid_year: 1,
+        valid_year: 4,
         ima_tag:'/country/handshake-3298455_640.jpg',
         group: 1,
         type: 'country',
@@ -88,7 +91,7 @@ export const COUNTRY_ITEMS = [
         img: 'https://firebasestorage.googleapis.com/v0/b/green-5be28.appspot.com/o/itemsImg%2Fcountry%2Fsheeps-3437467_640.jpg?alt=media&token=8b04b309-2b92-43f6-909b-89c7f6088b00',
         story: 'This involves implementing measures to reduce greenhouse gas emissions from livestock, such as improving feed quality, reducing herd sizes, and using manure management techniques that capture and utilize methane.',
         tier: 3,
-        valid_year: 1,
+        valid_year: 2,
         ima_tag:'/country/sheeps-3437467_640.jpg',
         group: 2,
         type: 'country',
@@ -136,7 +139,7 @@ export const COUNTRY_ITEMS = [
         img: 'https://firebasestorage.googleapis.com/v0/b/green-5be28.appspot.com/o/itemsImg%2Fcountry%2Fsafety-net-3289548_640.jpg?alt=media&token=45a47da9-9d4a-43a8-90a1-02d2d513d246',
         story: 'An effort to protect the marine ecosystem and human health by reducing the generation of marine waste and enhancing its treatment and management, based on the United Nations Convention on the Law of the Sea (UNCLOS).',
         tier: 4,
-        valid_year: 1,
+        valid_year: 2,
         ima_tag:'/country/safety-net-3289548_640.jpg',
         group: 3,
         type: 'country',
