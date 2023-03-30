@@ -22,7 +22,7 @@ interface Props {
 const Presenter = ( props : Props) => {
 
     const { width, height } = useWindowDimensions();
-    const { isOpen, onOpen, onClose } = useDisclosure({ defaultIsOpen: true, })
+    const { isOpen, onOpen, onClose } = useDisclosure()
     
     return (
         <Container> 
