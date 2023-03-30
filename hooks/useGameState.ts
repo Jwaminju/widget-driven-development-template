@@ -123,11 +123,15 @@ export const useGreenHouseGases = () => {
   const greenHouseGasesRef = ref(database, auth.currentUser?.uid + "/greenHouseGases");
   const [greenHouseGases, setGreenHouseGases] = useState(defaultGreenHouseGases);
   const greenHouseEffect = useMemo(() => calculateGreenHouseEffect(greenHouseGases), [greenHouseGases]);
-  const changeRates = useMemo(() => {
-    const lastChangeRates = greenHouseGases.map(gas => gas.lastChangeRate);
-    return new Map(greenHouseGasNames.map((name,index )=> [name, lastChangeRates[index]]));
+  // const changeRates = useMemo(() => {
+  //   const lastChangeRates = greenHouseGases.map(gas => gas.lastChangeRate);
+  //   return new Map(greenHouseGasNames.map((name,index )=> [name, lastChangeRates[index]]));
+  // }, [greenHouseGases]);
+
+  const greenHouseEffectChangeRate = useMemo(() => {
+    const newGHE = calculateGreenHouseEffect(greenHouseGases);
+    return (greenHouseEffect - newGHE) / greenHouseEffect;
   }, [greenHouseGases]);
-  const [greenHouseEffectChangeRate, setGHCR]= useState(0);
 
   useEffect(() => {
     onValue(greenHouseGasesRef, (snapshot) => {
@@ -136,11 +140,11 @@ export const useGreenHouseGases = () => {
     })
   }, []);
 
-  useEffect(() => {
+  const updateGreenHouseGasesOnDB = (newGreenHouseGases: GreenHouseGas[]) => {
     set(ref(database, auth.currentUser?.uid + "/greenHouseGases"),
-      greenHouseGases.map(greenHouseGas => (
+      newGreenHouseGases.map(greenHouseGas => (
         {type: greenHouseGas.name, concentration: greenHouseGas.concentration})));
-  }, [greenHouseGases]);
+  }
 
   const updateConcentration = (greenHouseGasType: GreenHouseGasType, concentrationChange: number) => {
     const index = greenHouseGasIndex[greenHouseGasType];
@@ -148,15 +152,9 @@ export const useGreenHouseGases = () => {
     const newConcentration: number = oldConcentration + oldConcentration * (concentrationChange/100);
     const newGreenHouseGas: GreenHouseGas = GasFactory.createGas(greenHouseGasType, newConcentration);
     newGreenHouseGas.lastChangeRate = concentrationChange;
-    setGreenHouseGases((prevGases) => {
-      const newGases = [...prevGases];
-      newGases[index] = newGreenHouseGas;
-      return newGases;
-    });
-    setGHCR((prevState) => {
-      const newGHE = calculateGreenHouseEffect(greenHouseGases);
-      return (greenHouseEffect - newGHE) / greenHouseEffect;
-    })
+    const newGreenHouseGases: GreenHouseGas[] = [...greenHouseGases];
+    newGreenHouseGases[index] = newGreenHouseGas;
+    updateGreenHouseGasesOnDB(newGreenHouseGases);
   }
 
   return {greenHouseGases, updateConcentration, greenHouseEffect, greenHouseEffectChangeRate};
