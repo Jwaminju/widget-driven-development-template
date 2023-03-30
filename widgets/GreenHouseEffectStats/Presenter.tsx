@@ -4,15 +4,15 @@ import {defaultGreenHouseGases, GreenHouseGas} from "../../models/greenhousegas"
 import {Divider} from "@chakra-ui/react";
 
 interface Props {
-  greenHouseEffect: number | null;
-  greenHouseGases: GreenHouseGas[] | null;
-  changeRates: Map<string, number> | null;
+  greenHouseEffect: number;
+  greenHouseGases: GreenHouseGas[];
+  greenHouseEffectChangeRate: number;
 }
 
 const Presenter = ({
   greenHouseEffect,
   greenHouseGases = defaultGreenHouseGases,
-  changeRates
+  greenHouseEffectChangeRate
                    }: Props) => {
     const [co2,n2o,ch4,cfcs] = greenHouseGases!;
     return (
@@ -28,15 +28,15 @@ const Presenter = ({
         padding={5}
         boxShadow={"outline"}
       >
-          <StatIndicator label={"GreenHouseEffect"} statNumber={greenHouseEffect||0} changeRate={changeRates?.get("greenHouseEffect")||0} />
+          <StatIndicator label={"GreenHouseEffect"} statNumber={greenHouseEffect} changeRate={greenHouseEffectChangeRate} />
           <Divider orientation={"vertical"} />
-          <StatIndicator label={"Co2"} statNumber={co2.concentration} changeRate={changeRates?.get("co2")||0} />
+          <StatIndicator label={"Co2"} statNumber={co2.concentration} changeRate={co2.lastChangeRate} />
           <Divider orientation={"vertical"} />
-          <StatIndicator label={"N2o"} statNumber={n2o.concentration} changeRate={changeRates?.get("n2o")||0} />
+          <StatIndicator label={"N2o"} statNumber={n2o.concentration} changeRate={n2o.lastChangeRate} />
           <Divider orientation={"vertical"} />
-          <StatIndicator label={"Ch4"} statNumber={ch4.concentration} changeRate={changeRates?.get("ch4")||0} />
+          <StatIndicator label={"Ch4"} statNumber={ch4.concentration} changeRate={ch4.lastChangeRate} />
           <Divider orientation={"vertical"} />
-          <StatIndicator label={"Cfcs"} statNumber={cfcs.concentration} changeRate={changeRates?.get("cfcs")||0} />
+          <StatIndicator label={"Cfcs"} statNumber={cfcs.concentration} changeRate={cfcs.lastChangeRate} />
       </StatGroup>
     );
 }
