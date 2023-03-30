@@ -1,4 +1,4 @@
-import {GreenHouseGasType} from "../hooks/useGameState";
+import { GreenHouseGasType } from "../hooks/useGameState";
 
 export interface ItemDataInterface {
     name: string;

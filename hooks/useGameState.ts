@@ -1,11 +1,11 @@
+import { onValue, ref, set } from "firebase/database";
+import { useEffect, useMemo, useState } from "react";
+import { ItemDataInterface, ItemSelectInterface } from "../data/items.interface";
 import {
   calculateGreenHouseEffect, defaultGreenHouseGases,
   GasFactory, GreenHouseGas
 } from "../models/greenhousegas";
-import {useEffect, useMemo, useState} from "react";
-import {auth, database} from "./useFirebase";
-import {onValue, ref, set} from "firebase/database";
-import {ItemDataInterface, ItemSelectInterface} from "../data/items.interface";
+import { auth, database } from "./useFirebase";
 
 export interface GameState {
   "username": string;

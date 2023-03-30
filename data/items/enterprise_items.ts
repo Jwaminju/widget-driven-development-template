@@ -9,7 +9,7 @@ export const ENTERPRISE_ITEMS = [
         group: 1,
         type: 'enterprise',
         greenGasType: 'cfcs',   
-    	  concentration: -5,
+    	  concentration: -2,
     },
     {
         name: 'Waste Management',
@@ -21,7 +21,7 @@ export const ENTERPRISE_ITEMS = [
         group: 2,
         type: 'enterprise',
         greenGasType: 'ch4',   
-    	  concentration: -5,
+    	  concentration: -2,
     },
     {
         name: 'New product development',
@@ -33,7 +33,7 @@ export const ENTERPRISE_ITEMS = [
         group: 3,
         type: 'enterprise',
         greenGasType: 'cfcs',   
-    	  concentration: -5,
+    	  concentration: -2,
     },
     {
         name: 'Use of recycled materials',
@@ -45,7 +45,7 @@ export const ENTERPRISE_ITEMS = [
         group: 1,
         type: 'enterprise',
         greenGasType: 'n2o',   
-    	  concentration: -5,
+    	  concentration: -2,
     },
     {
         name: 'Increase the use of renewable energy',
@@ -57,7 +57,7 @@ export const ENTERPRISE_ITEMS = [
         group: 2,
         type: 'enterprise',
         greenGasType: 'ch4',   
-    	  concentration: -5,
+    	  concentration: -3,
     },
     {
         name: 'Improved fuel efficiency with advanced design, materials, and technology',
@@ -69,7 +69,7 @@ export const ENTERPRISE_ITEMS = [
         group: 3,
         type: 'enterprise',
         greenGasType: 'ch4',   
-    	  concentration: -5,
+    	  concentration: -3,
     },
     {
         name: 'Streamlining the distribution process',
@@ -81,7 +81,7 @@ export const ENTERPRISE_ITEMS = [
         group: 1,
         type: 'enterprise',
         greenGasType: 'co2',   
-    	  concentration: -5,
+    	  concentration: -7,
     },
     {
         name: 'Reduced use of fossil fuels',
@@ -93,7 +93,7 @@ export const ENTERPRISE_ITEMS = [
         group: 2,
         type: 'enterprise',
         greenGasType: 'cfcs',   
-    	  concentration: -5,
+    	  concentration: -4,
     },
     {
         name: 'Fuel conversion',
@@ -105,7 +105,7 @@ export const ENTERPRISE_ITEMS = [
         group: 3,
         type: 'enterprise',
         greenGasType: 'n2o',   
-    	  concentration: -5,
+    	  concentration: -3,
     },
     {
         name: 'Use of methane gas reducer',
@@ -117,7 +117,7 @@ export const ENTERPRISE_ITEMS = [
         group: 1,
         type: 'enterprise',
         greenGasType: 'ch4',   
-    	  concentration: -5,
+    	  concentration: -3,
     },
     {
         name: 'Reuse of greenhouse gas',
@@ -129,7 +129,7 @@ export const ENTERPRISE_ITEMS = [
         group: 2,
         type: 'enterprise',
         greenGasType: 'co2',   
-    	  concentration: -5,
+    	  concentration: -8,
     },
     {
         name: 'Biogas production',
@@ -141,6 +141,6 @@ export const ENTERPRISE_ITEMS = [
         group: 3,
         type: 'enterprise',
         greenGasType: 'n2o',   
-    	  concentration: -5,
+    	  concentration: -4,
     },
 ]

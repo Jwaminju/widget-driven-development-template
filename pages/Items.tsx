@@ -1,8 +1,7 @@
-import type {NextPage} from 'next'
-import styles from "../styles/Items.module.css";
+import { ChakraProvider } from "@chakra-ui/react";
+import type { NextPage } from 'next';
 import Head from "next/head";
-import {ChakraProvider} from "@chakra-ui/react";
-import React from "react";
+import styles from "../styles/Items.module.css";
 import ItemsMenuContainer from '../widgets/items/Container';
 
 const Items: NextPage = () => {

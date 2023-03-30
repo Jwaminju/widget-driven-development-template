@@ -1,4 +1,4 @@
-import {ItemDataInterface} from "../items.interface";
+import { ItemDataInterface } from "../items.interface";
 
 export const PERSON_ITEMS: ItemDataInterface[] = [
     {
@@ -10,7 +10,7 @@ export const PERSON_ITEMS: ItemDataInterface[] = [
         ima_tag:'/person/riding-public-transportation.jpg',
         group: 1,
         type: 'person',
-        greenGasType: 'co2',   
+        greenGasType: 'co2',  // greenGasType  
     	  concentration: -5,
     },
     {

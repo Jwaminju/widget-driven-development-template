@@ -9,7 +9,7 @@ export const COUNTRY_ITEMS = [
         group: 1,
         type: 'country',
         greenGasType: 'ch4',   
-    	  concentration: -5,
+    	  concentration: -2,
     },
     {
         name: 'Carbon emission rights system',
@@ -33,7 +33,7 @@ export const COUNTRY_ITEMS = [
         group: 3,
         type: 'country',
         greenGasType: 'cfcs',   
-    	  concentration: -5,
+    	  concentration: -2,
     },
     {
         name: 'UN Environment Program',
@@ -45,7 +45,7 @@ export const COUNTRY_ITEMS = [
         group: 1,
         type: 'country',
         greenGasType: 'co2',   
-    	  concentration: -5,
+    	  concentration: -6,
     },
     {
         name: 'Land and crop management',
@@ -57,7 +57,7 @@ export const COUNTRY_ITEMS = [
         group: 2,
         type: 'country',
         greenGasType: 'ch4',   
-    	  concentration: -5,
+    	  concentration: -3,
     },
     {
         name: 'International Resource Panel',
@@ -69,7 +69,7 @@ export const COUNTRY_ITEMS = [
         group: 3,
         type: 'country',
         greenGasType: 'n2o',   
-    	  concentration: -5,
+    	  concentration: -2,
     },
     {
         name: 'United Nations Framework Convention on Climate Change',
@@ -81,7 +81,7 @@ export const COUNTRY_ITEMS = [
         group: 1,
         type: 'country',
         greenGasType: 'co2',   
-    	  concentration: -5,
+    	  concentration: -8,
     },
     {
         name: 'Livestock/manure management',
@@ -93,7 +93,7 @@ export const COUNTRY_ITEMS = [
         group: 2,
         type: 'country',
         greenGasType: 'n2o',   
-    	  concentration: -5,
+    	  concentration: -4,
     },
     {
         name: 'Sustainable Consumption and Production',
@@ -117,7 +117,7 @@ export const COUNTRY_ITEMS = [
         group: 1,
         type: 'country',
         greenGasType: 'cfcs',   
-    	  concentration: -5,
+    	  concentration: -6,
     },
     {
         name: 'Change of land use',
@@ -129,7 +129,7 @@ export const COUNTRY_ITEMS = [
         group: 2,
         type: 'country',
         greenGasType: 'ch4',   
-    	  concentration: -5,
+    	  concentration: -6,
     },
     {
         name: 'Marine Waste Management',
