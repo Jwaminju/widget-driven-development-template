@@ -4,7 +4,6 @@ import Loading from "./Loading";
 import Presenter from "./Presenter";
 import { PERSON_ITEMS } from "../../data/items/personal_item";
 import { ItemContext } from "../../hooks/useLastSelectionContext";
-
 import {useActionItems} from "../../hooks/useActionItems";
 
 const ItemsMenuContainer = () => {
