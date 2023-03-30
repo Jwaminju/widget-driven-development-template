@@ -11,10 +11,12 @@ const StatIndicator = ({
   statNumber,
   changeRate
                        }: Props) => {
-    return (
+  const statNumberInPPM = statNumber * 10000;
+  const indicatorNumber = (label === "Cfcs" ? statNumberInPPM.toFixed(10) : statNumberInPPM);
+  return (
       <Stat variant={"great"}>
           <StatLabel>{label.toUpperCase()}</StatLabel>
-          <StatNumber>{label === "Cfcs" ? statNumber.toFixed(10) : statNumber}</StatNumber>
+          <StatNumber>{indicatorNumber}</StatNumber>
           <StatHelpText>
               <StatArrow type={changeRate >= 0 ? "increase" : "decrease"} />
               {changeRate+'%'}

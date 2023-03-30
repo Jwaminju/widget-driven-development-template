@@ -8,8 +8,11 @@ export interface GameState {
 export type SerializedGas = {
   "type": string,
   "concentration": number,
+  "lastChangeRate": number,
 }
+
 export type GreenHouseGases = SerializedGas[];
+
 export type Item = {
   "name": string;
   "isActivated": boolean;
@@ -22,6 +25,7 @@ export interface Items {
 }
 
 export type GreenHouseGasType = "co2" | "n2o" | "ch4" | "cfcs";
+
 export type ItemState = {
   "person": number[],
   "enterprise": number[],

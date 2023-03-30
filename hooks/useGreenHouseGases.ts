@@ -37,7 +37,12 @@ export const useGreenHouseGases = () => {
   const updateGreenHouseGasesOnDB = (newGreenHouseGases: GreenHouseGas[]) => {
     set(ref(database, auth.currentUser?.uid + "/greenHouseGases"),
       newGreenHouseGases.map(greenHouseGas => (
-        {type: greenHouseGas.name, concentration: greenHouseGas.concentration})));
+        {
+          type: greenHouseGas.name,
+          concentration: greenHouseGas.concentration,
+          lastChangeRate: greenHouseGas.lastChangeRate
+        }
+        )));
   }
 
   const updateConcentration = (greenHouseGasType: GreenHouseGasType, concentrationChange: number) => {

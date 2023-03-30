@@ -29,9 +29,10 @@ export class Co2 extends GreenHouseGas {
   concentration: number = 0.0;
   absorption: number = 3;
   lifetime: number = 300;
-  constructor(concentration: number) {
+  constructor(concentration: number, lastChangeRate?: number) {
     super();
     this.concentration = concentration;
+    if (lastChangeRate) this.lastChangeRate = lastChangeRate;
   }
 }
 
@@ -40,9 +41,10 @@ export class N2o extends GreenHouseGas {
   concentration: number = 0.0;
   absorption: number = 2;
   lifetime: number = 121;
-  constructor(concentration: number) {
+  constructor(concentration: number, lastChangeRate?: number) {
     super();
     this.concentration = concentration;
+    if (lastChangeRate) this.lastChangeRate = lastChangeRate;
   }
 }
 
@@ -51,9 +53,10 @@ export class Ch4 extends GreenHouseGas {
   concentration: number = 0.0;
   absorption: number = 3;
   lifetime: number = 12;
-  constructor(concentration: number) {
+  constructor(concentration: number, lastChangeRate?: number) {
     super();
     this.concentration = concentration;
+    if (lastChangeRate) this.lastChangeRate = lastChangeRate;
   }
 }
 
@@ -62,9 +65,10 @@ export class Cfcs extends GreenHouseGas {
   concentration: number = 0.0;
   absorption: number = 2;
   lifetime: number = 187;
-  constructor(concentration: number) {
+  constructor(concentration: number, lastChangeRate?: number) {
     super();
     this.concentration = concentration;
+    if (lastChangeRate) this.lastChangeRate = lastChangeRate;
   }
 }
 
@@ -73,30 +77,34 @@ export class H2o extends GreenHouseGas {
   concentration: number = 0.0;
   absorption: number = 3;
   lifetime: number = 0.1;
-  constructor(concentration: number) {
+  constructor(concentration: number, lastChangeRate?: number) {
     super();
     this.concentration = concentration;
+    if (lastChangeRate) this.lastChangeRate = lastChangeRate;
   }
 }
 export abstract class GasFactory {
-  static createGas(type: string, concentration: number): GreenHouseGas {
-    console.log(type)
+  static createGas(type: string, concentration: number, lastChangeRate?: number): GreenHouseGas {
     switch (type) {
       case "co2":
-        return new Co2(concentration);
+        return new Co2(concentration, lastChangeRate);
       case "no2":
-        return new N2o(concentration);
+        return new N2o(concentration, lastChangeRate);
       case "ch4":
-        return new Ch4(concentration);
+        return new Ch4(concentration, lastChangeRate);
       case "cfcs":
-        return new Cfcs(concentration);
+        return new Cfcs(concentration, lastChangeRate);
       default:
-        return new H2o(concentration);
+        return new H2o(concentration, lastChangeRate);
     }
   }
 
   static deserializeGases(greenHouseGases: SerializedGas[]) {
-    return Array.from(greenHouseGases).map(serializedGas => this.createGas(serializedGas.type, serializedGas.concentration));
+    return Array
+      .from(greenHouseGases)
+      .map(serializedGas => (
+        this.createGas(serializedGas.type, serializedGas.concentration, serializedGas.lastChangeRate)
+      ));
   }
 }
 
