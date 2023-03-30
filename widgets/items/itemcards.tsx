@@ -34,7 +34,7 @@ const ItemCards = (props:itemsSpec) => {
         <Tab fontWeight='bold' onClick={myClick}>National Action</Tab>
     </TabList>
     <TabPanels>
-        <TabPanel padding='1%'> 
+        <TabPanel padding='1%'>
             <ItemCardWrap 
                 property={props.property} 
                 getCurrItem={props.getCurrItem} 
