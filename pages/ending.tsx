@@ -11,7 +11,7 @@ const Ending: NextPage = () => {
                 <meta name="description" content="Education game for Global Warming" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <EndingSceneContainer isDefeat={true} gas={33.4} />
+            <EndingSceneContainer />
         </ChakraProvider>
     );
 }
