@@ -15,14 +15,10 @@ export const useGreenHouseGases = () => {
   const greenHouseGasesRef = ref(database, auth.currentUser?.uid + "/greenHouseGases");
   const [greenHouseGases, setGreenHouseGases] = useState(defaultGreenHouseGases);
   const greenHouseEffect = useMemo(() => calculateGreenHouseEffect(greenHouseGases), [greenHouseGases]);
-  // const changeRates = useMemo(() => {
-  //   const lastChangeRates = greenHouseGases.map(gas => gas.lastChangeRate);
-  //   return new Map(greenHouseGasNames.map((name,index )=> [name, lastChangeRates[index]]));
-  // }, [greenHouseGases]);
-
   const greenHouseEffectChangeRate = useMemo(() => {
     const newGHE = calculateGreenHouseEffect(greenHouseGases);
-    return (greenHouseEffect - newGHE) / greenHouseEffect;
+    const defaultGHE = calculateGreenHouseEffect(defaultGreenHouseGases);
+    return (defaultGHE - newGHE) / defaultGHE;
   }, [greenHouseGases]);
 
   useEffect(() => {
