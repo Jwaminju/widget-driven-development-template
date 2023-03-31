@@ -12,7 +12,7 @@ const PERSON_ITEMS: ItemDataInterface[] = [
         group: 1,
         type: 'person',
         greenGasType: 'co2',   
-    	  concentration: -5,
+    	  concentration: -0.5,
     },
     {
         name: 'Recycling trash',
@@ -24,7 +24,7 @@ const PERSON_ITEMS: ItemDataInterface[] = [
         group: 1,
         type: 'person',
         greenGasType: 'n2o',
-    	  concentration: -2,
+    	  concentration: -0.2,
     },
     {
         name: 'Use of electric vehicles',
@@ -36,7 +36,7 @@ const PERSON_ITEMS: ItemDataInterface[] = [
         group: 1,
         type: 'person',
         greenGasType: 'co2',
-    	  concentration: -7,
+    	  concentration: -0.7,
     },
     {
         name: 'Reduced travel demand',
@@ -48,7 +48,7 @@ const PERSON_ITEMS: ItemDataInterface[] = [
         group: 1,
         type: 'person',
         greenGasType: 'co2',
-    	  concentration: -8,
+    	  concentration: -0.8,
     },
     {
         name: 'Reduce the use of disposable products',
@@ -60,7 +60,7 @@ const PERSON_ITEMS: ItemDataInterface[] = [
         group: 2,
         type: 'person',
         greenGasType: 'ch4',
-    	  concentration: -2,
+    	  concentration: -0.2,
     },
     {
         name: 'By foot/bicycle',
@@ -72,7 +72,7 @@ const PERSON_ITEMS: ItemDataInterface[] = [
         group: 2,
         type: 'person',
         greenGasType: 'co2',
-    	  concentration: -6,
+    	  concentration: -0.6,
     },
     {
         name: 'Use items produced at close range',
@@ -84,7 +84,7 @@ const PERSON_ITEMS: ItemDataInterface[] = [
         group: 2,
         type: 'person',
         greenGasType: 'ch4',
-    	  concentration: -4,
+    	  concentration: -0.4,
     },
     {
         name: 'Use of low-carbon footprint products',
@@ -96,7 +96,7 @@ const PERSON_ITEMS: ItemDataInterface[] = [
         group: 2,
         type: 'person',
         greenGasType: 'ch4',
-    	  concentration: -5,
+    	  concentration: -0.5,
     },
     {
         name: 'Refrain from excessive cooling/heating',
@@ -108,7 +108,7 @@ const PERSON_ITEMS: ItemDataInterface[] = [
         group: 3,
         type: 'person',
         greenGasType: 'cfcs',
-    	  concentration: -2,
+    	  concentration: -0.2,
     },
     {
         name: 'Saving energy',
@@ -120,7 +120,7 @@ const PERSON_ITEMS: ItemDataInterface[] = [
         group: 3,
         type: 'person',
         greenGasType: 'co2',
-    	  concentration: -6,
+    	  concentration: -0.6,
     },
     {
         name: 'Reduce unnecessary water use',
@@ -132,7 +132,7 @@ const PERSON_ITEMS: ItemDataInterface[] = [
         group: 3,
         type: 'person',
         greenGasType: 'cfcs',
-    	  concentration: -4,
+    	  concentration: -0.4,
     },
     {
         name: 'Reduce gas use',
@@ -144,7 +144,7 @@ const PERSON_ITEMS: ItemDataInterface[] = [
         group: 3,
         type: 'person',
         greenGasType: 'cfcs',
-    	  concentration: -5,
+    	  concentration: -0.5,
     }
 ]
 
