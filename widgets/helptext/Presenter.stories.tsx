@@ -3,11 +3,11 @@ import {ComponentMeta, ComponentStory} from '@storybook/react';
 import Presenter from './Presenter';
 
 export default {
-    title: 'Presenter/endingScene',
+    title: 'Presenter/helptext',
     component: Presenter,
 } as ComponentMeta<typeof Presenter>;
 
 const Template: ComponentStory<typeof Presenter> = (args) => <Presenter {...args} />;
-export const Scene = Template.bind({})
+export const helptext = Template.bind({})
 
-Scene.args = {}
+helptext.args = {}

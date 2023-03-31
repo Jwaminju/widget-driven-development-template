@@ -1,9 +1,8 @@
 import Heading1 from "../../components/Heading1";
 import Heading2 from "../../components/Heading2";
 import LinkToNext from "../../components/LinkToNext";
-import { Center } from "@chakra-ui/layout";
-import { Container, Card, CardBody, CardFooter, CardHeader, Text } from "@chakra-ui/react";
-import { useState, useEffect } from 'react';
+import {Center} from "@chakra-ui/layout";
+import {Card, CardFooter, CardHeader, Container} from "@chakra-ui/react";
 
 interface Props {
   isDefeat?: boolean;

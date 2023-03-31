@@ -2,14 +2,12 @@ import Error from "./Error";
 import Loading from "./Loading";
 import Presenter from "./Presenter";
 
-import {usePlayTime} from "../../hooks/usePlayTime";
-
-const PlayTimeContainer = () => {
+const HelpTextContainer = () => {
     const success = true
     const error = true
-    const {playTime} = usePlayTime();
+
     if (success) {
-        return <Presenter playTime={playTime} />
+        return <Presenter />
     }
 
     if (error) {
@@ -19,4 +17,4 @@ const PlayTimeContainer = () => {
     return <Loading />
 }
 
-export default PlayTimeContainer
+export default HelpTextContainer

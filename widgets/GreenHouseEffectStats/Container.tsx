@@ -1,16 +1,17 @@
 import Error from "./Error";
 import Loading from "./Loading";
 import Presenter from "./Presenter";
-import {useGreenHouseGases} from "../../hooks/useGameState";
+
+import {useGreenHouseGases} from "../../hooks/useGreenHouseGases";
 
 const GreenHouseEffectStatsContainer = () => {
     const success = true
     const error = false;
-    const {greenHouseEffect, greenHouseGases, changeRates} = useGreenHouseGases();
+    const {greenHouseEffect, greenHouseGases, greenHouseEffectChangeRate} = useGreenHouseGases();
     if (success) {
         return (
           <Presenter
-          changeRates={changeRates}
+          greenHouseEffectChangeRate={greenHouseEffectChangeRate}
           greenHouseEffect={greenHouseEffect}
           greenHouseGases={greenHouseGases}
         />

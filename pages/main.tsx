@@ -8,6 +8,7 @@ import PlayTimeContainer from "../widgets/playtimeIndicator/Container";
 import ItemsMenuContainer from "../widgets/items/Container";
 import {useFirebaseAuthState} from "../hooks/useFirebase";
 import AuthContainer from "../widgets/auth/Container";
+import HelpTextContainer from "../widgets/helptext/Container";
 
 const Main: NextPage<any> = () => {
     const {user} = useFirebaseAuthState();
@@ -24,6 +25,7 @@ const Main: NextPage<any> = () => {
                 <GreenHouseEffectStatsContainer />
                 <PlayTimeContainer />
                 <GlobeContainer />
+                <HelpTextContainer />
                 <ItemsMenuContainer />
               </>
               :
