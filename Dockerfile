@@ -1,16 +1,16 @@
-FROM node:14-alpine AS dependencies 
+FROM node:18-alpine AS dependencies 
 RUN apk add --no-cache libc6-compat
 WORKDIR /widget-driven-development-template
 COPY package.json package-lock.json ./
 RUN npm ci --only=production
 
-FROM node:14-alpine AS builder
+FROM node:18-alpine AS builder
 WORKDIR /widget-driven-development-template
 COPY . .
 COPY --from=dependencies /widget-driven-development-template/node_modules ./node_modules
 RUN npm run build
 
-FROM node:14-alpine AS runner
+FROM node:18-alpine AS runner
 WORKDIR /widget-driven-development-template
 
 ENV NODE_ENV production
