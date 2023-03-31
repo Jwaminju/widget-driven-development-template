@@ -1,10 +1,14 @@
 import {Item, ItemState} from "../models/gamestate.types";
 import {useEffect, useRef, useState} from "react";
 import {ItemDataInterface, ItemSelectInterface} from "../models/items.interface";
-import {useGreenHouseGases} from "./useGreenHouseGases";
-import {onValue, ref, set, update} from "firebase/database";
+import {updateConcentration, useGreenHouseGases} from "./useGreenHouseGases";
+import {get, onValue, ref, set, update} from "firebase/database";
 import {auth, database} from "./useFirebase";
 import {usePlayTime} from "./usePlayTime";
+import PERSON_ITEMS from "../data/items/personal_item";
+import COUNTRY_ITEMS from "../data/items/country_items";
+import ENTERPRISE_ITEMS from "../data/items/enterprise_items";
+import {GasFactory} from "../models/greenhousegas";
 
 const defaultPersonActionItems: Item[] = [
   {name: 'Riding public transportation', isActivated: false},
@@ -34,10 +38,10 @@ const itemActivationPersonal: ActivationState = {
   'Use of electric vehicles': false,
   'Reduced travel demand': false,
   'Reduce the use of disposable products': false,
-  'By foot/bicycle': false,
+  'By foot or bicycle': false,
   'Use items produced at close range': false,
   'Use of low-carbon footprint products': false,
-  'Refrain from excessive cooling/heating': false,
+  'Refrain from excessive cooling or heating': false,
   'Saving energy': false,
   'Reduce unnecessary water use': false,
   'Reduce gas use': false
@@ -66,7 +70,7 @@ const itemActivationCountry: ActivationState = {
   'Land and crop management': false,
   'International Resource Panel': false,
   'United Nations Framework Convention on Climate Change': false,
-  'Livestock/manure management': false,
+  'Livestock or manure management': false,
   'Sustainable Consumption and Production': false,
   'Environmental Justice': false,
   'Change of land use': false,
@@ -78,15 +82,15 @@ const defaultItemViewState: ItemState = {
   'enterprise': [1, 1, 1],
   'country': [1, 1, 1],
 }
-
 export const useActionItems = () => {
+  const data = [...PERSON_ITEMS, ...COUNTRY_ITEMS, ...ENTERPRISE_ITEMS];
   const personalActionItems = useRef(itemActivationPersonal);
   const enterpriseActionItems = useRef(itemActivationEnterprise);
   const countryActionItems = useRef(itemActivationCountry);
   const [lastSelection, setLastSelection] = useState({} as ItemDataInterface);
   const [currItem, setCurrItem] = useState({} as ItemDataInterface);
   const [select, setSelect] = useState<ItemState>(defaultItemViewState)
-  const {updateConcentration} = useGreenHouseGases();
+  const [phase, setPhase] = useState(0);
   const {changePlayTime} = usePlayTime();
 
   // 가장 최근 사용한(선택)한 아이템
@@ -155,17 +159,30 @@ export const useActionItems = () => {
 
   useEffect(() => {
     if (Object.keys(lastSelection).length === 0) return;
-    updateConcentration(lastSelection.greenGasType, lastSelection.concentration);
+    get(ref(database, auth.currentUser?.uid + "/greenHouseGases"))
+      .then((snapshot) => {
+        if (snapshot) {
+          const greenHouseGases = snapshot.val();
+          updateConcentration(lastSelection.greenGasType, lastSelection.concentration, GasFactory.deserializeGases(greenHouseGases));
+        };
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     const itemName = lastSelection.name;
     const itemType = lastSelection.type;
     updateActivation(itemName, itemType);
     changePlayTime(lastSelection);
     updateItemViewStateOnDB(select);
+    setPhase((prevPhase) => {
+      if (prevPhase === 2) return 0;
+      return prevPhase + 1;
+    });
   }, [lastSelection]);
 
   const updateItemViewStateOnDB = (newItemViewState: ItemState) => {
     set(ref(database, auth.currentUser?.uid + "/itemState"), JSON.stringify(newItemViewState));
   }
 
-  return {lastSelection, setLastSelection, select, getItemSelect, currItem, getCurrItem, getLastSelection}
+  return {lastSelection, setLastSelection, select, getItemSelect, currItem, getCurrItem, getLastSelection, data, phase}
 }
