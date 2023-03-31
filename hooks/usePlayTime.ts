@@ -1,8 +1,8 @@
-import {get, onValue, ref, set, update} from "firebase/database";
-import {auth, database} from "./useFirebase";
-import {useEffect, useRef, useState} from "react";
-import {ItemDataInterface} from "../models/items.interface";
-import {GameState} from "../models/gamestate.types";
+import { get, onValue, ref, set, update } from "firebase/database";
+import { useEffect, useRef, useState } from "react";
+import { GameState } from "../models/gamestate.types";
+import { ItemDataInterface } from "../models/items.interface";
+import { auth, database } from "./useFirebase";
 
 export type ActionCount = {
   [index: string]: number;

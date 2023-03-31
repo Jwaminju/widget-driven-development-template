@@ -1,4 +1,4 @@
-import {Stat, StatHelpText, StatLabel, StatNumber} from "@chakra-ui/stat";
+import { Stat, StatHelpText, StatLabel, StatNumber } from "@chakra-ui/stat";
 import GameOverSign from "../../components/GameOverSign";
 
 interface Props {
