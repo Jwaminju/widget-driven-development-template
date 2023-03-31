@@ -3,16 +3,17 @@ import Error from "./Error";
 import Loading from "./Loading";
 import Presenter from "./Presenter";
 
-interface IsDefeat {
+interface Result {
     isDefeat?: boolean;
+    gas?: number;
 }
-const EndingSceneContainer = (isDefeat?: IsDefeat) => {
+const EndingSceneContainer = (result?: Result) => {
     const { isSuccess, isError, sceneData } = useLink({
         sceneName: "Carbon Hero: Save the Planet",
     });
 
     if (isSuccess) {
-        return <Presenter isDefeat={isDefeat?.isDefeat} />
+        return <Presenter isDefeat={result?.isDefeat} gas={result?.gas} />
     }
 
     if (isError) {

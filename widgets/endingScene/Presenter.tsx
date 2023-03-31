@@ -7,14 +7,13 @@ import { useState, useEffect } from 'react';
 
 interface Props {
   isDefeat?: boolean;
+  gas?: number;
 }
 
 const Presenter = ({
   isDefeat,
+  gas,
 }: Props) => {
-  const expand = typeof window !== 'undefined' ? false : true
-
-
   if (isDefeat) {
     return (
       <Center w={'100vw'} h={'100vh'} backgroundImage={'url(/melting_ice_northpole.jpg)'} backgroundRepeat={'no-repeat'} backgroundPosition={'center'}>
@@ -23,9 +22,10 @@ const Presenter = ({
           <Card w={"100%"} boxShadow='xs' p='6' rounded='md' >
             <CardHeader padding={6}>
               <Heading2 label={"You saved the earth🌎"} />
+              <Heading2 label={"Greenhouse gas is reduced by " + gas + "%"}></Heading2>
             </CardHeader>
             <CardFooter>
-              <LinkToNext label={"Go back Main"} nextPageRoute={"/"} />
+              <LinkToNext label={"Go back Main"} nextPageRoute={""} />
             </CardFooter>
           </Card>
         </Container>
@@ -39,9 +39,10 @@ const Presenter = ({
           <Card w={"100%"} boxShadow='xs' p='6' rounded='md' >
             <CardHeader padding={6}>
               <Heading2 label={"You'll do better next time."} />
+              <Heading2 label={"Greenhouse gas increased by " + gas + "%"}></Heading2>
             </CardHeader>
             <CardFooter>
-              <LinkToNext label={"Start game again"} nextPageRoute={"/"} />
+              <LinkToNext label={"Start game again"} nextPageRoute={""} />
             </CardFooter>
           </Card>
         </Container>
