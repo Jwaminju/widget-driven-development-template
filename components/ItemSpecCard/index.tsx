@@ -53,7 +53,6 @@ const ItemSpecCard = ({
     }
 
     return (
-
         <Card minH='100%' direction={{ base: 'column', sm: 'row' }} overflow='hidden' variant='outline'>
             {
             Object.keys(property).length === 0 
@@ -65,12 +64,13 @@ const ItemSpecCard = ({
                 </CardBody>
             </Stack>
             </>
-            :<>
+            :
+              <>
             <Image 
                 objectFit='cover'
                 maxW={{ base: '100%', sm: '20%'}}
                 src={property.img}
-                alt='Recycling Trash'/>
+                alt={property.name}/>
             <Stack>
                 <CardBody>
                     <Badge colorScheme='teal' fontSize='md'>
@@ -81,9 +81,10 @@ const ItemSpecCard = ({
                             />
                         ))}
                     </Badge>
-                    <Badge colorScheme='red' fontSize='md' ml='1%' borderRadius='full' > Retention For {property.valid_year} Year </Badge>
                     <Heading paddingTop='1%' size='md'> {property.name} </Heading>
                     <Text fontSize='lg' py='1%'> {property.story} </Text>
+                    <Text fontSize={"md"}>{property.greenGasType.toUpperCase()}</Text>
+                    <Text fontSize={"md"}>{property.concentration+"%"}</Text>
                 </CardBody>
                 <CardFooter>
                     {   

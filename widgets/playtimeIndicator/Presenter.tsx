@@ -6,7 +6,7 @@ interface Props {
 }
 
 const Presenter = ({playTime}: Props) => {
-    if (playTime > 2050) {
+    if (playTime > 2035) {
       return <GameOverSign />
     }
     return (
@@ -24,7 +24,7 @@ const Presenter = ({playTime}: Props) => {
       >
         <StatLabel>This Year is</StatLabel>
         <StatNumber>{playTime}</StatNumber>
-        <StatHelpText>{`${2050-playTime} years left`}</StatHelpText>
+        <StatHelpText>{`Time is Running Out...`}</StatHelpText>
       </Stat>
     )
 }
