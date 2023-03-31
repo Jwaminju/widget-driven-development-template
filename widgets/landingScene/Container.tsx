@@ -8,7 +8,7 @@ interface SceneParams {
 }
 const LandingSceneContainer = (sceneParams?: SceneParams) => {
     const { isSuccess, isError, sceneData } = useLink({
-        sceneName: "Carbon Hero: Save the Planet",
+        sceneName: "Carbon Hero: Save the Earth",
     });
 
     if (isSuccess) {

@@ -1,21 +1,24 @@
 import {Card, CardBody, CardFooter, CardHeader, Heading, Text} from "@chakra-ui/react";
 import LinkToNext from "../LinkToNext";
+import {Center} from "@chakra-ui/layout";
 
 interface Props {}
 
 const GameOverSign = ({}: Props) => {
     return (
-      <Card>
-          <CardHeader>
-              <Heading size='md'>Game Over!</Heading>
-          </CardHeader>
-          <CardBody>
-              <Text>Good Job!</Text>
-          </CardBody>
-          <CardFooter>
-              <LinkToNext label={"Check the result"} nextPageRoute={"/ending"} />
-          </CardFooter>
-      </Card>
+      <Center position={"fixed"} left={0} top={0} zIndex={100} width={"100%"} height={"100%"}>
+        <Card width={"xl"} height={"xl"}>
+            <CardHeader>
+                <Heading size='md'>Game Over!</Heading>
+            </CardHeader>
+            <CardBody>
+                <Text>Good Job!</Text>
+            </CardBody>
+            <CardFooter>
+                <LinkToNext label={"Check the result"} nextPageRoute={"/ending"} />
+            </CardFooter>
+        </Card>
+      </Center>
     )
 }
 
