@@ -1,7 +1,7 @@
+import { usePlayTime } from "../../hooks/usePlayTime";
 import Error from "./Error";
 import Loading from "./Loading";
 import Presenter from "./Presenter";
-import {usePlayTime} from "../../hooks/usePlayTime";
 
 const PlayTimeContainer = () => {
     const success = true
