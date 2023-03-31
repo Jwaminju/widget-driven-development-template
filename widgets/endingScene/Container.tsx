@@ -1,8 +1,8 @@
 import useLink from "../../hooks/useLink";
+import { useResult } from "../../hooks/useResult";
 import Error from "./Error";
 import Loading from "./Loading";
 import Presenter from "./Presenter";
-import {useResult} from "../../hooks/useResult";
 
 const EndingSceneContainer = () => {
     const { isSuccess, isError, sceneData } = useLink({
