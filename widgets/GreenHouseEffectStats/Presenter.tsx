@@ -17,6 +17,7 @@ const Presenter = ({
     const [co2,n2o,ch4,cfcs] = greenHouseGases!;
     return (
       <StatGroup
+        flexDir={"column"}
         position={'fixed'}
         top={'5%'}
         left={'2.5%'}
@@ -26,16 +27,13 @@ const Presenter = ({
         borderColor={"lightslategrey"}
         gap={12}
         padding={5}
+        fontSize={"md"}
         boxShadow={"outline"}
       >
           <StatIndicator label={"GreenHouseEffect"} statNumber={greenHouseEffect} changeRate={greenHouseEffectChangeRate} />
-          <Divider orientation={"vertical"} />
           <StatIndicator label={"Co2"} statNumber={co2.concentration} changeRate={co2.lastChangeRate} />
-          <Divider orientation={"vertical"} />
           <StatIndicator label={"N2o"} statNumber={n2o.concentration} changeRate={n2o.lastChangeRate} />
-          <Divider orientation={"vertical"} />
           <StatIndicator label={"Ch4"} statNumber={ch4.concentration} changeRate={ch4.lastChangeRate} />
-          <Divider orientation={"vertical"} />
           <StatIndicator label={"Cfcs"} statNumber={cfcs.concentration} changeRate={cfcs.lastChangeRate} />
       </StatGroup>
     );
