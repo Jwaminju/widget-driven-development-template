@@ -1,18 +1,13 @@
-import {  Text, Image, Badge, Button, Card, Stack, CardBody, CardFooter, Heading,Container,Center } from '@chakra-ui/react'
-import { StarIcon } from '@chakra-ui/icons'
+import { StarIcon } from '@chakra-ui/icons';
+import { Badge, Button, Card, CardBody, CardFooter, Heading, Image, Stack, Text, useDisclosure, useToast } from '@chakra-ui/react';
+import { useRef } from "react";
 import { ItemDataInterface, ItemSelectInterface } from '../../data/items.interface';
-import { useToast, useDisclosure} from '@chakra-ui/react'
-import {useContext, useEffect, useRef, useState} from "react";
 
 import {
     AlertDialog,
-    AlertDialogBody,
-    AlertDialogFooter,
-    AlertDialogHeader,
-    AlertDialogContent,
-    AlertDialogOverlay,
-  } from '@chakra-ui/react'
-import { ItemContext } from '../../hooks/useLastSelectionContext';
+    AlertDialogBody, AlertDialogContent, AlertDialogFooter,
+    AlertDialogHeader, AlertDialogOverlay
+} from '@chakra-ui/react';
   
 interface itemsSpec {
     property: ItemDataInterface;
@@ -86,7 +81,7 @@ const ItemSpecCard = ({
                             />
                         ))}
                     </Badge>
-                    <Badge colorScheme='red' fontSize='md' ml='1%' borderRadius='full' > Retention For {1} Year </Badge>
+                    <Badge colorScheme='red' fontSize='md' ml='1%' borderRadius='full' > Retention For {property.valid_year} Year </Badge>
                     <Heading paddingTop='1%' size='md'> {property.name} </Heading>
                     <Text fontSize='lg' py='1%'> {property.story} </Text>
                 </CardBody>
