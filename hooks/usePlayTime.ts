@@ -1,5 +1,3 @@
-// 이 디폴트 값이 디비에서 조회한 값이 됩니다.
-// 값이 없으면(조회된) 디비에 기본 값을 생성하고 기본값을 사용합니다.
 import {onValue, ref, set} from "firebase/database";
 import {auth, database} from "./useFirebase";
 import {useEffect, useState} from "react";
