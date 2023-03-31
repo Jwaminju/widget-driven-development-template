@@ -1,3 +1,4 @@
+import { StarIcon } from '@chakra-ui/icons';
 import {
     AlertDialog,
     AlertDialogBody,
@@ -16,10 +17,9 @@ import {
     Text,
     useDisclosure,
     useToast
-} from '@chakra-ui/react'
-import {StarIcon} from '@chakra-ui/icons'
-import {ItemDataInterface, ItemSelectInterface} from '../../models/items.interface';
-import {useRef} from "react";
+} from '@chakra-ui/react';
+import { useRef } from "react";
+import { ItemDataInterface, ItemSelectInterface } from '../../models/items.interface';
 
 interface itemsSpec {
     property: ItemDataInterface;
