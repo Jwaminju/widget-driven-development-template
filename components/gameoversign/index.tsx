@@ -1,4 +1,4 @@
-import {Text, Button, Card, CardBody, CardFooter, CardHeader, Heading} from "@chakra-ui/react";
+import {Card, CardBody, CardFooter, CardHeader, Heading, Text} from "@chakra-ui/react";
 import LinkToNext from "../LinkToNext";
 
 interface Props {}
