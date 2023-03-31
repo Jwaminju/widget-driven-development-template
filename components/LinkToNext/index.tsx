@@ -23,6 +23,7 @@ const LinkToNext = ({
                 borderRadius={'10px'}
                 backgroundColor={color || 'black'}
                 rightIcon={<ArrowForwardIcon/>}
+                color={"white"}
               >
                 {label || "Next Page"}
               </Button>

@@ -51,6 +51,14 @@ export const statTheme = defineMultiStyleConfig({
 })
 
 export const customTheme = extendTheme({
+  textStyles: {
+    h1: {
+      color: "white"
+    },
+    p: {
+      color: "white"
+    }
+  },
   components: {
     Stat: statTheme
   }
