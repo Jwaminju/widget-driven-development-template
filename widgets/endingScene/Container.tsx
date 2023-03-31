@@ -2,18 +2,17 @@ import useLink from "../../hooks/useLink";
 import Error from "./Error";
 import Loading from "./Loading";
 import Presenter from "./Presenter";
+import {useResult} from "../../hooks/useResult";
 
-interface Result {
-    isDefeat?: boolean;
-    gas?: number;
-}
-const EndingSceneContainer = (result?: Result) => {
+const EndingSceneContainer = () => {
     const { isSuccess, isError, sceneData } = useLink({
         sceneName: "Carbon Hero: Save the Planet",
     });
 
+    const {isDefeat, gasDifference} = useResult();
+
     if (isSuccess) {
-        return <Presenter isDefeat={result?.isDefeat} gas={result?.gas} />
+        return <Presenter isDefeat={isDefeat} gasDifference={gasDifference} />
     }
 
     if (isError) {
