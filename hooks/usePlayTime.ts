@@ -1,55 +1,66 @@
-import {onValue, ref, set} from "firebase/database";
+import {get, onValue, ref, set, update} from "firebase/database";
 import {auth, database} from "./useFirebase";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {ItemDataInterface} from "../models/items.interface";
+import {GameState} from "../models/gamestate.types";
 
-const defaultActionCount = {
+export type ActionCount = {
+  [index: string]: number;
+}
+export const defaultActionCount: ActionCount = {
   "person": 1,
   "enterprise": 1,
   "country": 1
 }
 export const usePlayTime = () => {
   const playTimeRef = ref(database, auth.currentUser?.uid + "/playtime");
+  const actionCountRef = ref(database, auth.currentUser?.uid + "/actionCount")
   const [playTime, setPlayTime] = useState(2023);
-  const [actionCount, setActionCount] = useState(defaultActionCount);
+  const actionCountStore = useRef(defaultActionCount);
 
   useEffect(() => {
     onValue(playTimeRef, (snapshot) => {
       const playtime = snapshot.val();
-      if (playtime) {
-        setPlayTime(playtime)
-      }
+      if (playtime) {setPlayTime(playtime)}
+    })
+    onValue(actionCountRef, (snapshot) => {
+      const actionCount = snapshot.val();
+      if (snapshot) {actionCountStore.current = actionCount;}
     })
   }, []);
 
-  const updatePlayTimeOnDB = (newPlayTime: number) => {
+  return {playTime, changePlayTime}
+}
+
+export const updatePlayTimeOnDB = (newPlayTime: number) => {
+  if (newPlayTime) {
     set(ref(database, auth.currentUser?.uid + "/playtime"), newPlayTime);
   }
-  const changePlayTime = (actionItem: ItemDataInterface) => {
-    const actionType = actionItem.type;
-    switch (actionType) {
-      case "person":
-        setActionCount((prevState) => {
-          return {...prevState, person: 0}
-        })
-        break;
-      case "enterprise":
-        setActionCount(prevState => {
-          return {...prevState, enterprise: 0}
-        })
-        break;
-      case "country":
-        setActionCount(prevState => {
-          return {...prevState, country: 0}
-        })
-        break;
-    }
-    const totalCount = Object.values(actionCount).reduce((totalCount, count) => totalCount += count);
-    if ((totalCount === 1 && actionCount.country === 1) || (totalCount === 0)) {
-      updatePlayTimeOnDB(playTime + 1);
-      setActionCount(defaultActionCount);
-    }
+  else {
+    set(ref(database, auth.currentUser?.uid + "/playtime"), 2023);
   }
-
-  return {playTime, changePlayTime}
+}
+export const changePlayTime = (actionItem: ItemDataInterface) => {
+  const actionCountRef = ref(database, auth.currentUser?.uid + "/actionCount");
+  const actionType = actionItem.type;
+  switch (actionType) {
+    case "person":
+      update(actionCountRef, {"person": 0})
+      break;
+    case "enterprise":
+      update(actionCountRef, {"enterprise": 0})
+      break;
+    case "country":
+      update(actionCountRef, {"country": 0})
+      break;
+  }
+  get(ref(database, auth.currentUser?.uid)).then((snapshot) => {
+    const gameState = snapshot.val() as GameState;
+    const {playtime, actionCount} = gameState;
+    const totalCount = Object.values(actionCount).reduce((totalCount, count) => totalCount += count);
+    if (totalCount === 0) {
+      updatePlayTimeOnDB(playtime + 1);
+      set(actionCountRef, defaultActionCount);
+    }
+  })
 }

@@ -5,7 +5,7 @@ import {calculateGreenHouseEffect, defaultGreenHouseGases, GasFactory, GreenHous
 import {GreenHouseGasType} from "../models/gamestate.types";
 
 const greenHouseGasNames = ["co2", "n2o", "ch4", "cfcs"];
-export const greenHouseGasIndex = {
+export const greenHouseGasIndex:{[index: string]: number} = {
   "co2": 0,
   "n2o": 1,
   "ch4": 2,
@@ -28,29 +28,42 @@ export const useGreenHouseGases = () => {
         setGreenHouseGases(GasFactory.deserializeGases(greenHouseGases))
       }
     })
+    onValue(ref(database, auth.currentUser?.uid + "/playtime"), (snapshot) => {
+      setGreenHouseGases((greenHouseGases) => {
+        return greenHouseGasNames.map(gasName => {
+          return GasFactory.createGas(
+            gasName,
+            1.005 * greenHouseGases[greenHouseGasIndex[gasName]].concentration,
+            greenHouseGases[greenHouseGasIndex[gasName]].lastChangeRate
+          );
+        })
+      })
+    })
   }, []);
 
-  const updateGreenHouseGasesOnDB = (newGreenHouseGases: GreenHouseGas[]) => {
-    set(ref(database, auth.currentUser?.uid + "/greenHouseGases"),
-      newGreenHouseGases.map(greenHouseGas => (
+
+  return {greenHouseGases, greenHouseEffect, greenHouseEffectChangeRate};
+}
+
+export const updateGreenHouseGasesOnDB = (newGreenHouseGases: GreenHouseGas[]) => {
+  set(ref(database, auth.currentUser?.uid + "/greenHouseGases"),
+    newGreenHouseGases.map(greenHouseGas => (
         {
           type: greenHouseGas.name,
           concentration: greenHouseGas.concentration,
           lastChangeRate: greenHouseGas.lastChangeRate
         }
-        )));
-  }
+      )
+    ));
+}
 
-  const updateConcentration = (greenHouseGasType: GreenHouseGasType, concentrationChange: number) => {
-    const index = greenHouseGasIndex[greenHouseGasType];
-    const oldConcentration: number = greenHouseGases[index].concentration;
-    const newConcentration: number = oldConcentration + oldConcentration * (concentrationChange / 100);
-    const newGreenHouseGas: GreenHouseGas = GasFactory.createGas(greenHouseGasType, newConcentration);
-    newGreenHouseGas.lastChangeRate = concentrationChange;
-    const newGreenHouseGases: GreenHouseGas[] = [...greenHouseGases];
-    newGreenHouseGases[index] = newGreenHouseGas;
-    updateGreenHouseGasesOnDB(newGreenHouseGases);
-  }
-
-  return {greenHouseGases, updateConcentration, greenHouseEffect, greenHouseEffectChangeRate};
+export const updateConcentration = (greenHouseGasType: GreenHouseGasType, concentrationChange: number, greenHouseGases: GreenHouseGas[]) => {
+  const index = greenHouseGasIndex[greenHouseGasType];
+  const oldConcentration: number = greenHouseGases[index].concentration;
+  const newConcentration: number = oldConcentration + oldConcentration * (concentrationChange / 100);
+  const newGreenHouseGas: GreenHouseGas = GasFactory.createGas(greenHouseGasType, newConcentration);
+  newGreenHouseGas.lastChangeRate = concentrationChange;
+  const newGreenHouseGases: GreenHouseGas[] = [...greenHouseGases];
+  newGreenHouseGases[index] = newGreenHouseGas;
+  updateGreenHouseGasesOnDB(newGreenHouseGases);
 }
