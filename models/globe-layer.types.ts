@@ -1,6 +1,6 @@
-import {COLOR} from "./points-data.types";
-import {MeshPhongMaterial} from "three";
-import {GlobeContainerTypes} from "./globe-container.types";
+import { MeshPhongMaterial } from "three";
+import { GlobeContainerTypes } from "./globe-container.types";
+import { COLOR } from "./points-data.types";
 
 export interface Coordinate {
   lat: number;
