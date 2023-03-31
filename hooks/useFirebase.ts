@@ -3,7 +3,8 @@ import {initializeApp} from "firebase/app";
 import {firebaseConfig} from "../configs/firebase.config";
 import {browserSessionPersistence, getAuth} from "firebase/auth";
 import {getDatabase, onValue, ref, set} from "firebase/database";
-import {GameState} from "./useGameState";
+
+import {GameState} from "../models/gamestate.types";
 
 const firebaseApp = initializeApp(firebaseConfig);
 export const auth = getAuth(firebaseApp);

@@ -1,7 +1,5 @@
 // useLocalStorage.js
 
-import { useState, useEffect } from "react";
-
 interface LocalData {
     key: string;
     initialState: any;

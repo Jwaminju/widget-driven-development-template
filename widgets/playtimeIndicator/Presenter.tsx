@@ -1,10 +1,14 @@
 import {Stat, StatHelpText, StatLabel, StatNumber} from "@chakra-ui/stat";
+import GameOverSign from "../../components/GameOverSign";
 
 interface Props {
     playTime: number;
 }
 
 const Presenter = ({playTime}: Props) => {
+    if (playTime > 2050) {
+      return <GameOverSign />
+    }
     return (
       <Stat
         position={"fixed"}

@@ -1,11 +1,22 @@
 import {
-    Box, Button, Container, Heading, Modal, ModalBody,
-    ModalCloseButton, ModalContent, ModalOverlay, SimpleGrid, Spacer, Tooltip, useDisclosure
+  Box,
+  Button,
+  Container,
+  Heading,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalOverlay,
+  SimpleGrid,
+  Spacer,
+  Tooltip,
+  useDisclosure
 } from "@chakra-ui/react";
 import ItemSpecCard from "../../components/ItemSpecCard";
-import { ItemDataInterface, ItemSelectInterface } from "../../data/items.interface";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import ItemCards from "./itemcards";
+import {ItemDataInterface, ItemSelectInterface} from "../../models/items.interface";
 
 interface Props {
   sceneTitle?: string;
@@ -15,19 +26,27 @@ interface Props {
   currItem: ItemDataInterface;
   getCurrItem: (arg1?: any) => any;
   getLastSelection: (arg1?: any) => any;
+  phase: number;
 }
-
-
 
 const Presenter = ( props : Props) => {
 
     const { width, height } = useWindowDimensions();
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const { isOpen, onOpen, onClose } = useDisclosure({ defaultIsOpen: false, })
     
     return (
         <Container> 
             <Tooltip label='Select item'>
-                <Button onClick={onOpen}> Item Box </Button>
+                <Button
+                  position={"fixed"}
+                  right={"5%"}
+                  bottom={"10%"}
+                  zIndex={100}
+                  onClick={onOpen}
+                  padding={10}
+                  fontSize={"lg"}
+                  fontWeight={"extrabold"}
+                >Take Action!</Button>
             </Tooltip>
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay bgColor='blackAlpha.700' />
@@ -42,11 +61,12 @@ const Presenter = ( props : Props) => {
                     <ModalCloseButton backgroundColor='white'/>
                     <SimpleGrid spacing='1%'>  
                         <Heading size='lg' > {props.sceneTitle} </Heading> 
-                        <Box minWidth="90%" minHeight={height!/100*55}> {/* minHeight={height!/100*60} */}
-                            <ItemCards 
+                        <Box minWidth="90%" minHeight={height!/100*55}>
+                            <ItemCards
+                                phase={props.phase}
                                 property={props.data}
                                 getCurrItem={props.getCurrItem}
-                                selected={props.itemSelected}> </ItemCards> 
+                                selected={props.itemSelected}> </ItemCards>
                         </Box>
                         <Box minWidth={width!/100*90} minHeight={height!/100*20}> 
                             <ItemSpecCard 
