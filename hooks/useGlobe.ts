@@ -9,10 +9,11 @@ const initialGlobeData: GlobeData = {
     width: 0,
     height: 0,
     backgroundColor: '#000',
+    backgroundImageUrl: "/night-sky.png"
   },
   globeLayerData: {
     globeImageUrl: "https://unpkg.com/three-globe/example/img/earth-blue-marble.jpg",
-    bumpImageUrl: "",
+    bumpImageUrl: "/earth-topology.png",
   }
 }
 

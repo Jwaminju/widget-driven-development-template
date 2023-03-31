@@ -30,7 +30,7 @@ const Presenter: FC<Props> = ({
                    }: Props) => {
     const {containerData, globeLayerData} = globeData;
     const {width, height, backgroundImageUrl, backgroundColor} = containerData;
-    const {globeImageUrl} = globeLayerData;
+    const {globeImageUrl, bumpImageUrl} = globeLayerData;
     const {polygonsData, polygonLabel, polygonAltitude, polygonCapColor, polygonSideColor} = polygonData;
     const nations = countries?.features as GeoNationProperty[];
 
@@ -38,6 +38,7 @@ const Presenter: FC<Props> = ({
       <Center w={'100%'} h={'100%'}>
         <Globe
           ref={globe}
+          bumpImageUrl={bumpImageUrl}
           globeImageUrl={globeImageUrl}
           width={width}
           height={height}
