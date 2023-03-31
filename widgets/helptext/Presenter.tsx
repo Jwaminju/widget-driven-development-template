@@ -21,8 +21,17 @@ const Presenter = ({}: Props) => {
     const itemHelpText = "You can check current items you activated on your bottom right!";
     return (
       <>
-        <Button position={"fixed"} left={"5%"} right={"5%"} onClick={() => {onOpen()}}>
-          Help!!!
+        <Button
+          position={"fixed"}
+          left={"5%"}
+          bottom={"10%"}
+          zIndex={100}
+          padding={10}
+          fontSize={"lg"}
+          fontWeight={"extrabold"}
+          onClick={onOpen}
+        >
+          How To Play?
         </Button>
         <Modal isCentered isOpen={isOpen} onClose={onClose}>
           <ModalOverlay
