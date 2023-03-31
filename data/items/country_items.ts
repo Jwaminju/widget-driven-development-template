@@ -87,7 +87,7 @@ const COUNTRY_ITEMS: ItemDataInterface[] = [
     	  concentration: -0.8,
     },
     {
-        name: 'Livestock/manure management',
+        name: 'Livestock or manure management',
         img: 'https://firebasestorage.googleapis.com/v0/b/green-5be28.appspot.com/o/itemsImg%2Fcountry%2Fsheeps-3437467_640.jpg?alt=media&token=8b04b309-2b92-43f6-909b-89c7f6088b00',
         story: 'This involves implementing measures to reduce greenhouse gas emissions from livestock, such as improving feed quality, reducing herd sizes, and using manure management techniques that capture and utilize methane.',
         tier: 3,

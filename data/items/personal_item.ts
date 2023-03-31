@@ -63,7 +63,7 @@ const PERSON_ITEMS: ItemDataInterface[] = [
     	  concentration: -0.2,
     },
     {
-        name: 'By foot/bicycle',
+        name: 'By foot or bicycle',
         img: 'https://firebasestorage.googleapis.com/v0/b/green-5be28.appspot.com/o/itemsImg%2Fperson%2Fgas-bottle-94194_640.jpg?alt=media&token=715dea9e-c574-4975-b4a8-37199da794a5',
         story: 'By using foot or bicycle instead of vehicles, we can reduce greenhouse gas emissions from individual vehicles and improve our health through exercise.        ',
         tier: 2,
@@ -99,7 +99,7 @@ const PERSON_ITEMS: ItemDataInterface[] = [
     	  concentration: -0.5,
     },
     {
-        name: 'Refrain from excessive cooling/heating',
+        name: 'Refrain from excessive cooling or heating',
         img: 'https://firebasestorage.googleapis.com/v0/b/green-5be28.appspot.com/o/itemsImg%2Fperson%2Fair-conditioner-6605973_640.jpg?alt=media&token=adc045bd-fe0b-4363-a3ef-d70c3fe31bd0',
         story: 'By refraining from excessive cooling or heating, we can save energy and reduce carbon emissions.        ',
         tier: 1,
