@@ -1,6 +1,6 @@
-import {Card, CardBody, CardFooter, CardHeader, Heading, Text} from "@chakra-ui/react";
+import { Center } from "@chakra-ui/layout";
+import { Card, CardBody, CardFooter, CardHeader, Heading, Text } from "@chakra-ui/react";
 import LinkToNext from "../LinkToNext";
-import {Center} from "@chakra-ui/layout";
 
 interface Props {}
 
