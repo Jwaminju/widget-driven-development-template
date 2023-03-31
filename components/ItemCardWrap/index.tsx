@@ -1,6 +1,5 @@
 import { Avatar, AvatarBadge, Wrap, WrapItem } from "@chakra-ui/react";
-import { ItemDataInterface } from "../../data/items.interface";
-
+import {ItemDataInterface} from "../../models/items.interface";
 
 interface Props {
     property: ItemDataInterface[];

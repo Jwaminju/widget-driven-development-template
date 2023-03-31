@@ -3,9 +3,9 @@ import {
     ModalCloseButton, ModalContent, ModalOverlay, SimpleGrid, Spacer, Tooltip, useDisclosure
 } from "@chakra-ui/react";
 import ItemSpecCard from "../../components/ItemSpecCard";
-import { ItemDataInterface, ItemSelectInterface } from "../../data/items.interface";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 import ItemCards from "./itemcards";
+import {ItemDataInterface, ItemSelectInterface} from "../../models/items.interface";
 
 interface Props {
   sceneTitle?: string;

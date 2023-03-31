@@ -1,5 +1,6 @@
 import { createContext } from "react";
-import { ItemDataInterface } from "../data/items.interface";
+import {ItemDataInterface} from "../models/items.interface";
+;
 export const ItemContext =  createContext({});
 
 interface ContextProps {
