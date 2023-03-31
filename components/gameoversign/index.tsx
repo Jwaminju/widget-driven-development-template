@@ -1,10 +1,10 @@
-import {Card, CardBody, CardFooter, CardHeader, Heading, Text} from "@chakra-ui/react";
+import { Center } from "@chakra-ui/layout";
+import { Card, CardBody, CardFooter, CardHeader, Heading, Text } from "@chakra-ui/react";
 import LinkToNext from "../LinkToNext";
-import {Center} from "@chakra-ui/layout";
 
 interface Props {}
 
-const GameOverSign = ({}: Props) => {
+const GameOverSign = () => {
     return (
       <Center position={"fixed"} left={0} top={0} zIndex={100} width={"100%"} height={"100%"}>
         <Card width={"xl"} height={"xl"}>
