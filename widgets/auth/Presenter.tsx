@@ -12,7 +12,7 @@ const Presenter = ({ user, signIn, signOut }: Props) => {
       user ?
       <CommonButton label={"SignOut"} onClick={() => signOut()}/>
       :
-      <CommonButton label={"SignIn"} onClick={() => signIn()}/>
+      <CommonButton label={"Sign In To Play"} onClick={() => signIn()}/>
     );
 }
 
