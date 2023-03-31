@@ -34,7 +34,7 @@ const ItemCards = (props:itemsSpec) => {
           </TabList>
           <TabPanels>
               {Array(3).fill('').map((_, i) => (
-                <TabPanel padding='1%'>
+                <TabPanel key={i} padding='1%'>
                   <ItemCardWrap
                     property={property.filter((item)=>
                       item.type===ItemGroupType[i])}
