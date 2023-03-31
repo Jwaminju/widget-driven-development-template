@@ -1,4 +1,4 @@
-FROM node:14-alpine AS depedencies
+FROM node:14-alpine AS depedencies 
 RUN apk add --no-cache lobc6-compat
 WORKDIR /Carbon-Hero
 COPY package.json package-lock.json ./
@@ -22,7 +22,7 @@ COPY --from=builder --chown=next.js:node.js /Carbon-Hero/.next ./.next
 COPY --from=builder /Carbon-Hero/node_modules ./node_modules
 COPY --from=builder /Carbon-Hero/package.json ./package.json
 
-USER nextjs
+USER nextjs 
 EXPOSE 3000
 
 CMD ["npm", "start"]
