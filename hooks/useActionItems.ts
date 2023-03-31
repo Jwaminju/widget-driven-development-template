@@ -160,6 +160,7 @@ export const useActionItems = () => {
     const itemType = lastSelection.type;
     updateActivation(itemName, itemType);
     changePlayTime(lastSelection);
+    updateItemViewStateOnDB(select);
   }, [lastSelection]);
 
   const updateItemViewStateOnDB = (newItemViewState: ItemState) => {
