@@ -26,9 +26,8 @@ interface Props {
   currItem: ItemDataInterface;
   getCurrItem: (arg1?: any) => any;
   getLastSelection: (arg1?: any) => any;
+  phase: number;
 }
-
-
 
 const Presenter = ( props : Props) => {
 
@@ -62,8 +61,9 @@ const Presenter = ( props : Props) => {
                     <ModalCloseButton backgroundColor='white'/>
                     <SimpleGrid spacing='1%'>  
                         <Heading size='lg' > {props.sceneTitle} </Heading> 
-                        <Box minWidth="90%" minHeight={height!/100*55}> {/* minHeight={height!/100*60} */}
-                            <ItemCards 
+                        <Box minWidth="90%" minHeight={height!/100*55}>
+                            <ItemCards
+                                phase={props.phase}
                                 property={props.data}
                                 getCurrItem={props.getCurrItem}
                                 selected={props.itemSelected}> </ItemCards>

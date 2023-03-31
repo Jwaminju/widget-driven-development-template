@@ -10,11 +10,9 @@ import COUNTRY_ITEMS from "../../data/items/country_items";
 
 const ItemsMenuContainer = () => {
     const { isSuccess, isError, sceneData } = useLink({
-        sceneName: "Action needed for save earth",
+        sceneName: "Actions needed for saving earth",
         nextPage: ""
     });
-
-    const data = [...PERSON_ITEMS, ...COUNTRY_ITEMS, ...ENTERPRISE_ITEMS]
 
     const {
         select,
@@ -23,7 +21,9 @@ const ItemsMenuContainer = () => {
         getCurrItem,
         getLastSelection,
         lastSelection,
-        setLastSelection
+        setLastSelection,
+        data,
+        phase
     } = useActionItems();
 
     if (isSuccess) {
@@ -31,7 +31,7 @@ const ItemsMenuContainer = () => {
               <ItemContext.Provider value={{lastSelection, setLastSelection}}>
                 <Presenter 
                     sceneTitle={sceneData.sceneName} 
-                    data={data} // 실행에 문제는 없는데 string을 type GreenHouseGasType = "co2" | "n2o" | "ch4" | "cfcs"; 에 넣으려해서 생기는 것임
+                    data={data}
                     
                     itemSelected={select}
                     select={getItemSelect}
@@ -40,6 +40,7 @@ const ItemsMenuContainer = () => {
                     getCurrItem={getCurrItem}
                     
                     getLastSelection={getLastSelection}
+                    phase={phase}
                     />            
               </ItemContext.Provider>
         )
