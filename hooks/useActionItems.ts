@@ -4,6 +4,7 @@ import {ItemDataInterface, ItemSelectInterface} from "../models/items.interface"
 import {useGreenHouseGases} from "./useGreenHouseGases";
 import {onValue, ref, set, update} from "firebase/database";
 import {auth, database} from "./useFirebase";
+import {usePlayTime} from "./usePlayTime";
 
 const defaultPersonActionItems: Item[] = [
   {name: 'Riding public transportation', isActivated: false},
@@ -43,11 +44,33 @@ const itemActivationPersonal: ActivationState = {
 }
 
 const itemActivationEnterprise: ActivationState = {
-
+  'Education and Awareness': false,
+  'Waste Management': false,
+  'New product development': false,
+  'Use of recycled materials': false,
+  'Increase the use of renewable energy': false,
+  'Improved fuel efficiency with advanced design, materials, and technology': false,
+  'Streamlining the distribution process': false,
+  'Reduced use of fossil fuels': false,
+  'Fuel conversion': false,
+  'Use of methane gas reducer': false,
+  'Reuse of greenhouse gas': false,
+  'Biogas production': false
 }
 
 const itemActivationCountry: ActivationState = {
-
+  'International Methane Gas Reduction Program under the United Nations': false,
+  'Carbon emission rights system': false,
+  'Sustainable Development Goals': false,
+  'UN Environment Program': false,
+  'Land and crop management': false,
+  'International Resource Panel': false,
+  'United Nations Framework Convention on Climate Change': false,
+  'Livestock/manure management': false,
+  'Sustainable Consumption and Production': false,
+  'Environmental Justice': false,
+  'Change of land use': false,
+  'Marine Waste Management': false
 }
 
 const defaultItemViewState: ItemState = {
@@ -55,14 +78,16 @@ const defaultItemViewState: ItemState = {
   'enterprise': [1, 1, 1],
   'country': [1, 1, 1],
 }
+
 export const useActionItems = () => {
   const personalActionItems = useRef(itemActivationPersonal);
-  // const enterpriseActionItems = useRef(itemActivationEnterprise);
-  // const countryActionItems = useRef(itemActivationCountry);
+  const enterpriseActionItems = useRef(itemActivationEnterprise);
+  const countryActionItems = useRef(itemActivationCountry);
   const [lastSelection, setLastSelection] = useState({} as ItemDataInterface);
   const [currItem, setCurrItem] = useState({} as ItemDataInterface);
   const [select, setSelect] = useState<ItemState>(defaultItemViewState)
   const {updateConcentration} = useGreenHouseGases();
+  const {changePlayTime} = usePlayTime();
 
   // 가장 최근 사용한(선택)한 아이템
   const getLastSelection = (item: ItemDataInterface) => {setLastSelection(item)}
@@ -75,26 +100,40 @@ export const useActionItems = () => {
     switch (itemType) {
       case "person":
         personalActionItems.current[itemName] = true;
+        updatePersonalActivationStateOnDB(personalActionItems.current);
         return;
-      // case "enterprise":
-      //   enterpriseActionItems.current[itemName] = true;
-      //   return;
-      // case "country":
-      //   countryActionItems.current[itemName] = true;
-      //   return;
+      case "enterprise":
+        enterpriseActionItems.current[itemName] = true;
+        updateEnterpriseActivationStateOnDB(enterpriseActionItems.current);
+        return;
+      case "country":
+        countryActionItems.current[itemName] = true;
+        updateCountryActivationStateOnDB(countryActionItems.current);
+        return;
     }
   }
 
   useEffect(() => {
     const itemViewStateRef = ref(database, auth.currentUser?.uid + "/itemViewState");
-    const personalItemRef = ref(database, auth.currentUser?.uid + "/items/personal");
+    const personalItemActivationRef = ref(database, auth.currentUser?.uid + "/items/personal");
+    const enterpriseItemActivationRef = ref(database, auth.currentUser?.uid + "/items/enterprise");
+    const countryItemActivationRef = ref(database, auth.currentUser?.uid + "/items/country");
+
     onValue(itemViewStateRef, (snapshot) => {
       const itemViewState = snapshot.val();
       if (itemViewState) {setSelect(JSON.parse(itemViewState))}
     })
-    onValue(personalItemRef, (snapshot) => {
-      const personalItems = snapshot.val();
-      if (personalItems) {personalActionItems.current = personalItems}
+    onValue(personalItemActivationRef, (snapshot) => {
+      const personalItemActivation = snapshot.val();
+      if (personalItemActivation) {personalActionItems.current = personalItemActivation}
+    })
+    onValue(enterpriseItemActivationRef, (snapshot) => {
+      const enterpriseItemActivation = snapshot.val();
+      if (enterpriseItemActivation) {personalActionItems.current = enterpriseItemActivation}
+    })
+    onValue(countryItemActivationRef, (snapshot) => {
+      const countryItemActivation = snapshot.val();
+      if (countryItemActivation) {personalActionItems.current = countryItemActivation}
     })
   }, []);
 
@@ -103,16 +142,16 @@ export const useActionItems = () => {
       ...newPersonaActivationState
     })
   }
-  // const updateEnterpriseActivationStateOnDB = (newEnterpriseActivationState: ActivationState) => {
-  //   update(ref(database, auth.currentUser?.uid + "/items/enterprise"), {
-  //     ...newEnterpriseActivationState
-  //   })
-  // }
-  // const updateCountryActivationStateOnDB = (newCountryActivationState: ActivationState) => {
-  //   update(ref(database, auth.currentUser?.uid + "/items/country"), {
-  //     ...newCountryActivationState
-  //   })
-  // }
+  const updateEnterpriseActivationStateOnDB = (newEnterpriseActivationState: ActivationState) => {
+    update(ref(database, auth.currentUser?.uid + "/items/enterprise"), {
+      ...newEnterpriseActivationState
+    })
+  }
+  const updateCountryActivationStateOnDB = (newCountryActivationState: ActivationState) => {
+    update(ref(database, auth.currentUser?.uid + "/items/country"), {
+      ...newCountryActivationState
+    })
+  }
 
   useEffect(() => {
     if (Object.keys(lastSelection).length === 0) return;
@@ -120,6 +159,7 @@ export const useActionItems = () => {
     const itemName = lastSelection.name;
     const itemType = lastSelection.type;
     updateActivation(itemName, itemType);
+    changePlayTime(lastSelection);
   }, [lastSelection]);
 
   const updateItemViewStateOnDB = (newItemViewState: ItemState) => {
