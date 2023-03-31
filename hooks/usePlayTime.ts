@@ -3,7 +3,7 @@
 import {onValue, ref, set} from "firebase/database";
 import {auth, database} from "./useFirebase";
 import {useEffect, useState} from "react";
-import {ItemDataInterface} from "../data/items.interface";
+import {ItemDataInterface} from "../models/items.interface";
 
 const defaultActionCount = {
   "person": 1,

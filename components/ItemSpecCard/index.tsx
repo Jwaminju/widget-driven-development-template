@@ -1,6 +1,6 @@
 import {  Text, Image, Badge, Button, Card, Stack, CardBody, CardFooter, Heading,Container,Center } from '@chakra-ui/react'
 import { StarIcon } from '@chakra-ui/icons'
-import { ItemDataInterface, ItemSelectInterface } from '../../data/items.interface';
+import { ItemDataInterface, ItemSelectInterface } from '../../models/items.interface';
 import { useToast, useDisclosure} from '@chakra-ui/react'
 import {useContext, useEffect, useRef, useState} from "react";
 

@@ -1,4 +1,4 @@
-import {GreenHouseGasType} from "../models/gamestate.types";
+import {GreenHouseGasType} from "./gamestate.types";
 
 export interface ItemDataInterface {
     name: string;

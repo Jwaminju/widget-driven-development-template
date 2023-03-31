@@ -34,19 +34,29 @@ const ItemCards = (props:itemsSpec) => {
         <Tab fontWeight='bold' onClick={myClick}>National Action</Tab>
     </TabList>
     <TabPanels>
+        <TabPanel padding='1%'> 
+            <ItemCardWrap 
+                property={props.property} 
+                getCurrItem={props.getCurrItem} 
+                selected={props.selected['person']}></ItemCardWrap>
+        </TabPanel>
 
-        {Array(3).fill('').map((_, i) => (
-            <>
-            <TabPanel padding='1%'>
-                <ItemCardWrap 
-                    property={props.property.filter((item)=> 
-                        item.type===ItemGroupType[i])} 
-                    getCurrItem={props.getCurrItem} 
-                    selected={props.selected['person']}></ItemCardWrap>
-            </TabPanel>
-            </>
-        ))}
+        <TabPanel>
+            {/* <ItemCardWrap 
+                property={props.property} 
+                getCurrItem={props.getCurrItem} 
+                selected={props.selected['person']}></ItemCardWrap> */}
+        
+        </TabPanel>
 
+        <TabPanel>
+            {/* <ItemCardWrap 
+                property={props.property} 
+                getCurrItem={props.getCurrItem} 
+                selected={props.selected['person']}></ItemCardWrap> */}
+        
+        </TabPanel>
+    
     </TabPanels>
     </Tabs>
 
