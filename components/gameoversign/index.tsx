@@ -4,7 +4,7 @@ import LinkToNext from "../LinkToNext";
 
 interface Props {}
 
-const GameOverSign = ({}: Props) => {
+const GameOverSign = () => {
     return (
       <Center position={"fixed"} left={0} top={0} zIndex={100} width={"100%"} height={"100%"}>
         <Card width={"xl"} height={"xl"}>
