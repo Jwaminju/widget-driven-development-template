@@ -1,10 +1,10 @@
 import {Item, ItemState} from "../models/gamestate.types";
 import {useEffect, useRef, useState} from "react";
 import {ItemDataInterface, ItemSelectInterface} from "../models/items.interface";
-import {updateConcentration, useGreenHouseGases} from "./useGreenHouseGases";
+import {updateConcentration} from "./useGreenHouseGases";
 import {get, onValue, ref, set, update} from "firebase/database";
 import {auth, database} from "./useFirebase";
-import {usePlayTime} from "./usePlayTime";
+import {changePlayTime} from "./usePlayTime";
 import PERSON_ITEMS from "../data/items/personal_item";
 import COUNTRY_ITEMS from "../data/items/country_items";
 import ENTERPRISE_ITEMS from "../data/items/enterprise_items";
@@ -91,7 +91,6 @@ export const useActionItems = () => {
   const [currItem, setCurrItem] = useState({} as ItemDataInterface);
   const [select, setSelect] = useState<ItemState>(defaultItemViewState)
   const [phase, setPhase] = useState(0);
-  const {changePlayTime} = usePlayTime();
 
   // 가장 최근 사용한(선택)한 아이템
   const getLastSelection = (item: ItemDataInterface) => {setLastSelection(item)}

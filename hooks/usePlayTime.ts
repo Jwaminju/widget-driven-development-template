@@ -29,7 +29,7 @@ export const usePlayTime = () => {
     })
   }, []);
 
-  return {playTime, changePlayTime}
+  return {playTime}
 }
 
 export const updatePlayTimeOnDB = (newPlayTime: number) => {
