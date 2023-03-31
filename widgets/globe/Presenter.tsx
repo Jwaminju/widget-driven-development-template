@@ -1,4 +1,4 @@
-import {FC, MutableRefObject, RefObject} from "react";
+import {FC, MutableRefObject} from "react";
 import {GlobeData} from "../../models/globe-layer.types";
 import {
   FeatureCollection,

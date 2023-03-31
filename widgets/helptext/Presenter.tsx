@@ -1,12 +1,15 @@
 import {
-  Text,
   Button,
-  Modal, ModalBody,
+  Divider,
+  Modal,
+  ModalBody,
   ModalCloseButton,
-  ModalContent, ModalFooter,
+  ModalContent,
+  ModalFooter,
   ModalHeader,
   ModalOverlay,
-  useDisclosure, Divider
+  Text,
+  useDisclosure
 } from "@chakra-ui/react";
 
 interface Props {}

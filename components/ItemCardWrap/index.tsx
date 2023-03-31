@@ -1,4 +1,4 @@
-import { Avatar, AvatarBadge, Wrap, WrapItem } from "@chakra-ui/react";
+import {Avatar, AvatarBadge, Wrap, WrapItem} from "@chakra-ui/react";
 import {ItemDataInterface} from "../../models/items.interface";
 
 interface Props {

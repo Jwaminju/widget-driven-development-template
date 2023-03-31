@@ -1,7 +1,6 @@
 import {StatGroup} from "@chakra-ui/stat";
 import StatIndicator from "../../components/StatIndicator";
 import {defaultGreenHouseGases, GreenHouseGas} from "../../models/greenhousegas";
-import {Divider} from "@chakra-ui/react";
 
 interface Props {
   greenHouseEffect: number;

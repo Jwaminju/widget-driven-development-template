@@ -1,5 +1,3 @@
-
-
 // valid_year total: 23 years
 import {ItemDataInterface} from "../../models/items.interface";
 

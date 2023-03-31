@@ -1,19 +1,26 @@
-import {  Text, Image, Badge, Button, Card, Stack, CardBody, CardFooter, Heading,Container,Center } from '@chakra-ui/react'
-import { StarIcon } from '@chakra-ui/icons'
-import { ItemDataInterface, ItemSelectInterface } from '../../models/items.interface';
-import { useToast, useDisclosure} from '@chakra-ui/react'
-import {useContext, useEffect, useRef, useState} from "react";
-
 import {
     AlertDialog,
     AlertDialogBody,
+    AlertDialogContent,
     AlertDialogFooter,
     AlertDialogHeader,
-    AlertDialogContent,
     AlertDialogOverlay,
-  } from '@chakra-ui/react'
-import { ItemContext } from '../../hooks/useLastSelectionContext';
-  
+    Badge,
+    Button,
+    Card,
+    CardBody,
+    CardFooter,
+    Heading,
+    Image,
+    Stack,
+    Text,
+    useDisclosure,
+    useToast
+} from '@chakra-ui/react'
+import {StarIcon} from '@chakra-ui/icons'
+import {ItemDataInterface, ItemSelectInterface} from '../../models/items.interface';
+import {useRef} from "react";
+
 interface itemsSpec {
     property: ItemDataInterface;
     select: (arg1?: any, arg2?: any) => any;

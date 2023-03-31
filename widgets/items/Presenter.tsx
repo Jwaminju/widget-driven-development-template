@@ -1,6 +1,17 @@
 import {
-    Box, Button, Container, Heading, Modal, ModalBody,
-    ModalCloseButton, ModalContent, ModalOverlay, SimpleGrid, Spacer, Tooltip, useDisclosure
+  Box,
+  Button,
+  Container,
+  Heading,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalOverlay,
+  SimpleGrid,
+  Spacer,
+  Tooltip,
+  useDisclosure
 } from "@chakra-ui/react";
 import ItemSpecCard from "../../components/ItemSpecCard";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
