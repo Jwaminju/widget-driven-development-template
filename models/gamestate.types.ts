@@ -1,8 +1,10 @@
+import {ActionCount} from "../hooks/usePlayTime";
+
 export interface GameState {
-  "username": string;
   "playtime": number;
   "greenHouseGases": GreenHouseGases;
   "items": Items;
+  "actionCount": ActionCount;
 }
 
 export type SerializedGas = {
@@ -21,7 +23,7 @@ export type Item = {
 export interface Items {
   "personal": Item[];
   "enterprise": Item[];
-  "national": Item[];
+  "country": Item[];
 }
 
 export type GreenHouseGasType = "co2" | "n2o" | "ch4" | "cfcs";
