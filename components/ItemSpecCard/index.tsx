@@ -81,7 +81,7 @@ const ItemSpecCard = ({
                             />
                         ))}
                     </Badge>
-                    <Badge colorScheme='red' fontSize='md' ml='1%' borderRadius='full' > Retention For {1} Year </Badge>
+                    <Badge colorScheme='red' fontSize='md' ml='1%' borderRadius='full' > Retention For {property.valid_year} Year </Badge>
                     <Heading paddingTop='1%' size='md'> {property.name} </Heading>
                     <Text fontSize='lg' py='1%'> {property.story} </Text>
                 </CardBody>
