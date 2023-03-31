@@ -9,7 +9,7 @@ const Ending: NextPage = () => {
             <Head>
                 <title>CarbonHero</title>
                 <meta name="description" content="Education game for Global Warming" />
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="icon" href="/planet-earth.png" />
             </Head>
             <EndingSceneContainer />
         </ChakraProvider>
