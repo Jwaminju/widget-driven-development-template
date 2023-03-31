@@ -16,7 +16,7 @@ const StatIndicator = ({
   return (
       <Stat variant={"great"}>
           <StatLabel>{label.toUpperCase()}</StatLabel>
-          <StatNumber>{indicatorNumber}</StatNumber>
+          <StatNumber>{indicatorNumber+"(ppm)"}</StatNumber>
           <StatHelpText>
               <StatArrow type={changeRate >= 0 ? "increase" : "decrease"} />
               {changeRate+'%'}
