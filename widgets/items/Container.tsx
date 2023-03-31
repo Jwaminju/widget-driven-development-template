@@ -1,13 +1,11 @@
-import { COUNTRY_ITEMS } from "../../data/items/country_items";
-import { ENTERPRISE_ITEMS } from "../../data/items/enterprise_items";
-import { PERSON_ITEMS } from "../../data/items/personal_item";
 import useLink from "../../hooks/useLink";
 import Error from "./Error";
 import Loading from "./Loading";
 import Presenter from "./Presenter";
-
-import { useActionItems } from "../../hooks/useGameState";
+import { PERSON_ITEMS } from "../../data/items/personal_item";
 import { ItemContext } from "../../hooks/useLastSelectionContext";
+
+import {useActionItems} from "../../hooks/useActionItems";
 
 const ItemsMenuContainer = () => {
     const { isSuccess, isError, sceneData } = useLink({

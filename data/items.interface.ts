@@ -1,4 +1,4 @@
-import { GreenHouseGasType } from "../hooks/useGameState";
+import {GreenHouseGasType} from "../models/gamestate.types";
 
 export interface ItemDataInterface {
     name: string;
@@ -6,7 +6,7 @@ export interface ItemDataInterface {
     story: string;
     tier: number;
     valid_year: number;
-    ima_tag: string;
+    img_tag: string;
     group: number;
     type: string;
     greenGasType: GreenHouseGasType;

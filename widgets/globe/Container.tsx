@@ -2,7 +2,8 @@ import Error from "./Error";
 import Loading from "./Loading";
 import Presenter from "./Presenter";
 import useGlobe from "../../hooks/useGlobe";
-import {useGreenHouseGases} from "../../hooks/useGameState";
+
+import {useGreenHouseGases} from "../../hooks/useGreenHouseGases";
 
 const GlobeContainer = () => {
     const { isSuccess, globe, countries, polygonData, globeData } = useGlobe();

@@ -1,4 +1,4 @@
-import {SerializedGas} from "../hooks/useGameState";
+import {SerializedGas} from "./gamestate.types";
 // 각각의 온실가스 측정량은 ppm 단위 입니다.
 // 온실 효과 계산에 영향을 주는 요소.
 // 1. atmospheric lifetime
@@ -80,6 +80,7 @@ export class H2o extends GreenHouseGas {
 }
 export abstract class GasFactory {
   static createGas(type: string, concentration: number): GreenHouseGas {
+    console.log(type)
     switch (type) {
       case "co2":
         return new Co2(concentration);
