@@ -1,20 +1,11 @@
-import styles from "../../styles/Landing.module.css";
-import Heading1 from "../../components/Heading1";
-import LinkToNext from "../../components/LinkToNext";
-import ItemCards from "./itemcards";
+import {
+    Box, Button, Container, Heading, Modal, ModalBody,
+    ModalCloseButton, ModalContent, ModalOverlay, SimpleGrid, Spacer, Tooltip, useDisclosure
+} from "@chakra-ui/react";
 import ItemSpecCard from "../../components/ItemSpecCard";
 import { ItemDataInterface, ItemSelectInterface } from "../../data/items.interface";
-import { SimpleGrid, Center, ChakraProvider, Button, Spacer, Flex, VStack, Text, Box, Tooltip, Container, Heading } from "@chakra-ui/react";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
-import {
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalBody,
-    ModalCloseButton,
-    useDisclosure,
-  } from "@chakra-ui/react"
-import React from 'react';
+import ItemCards from "./itemcards";
 
 interface Props {
   sceneTitle?: string;
@@ -31,21 +22,12 @@ interface Props {
 const Presenter = ( props : Props) => {
 
     const { width, height } = useWindowDimensions();
-    const { isOpen, onOpen, onClose } = useDisclosure({ defaultIsOpen: false, })
+    const { isOpen, onOpen, onClose } = useDisclosure()
     
     return (
         <Container> 
             <Tooltip label='Select item'>
-                <Button
-                  position={"fixed"}
-                  right={"5%"}
-                  bottom={"10%"}
-                  zIndex={100}
-                  onClick={onOpen}
-                  padding={10}
-                  fontSize={"2rem"}
-                  fontWeight={"extrabold"}
-                >Take Action!</Button>
+                <Button onClick={onOpen}> Item Box </Button>
             </Tooltip>
             <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay bgColor='blackAlpha.700' />
@@ -64,16 +46,14 @@ const Presenter = ( props : Props) => {
                             <ItemCards 
                                 property={props.data}
                                 getCurrItem={props.getCurrItem}
-                                selected={props.itemSelected}>
-                            </ItemCards>
+                                selected={props.itemSelected}> </ItemCards> 
                         </Box>
                         <Box minWidth={width!/100*90} minHeight={height!/100*20}> 
                             <ItemSpecCard 
                                 property={props.currItem} 
                                 select={props.select} 
                                 selected={props.itemSelected}
-                                getLastSelection={props.getLastSelection}
-                            ></ItemSpecCard>
+                                getLastSelection={props.getLastSelection}></ItemSpecCard>
                         </Box>
                     </SimpleGrid>
                     <Spacer/>

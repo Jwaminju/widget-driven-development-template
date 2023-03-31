@@ -1,9 +1,7 @@
-import { Wrap, WrapItem, Tabs, TabList, Tab, TabPanels, TabPanel, useColorModeValue, SimpleGrid, Box, Container } from "@chakra-ui/react";
-import { Image } from '@chakra-ui/react'
-import { Avatar, AvatarBadge, AvatarGroup } from '@chakra-ui/react'
+import { Tab, TabList, TabPanel, TabPanels, Tabs, useColorModeValue } from "@chakra-ui/react";
 import { useState } from "react";
-import { ItemDataInterface, ItemSelectInterface } from "../../data/items.interface";
 import ItemCardWrap from "../../components/ItemCardWrap";
+import { ItemDataInterface, ItemSelectInterface } from "../../data/items.interface";
 
 interface itemsSpec {
     children: React.ReactNode;
@@ -11,6 +9,8 @@ interface itemsSpec {
     getCurrItem: (arg1?: any) => any;
     selected: ItemSelectInterface;
 };
+
+const ItemGroupType = ["person", "enterprise", "country"];
 
 const ItemCards = (props:itemsSpec) => {
 
@@ -34,29 +34,19 @@ const ItemCards = (props:itemsSpec) => {
         <Tab fontWeight='bold' onClick={myClick}>National Action</Tab>
     </TabList>
     <TabPanels>
-        <TabPanel padding='1%'> 
-            <ItemCardWrap 
-                property={props.property} 
-                getCurrItem={props.getCurrItem} 
-                selected={props.selected['person']}></ItemCardWrap>
-        </TabPanel>
 
-        <TabPanel>
-            {/* <ItemCardWrap 
-                property={props.property} 
-                getCurrItem={props.getCurrItem} 
-                selected={props.selected['person']}></ItemCardWrap> */}
-        
-        </TabPanel>
+        {Array(3).fill('').map((_, i) => (
+            <>
+            <TabPanel padding='1%'>
+                <ItemCardWrap 
+                    property={props.property.filter((item)=> 
+                        item.type===ItemGroupType[i])} 
+                    getCurrItem={props.getCurrItem} 
+                    selected={props.selected['person']}></ItemCardWrap>
+            </TabPanel>
+            </>
+        ))}
 
-        <TabPanel>
-            {/* <ItemCardWrap 
-                property={props.property} 
-                getCurrItem={props.getCurrItem} 
-                selected={props.selected['person']}></ItemCardWrap> */}
-        
-        </TabPanel>
-    
     </TabPanels>
     </Tabs>
 
