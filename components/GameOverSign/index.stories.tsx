@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import gameoversignComponent from './index';
 
 export default {
-    title: 'components/gameoversign',
+    title: 'components/GameOverSign',
     component: gameoversignComponent,
 } as ComponentMeta<typeof gameoversign>;
 

@@ -34,7 +34,7 @@ const Presenter = ( props : Props) => {
                   zIndex={100}
                   onClick={onOpen}
                   padding={10}
-                  fontSize={"2rem"}
+                  fontSize={"lg"}
                   fontWeight={"extrabold"}
                 >Take Action!</Button>
             </Tooltip>
