@@ -17,6 +17,14 @@ export abstract class GreenHouseGas {
   public commitment(): number {
     return this.concentration*this.absorption*this.lifetime;
   };
+
+  public serialize(): SerializedGas {
+    return {
+      "type": this.name,
+      "concentration": this.concentration,
+      "lastChangeRate": this.lastChangeRate
+    }
+  }
 }
 
 // concentration: 온실가스의 대기 중 농도 단위는 %
