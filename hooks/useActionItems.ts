@@ -2,8 +2,7 @@ import {Item, ItemState} from "../models/gamestate.types";
 import {useEffect, useRef, useState} from "react";
 import {ItemDataInterface, ItemSelectInterface} from "../models/items.interface";
 import {updateConcentration} from "./useGreenHouseGases";
-import {get, onValue, ref, set, update} from "firebase/database";
-import {auth, database} from "./useFirebase";
+import {get, onValue, set, update} from "firebase/database";
 import {changePlayTime} from "./usePlayTime";
 import PERSON_ITEMS from "../data/items/personal_item";
 import COUNTRY_ITEMS from "../data/items/country_items";
@@ -13,8 +12,9 @@ import {
   countryActivationRef,
   enterpriseActivationRef,
   greenHouseGasesRef,
-  itemStateRef,
-  personalActivationRef
+  itemViewStateRef,
+  personalActivationRef,
+  phaseRef
 } from "./utils/dbRefs";
 
 const defaultPersonActionItems: Item[] = [
@@ -124,26 +124,25 @@ export const useActionItems = () => {
   }
 
   useEffect(() => {
-    const itemViewStateRef = ref(database, auth.currentUser?.uid + "/itemViewState");
-    const personalItemActivationRef = ref(database, auth.currentUser?.uid + "/items/personal");
-    const enterpriseItemActivationRef = ref(database, auth.currentUser?.uid + "/items/enterprise");
-    const countryItemActivationRef = ref(database, auth.currentUser?.uid + "/items/country");
-
     onValue(itemViewStateRef, (snapshot) => {
       const itemViewState = snapshot.val();
       if (itemViewState) {setSelect(JSON.parse(itemViewState))}
     })
-    onValue(personalItemActivationRef, (snapshot) => {
+    onValue(personalActivationRef, (snapshot) => {
       const personalItemActivation = snapshot.val();
       if (personalItemActivation) {personalActionItems.current = personalItemActivation}
     })
-    onValue(enterpriseItemActivationRef, (snapshot) => {
+    onValue(enterpriseActivationRef, (snapshot) => {
       const enterpriseItemActivation = snapshot.val();
       if (enterpriseItemActivation) {personalActionItems.current = enterpriseItemActivation}
     })
-    onValue(countryItemActivationRef, (snapshot) => {
+    onValue(countryActivationRef, (snapshot) => {
       const countryItemActivation = snapshot.val();
       if (countryItemActivation) {personalActionItems.current = countryItemActivation}
+    })
+    onValue(phaseRef, (snapshot) => {
+      const savedPhase = snapshot.val();
+      if (savedPhase) {setPhase(savedPhase)};
     })
   }, []);
 
@@ -162,6 +161,13 @@ export const useActionItems = () => {
       ...newCountryActivationState
     })
   }
+  const updateItemViewStateOnDB = (newItemViewState: ItemState) => {
+    set(itemViewStateRef, JSON.stringify(newItemViewState));
+  }
+
+  const updatePhaseOnDB = (newPhase: number) => {
+    set(phaseRef, newPhase);
+  }
 
   useEffect(() => {
     if (Object.keys(lastSelection).length === 0) return;
@@ -179,19 +185,14 @@ export const useActionItems = () => {
         updateActivation(itemName, itemType);
         changePlayTime(lastSelection);
         updateItemViewStateOnDB(select);
-        setPhase((prevPhase) => {
-          if (prevPhase === 2) return 0;
-          return prevPhase + 1;
-        });
+        const newPhase = phase == 2 ? 0 : phase+1;
+        updatePhaseOnDB(newPhase);
       })
       .catch((err) => {
         console.log(err);
       });
   }, [lastSelection]);
 
-  const updateItemViewStateOnDB = (newItemViewState: ItemState) => {
-    set(itemStateRef, JSON.stringify(newItemViewState));
-  }
 
   return {lastSelection, setLastSelection, select, getItemSelect, currItem, getCurrItem, getLastSelection, data, phase}
 }

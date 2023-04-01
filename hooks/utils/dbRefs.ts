@@ -13,5 +13,6 @@ export const personalActivationRef = ref(database, auth.currentUser?.uid + "/ite
 export const playTimeRef = ref(database, auth.currentUser?.uid + "/playtime");
 export const enterpriseActivationRef = ref(database, auth.currentUser?.uid + "/items/enterprise");
 export const countryActivationRef = ref(database, auth.currentUser?.uid + "/items/country");
-export const itemStateRef = ref(database, auth.currentUser?.uid + "/itemState");
 export const actionCountRef = ref(database, auth.currentUser?.uid + "/actionCount");
+export const itemViewStateRef = ref(database, auth.currentUser?.uid + "/itemViewState");
+export const phaseRef = ref(database, auth.currentUser?.uid + "/phase");
