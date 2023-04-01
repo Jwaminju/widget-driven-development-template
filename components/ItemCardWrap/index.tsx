@@ -24,7 +24,7 @@ const ItemCardWrap = ({property, getCurrItem, selected}: Props) => {
                                 item.group===i+1 && item.tier <= selected[i] 
                                 ).map((item, idx) => (
                             // eslint-disable-next-line react/jsx-key
-                            <Avatar onClick={myClick.bind(this, item)} 
+                            <Avatar onClick={() => {myClick(item)}}
                             size='2xl' name={item.name} src={item.img} p='1%' ml='1%'>
                                 <AvatarBadge boxSize='1.25em' bg='teal.300'> {item.tier} </AvatarBadge> 
                             </Avatar>
