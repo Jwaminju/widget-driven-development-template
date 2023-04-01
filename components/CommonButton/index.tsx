@@ -2,7 +2,7 @@ import { Button } from "@chakra-ui/react";
 
 interface Props {
     label: string;
-    onClick: (args: any) => any;
+    onClick: () => any;
 }
 
 const CommonButton = ({label, onClick}: Props) => {
