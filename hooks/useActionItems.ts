@@ -33,7 +33,7 @@ export const useActionItems = () => {
     onValue(phaseRef(), (snapshot) => {
       if (!snapshot.exists()) return;
       const savedPhase = snapshot.val();
-      if (savedPhase) {setPhase(savedPhase)};
+      setPhase(savedPhase);
     })
   }, []);
 
@@ -66,6 +66,7 @@ export const useActionItems = () => {
           update(gameStateRef(), newGameState);
         }
         else {
+          newGameState["itemViewState"] = JSON.stringify(select);
           update(gameStateRef(), newGameState);
         }
       })
