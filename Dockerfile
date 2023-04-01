@@ -31,10 +31,6 @@ COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /widget-driven-development-template/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /widget-driven-development-template/.next/static ./.next/static
 
-COPY --from=builder --chown=next.js:node.js /widget-driven-development-template/.next ./.next
-COPY --from=builder /widget-driven-development-template/node_modules ./node_modules
-COPY --from=builder /widget-driven-development-template/package.json ./package.json
-
 USER nextjs 
 EXPOSE 3000
 ENV PORT 3000
