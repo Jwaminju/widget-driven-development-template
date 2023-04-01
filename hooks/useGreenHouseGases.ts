@@ -40,7 +40,6 @@ export const useGreenHouseGases = () => {
     })
   }, []);
 
-
   return {greenHouseGases, greenHouseEffect, greenHouseEffectChangeRate};
 }
 

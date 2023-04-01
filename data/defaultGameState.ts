@@ -60,6 +60,6 @@ export const defaultGameState: GameState = {
     "enterprise": itemActivationEnterprise,
     "country": itemActivationCountry
   },
-  "phase": 0,
+  "phase": 1,
   "itemViewState": JSON.stringify(defaultItemViewState)
 }
