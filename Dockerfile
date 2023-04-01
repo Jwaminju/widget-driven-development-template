@@ -1,4 +1,4 @@
-FROM node:18-alpine AS base
+FROM node:19.6.0-alpine AS base
 
 FROM base AS deps
 RUN apk add --no-cache libc6-compat
@@ -23,17 +23,17 @@ WORKDIR /widget-driven-development-template
 
 ENV NODE_ENV production
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
+RUN addgroup -g 1001 -S nodejs
+RUN adduser -S carbonherodev -u 1001
 
-COPY --from=builder /app/public ./public
+COPY --from=builder /widget-driven-development-template/public ./public
 
-COPY --from=builder --chown=nextjs:nodejs /widget-driven-development-template/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /widget-driven-development-template/.next/static ./.next/static
+COPY --from=builder --chown=carbonherodev:nodejs /widget-driven-development-template/.next ./.next
+COPY --from=builder /widget-driven-development-template/node_modules ./node_modules
+COPY --from=builder /widget-driven-development-template/package.json ./package.json
 
-USER nextjs 
+
+USER carbonherodev 
 EXPOSE 3000
-ENV PORT 3000
 
 CMD ["yarn", "start"]
-
