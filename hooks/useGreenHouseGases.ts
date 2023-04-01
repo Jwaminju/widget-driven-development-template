@@ -1,8 +1,8 @@
 import {onValue, set} from "firebase/database";
 import {useEffect, useMemo, useState} from "react";
 import {calculateGreenHouseEffect, defaultGreenHouseGases, GasFactory, GreenHouseGas} from "../models/greenhousegas";
-import {GreenHouseGasType} from "../models/gamestate.types";
-import {greenHouseGasesRef, playTimeRef} from "./utils/dbRefs";
+import {GameState, GreenHouseGasType} from "../models/gamestate.types";
+import {gameStateRef, greenHouseGasesRef, playTimeRef} from "./utils/dbRefs";
 
 const greenHouseGasNames = ["co2", "n2o", "ch4", "cfcs"];
 export const greenHouseGasIndex:{[index: string]: number} = {
@@ -21,13 +21,13 @@ export const useGreenHouseGases = () => {
   }, [greenHouseGases]);
 
   useEffect(() => {
-    onValue(greenHouseGasesRef, (snapshot) => {
+    onValue(greenHouseGasesRef(), (snapshot) => {
+      if (!snapshot.exists()) return;
       const greenHouseGases = snapshot.val();
-      if (greenHouseGases) {
-        setGreenHouseGases(GasFactory.deserializeGases(greenHouseGases))
-      }
+      setGreenHouseGases(GasFactory.deserializeGases(greenHouseGases));
     })
-    onValue(playTimeRef, (snapshot) => {
+    onValue(playTimeRef(), (snapshot) => {
+      if (!snapshot.exists()) return;
       setGreenHouseGases((greenHouseGases) => {
         return greenHouseGasNames.map(gasName => {
           return GasFactory.createGas(
@@ -44,18 +44,6 @@ export const useGreenHouseGases = () => {
   return {greenHouseGases, greenHouseEffect, greenHouseEffectChangeRate};
 }
 
-export const updateGreenHouseGasesOnDB = (newGreenHouseGases: GreenHouseGas[]) => {
-  set(greenHouseGasesRef,
-    newGreenHouseGases.map(greenHouseGas => (
-        {
-          type: greenHouseGas.name,
-          concentration: greenHouseGas.concentration,
-          lastChangeRate: greenHouseGas.lastChangeRate
-        }
-      )
-    ));
-}
-
 export const updateConcentration = (greenHouseGasType: GreenHouseGasType, concentrationChange: number, greenHouseGases: GreenHouseGas[]) => {
   const index = greenHouseGasIndex[greenHouseGasType];
   const oldConcentration: number = greenHouseGases[index].concentration;
@@ -63,5 +51,5 @@ export const updateConcentration = (greenHouseGasType: GreenHouseGasType, concen
   const newGreenHouseGas: GreenHouseGas = GasFactory.createGas(greenHouseGasType, newConcentration, concentrationChange);
   const newGreenHouseGases: GreenHouseGas[] = [...greenHouseGases];
   newGreenHouseGases[index] = newGreenHouseGas;
-  updateGreenHouseGasesOnDB(newGreenHouseGases);
+  return newGreenHouseGases;
 }

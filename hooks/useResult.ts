@@ -7,7 +7,8 @@ import {gameStateRef} from "./utils/dbRefs";
 export const useResult = () => {
   const [isDefeat, setIsDefeat] = useState(false);
   const [gasDifference, setGasDifference] = useState(0);
-  get(gameStateRef).then((snapshot) => {
+  get(gameStateRef()).then((snapshot) => {
+    if (!snapshot.exists()) return;
     const gameState = snapshot.val() as GameState;
     if (!gameState.greenHouseGases) return;
     const defaultEffect = calculateGreenHouseEffect(defaultGreenHouseGases);
