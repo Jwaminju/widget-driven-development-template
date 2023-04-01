@@ -83,8 +83,8 @@ const ItemSpecCard = ({
                     </Badge>
                     <Heading paddingTop='1%' size='md'> {property.name} </Heading>
                     <Text fontSize='lg' py='1%'> {property.story} </Text>
-                    <Text fontSize={"md"}>{property.greenGasType.toUpperCase()}</Text>
-                    <Text fontSize={"md"}>{property.concentration+"%"}</Text>
+                    <Text fontSize={"md"}>{"Type of Green House Gas: " + property.greenGasType.toUpperCase()}</Text>
+                    <Text fontSize={"md"}>{"Is Decreased by: " + property.concentration+"%"}</Text>
                 </CardBody>
                 <CardFooter>
                     {   
