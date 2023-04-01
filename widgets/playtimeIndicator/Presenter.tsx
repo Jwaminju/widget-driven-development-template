@@ -6,7 +6,7 @@ interface Props {
 }
 
 const Presenter = ({playTime}: Props) => {
-    if (playTime > 2050) {
+    if (playTime > 2035) {
       return <GameOverSign />
     }
     return (
@@ -18,13 +18,13 @@ const Presenter = ({playTime}: Props) => {
         zIndex={100}
         backgroundColor={"whiteAlpha.900"}
         padding={10}
-        borderRadius={"50%"}
+        borderRadius={"10%"}
         boxShadow={"outline"}
         fontWeight={"extrabold"}
       >
         <StatLabel>This Year is</StatLabel>
         <StatNumber>{playTime}</StatNumber>
-        <StatHelpText>{`${2050-playTime} years left`}</StatHelpText>
+        <StatHelpText>{`You can make this world better!`}</StatHelpText>
       </Stat>
     )
 }

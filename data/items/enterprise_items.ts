@@ -12,7 +12,7 @@ const ENTERPRISE_ITEMS: ItemDataInterface[] = [
         group: 1,
         type: 'enterprise',
         greenGasType: 'cfcs',   
-    	  concentration: -2,
+    	  concentration: -0.2,
     },
     {
         name: 'Waste Management',
@@ -24,7 +24,7 @@ const ENTERPRISE_ITEMS: ItemDataInterface[] = [
         group: 2,
         type: 'enterprise',
         greenGasType: 'ch4',   
-    	  concentration: -2,
+    	  concentration: -0.2,
     },
     {
         name: 'New product development',
@@ -36,7 +36,7 @@ const ENTERPRISE_ITEMS: ItemDataInterface[] = [
         group: 3,
         type: 'enterprise',
         greenGasType: 'cfcs',   
-    	  concentration: -2,
+    	  concentration: -0.2,
     },
     {
         name: 'Use of recycled materials',
@@ -48,7 +48,7 @@ const ENTERPRISE_ITEMS: ItemDataInterface[] = [
         group: 1,
         type: 'enterprise',
         greenGasType: 'n2o',   
-    	  concentration: -2,
+    	  concentration: -0.2,
     },
     {
         name: 'Increase the use of renewable energy',
@@ -60,7 +60,7 @@ const ENTERPRISE_ITEMS: ItemDataInterface[] = [
         group: 2,
         type: 'enterprise',
         greenGasType: 'ch4',   
-    	  concentration: -3,
+    	  concentration: -0.3,
     },
     {
         name: 'Improved fuel efficiency with advanced design, materials, and technology',
@@ -72,7 +72,7 @@ const ENTERPRISE_ITEMS: ItemDataInterface[] = [
         group: 3,
         type: 'enterprise',
         greenGasType: 'ch4',   
-    	  concentration: -3,
+    	  concentration: -0.3,
     },
     {
         name: 'Streamlining the distribution process',
@@ -84,7 +84,7 @@ const ENTERPRISE_ITEMS: ItemDataInterface[] = [
         group: 1,
         type: 'enterprise',
         greenGasType: 'co2',   
-    	  concentration: -7,
+    	  concentration: -0.7,
     },
     {
         name: 'Reduced use of fossil fuels',
@@ -96,7 +96,7 @@ const ENTERPRISE_ITEMS: ItemDataInterface[] = [
         group: 2,
         type: 'enterprise',
         greenGasType: 'cfcs',   
-    	  concentration: -4,
+    	  concentration: -0.4,
     },
     {
         name: 'Fuel conversion',
@@ -108,7 +108,7 @@ const ENTERPRISE_ITEMS: ItemDataInterface[] = [
         group: 3,
         type: 'enterprise',
         greenGasType: 'n2o',   
-    	  concentration: -3,
+    	  concentration: -0.3,
     },
     {
         name: 'Use of methane gas reducer',
@@ -120,7 +120,7 @@ const ENTERPRISE_ITEMS: ItemDataInterface[] = [
         group: 1,
         type: 'enterprise',
         greenGasType: 'ch4',   
-    	  concentration: -3,
+    	  concentration: -0.3,
     },
     {
         name: 'Reuse of greenhouse gas',
@@ -132,7 +132,7 @@ const ENTERPRISE_ITEMS: ItemDataInterface[] = [
         group: 2,
         type: 'enterprise',
         greenGasType: 'co2',   
-    	  concentration: -8,
+    	  concentration: -0.8,
     },
     {
         name: 'Biogas production',
@@ -144,7 +144,7 @@ const ENTERPRISE_ITEMS: ItemDataInterface[] = [
         group: 3,
         type: 'enterprise',
         greenGasType: 'n2o',   
-    	  concentration: -4,
+    	  concentration: -0.4,
     },
 ]
 export default ENTERPRISE_ITEMS

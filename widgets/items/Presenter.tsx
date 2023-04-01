@@ -39,7 +39,7 @@ const Presenter = ( props : Props) => {
             <Tooltip label='Select item'>
                 <Button
                   position={"fixed"}
-                  right={"5%"}
+                  right={"2.5%"}
                   bottom={"10%"}
                   zIndex={100}
                   onClick={onOpen}

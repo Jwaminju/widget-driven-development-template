@@ -12,7 +12,7 @@ const COUNTRY_ITEMS: ItemDataInterface[] = [
         group: 1,
         type: 'country',
         greenGasType: 'ch4',   
-    	  concentration: -2,
+    	  concentration: -0.2,
     },
     {
         name: 'Carbon emission rights system',
@@ -24,7 +24,7 @@ const COUNTRY_ITEMS: ItemDataInterface[] = [
         group: 2,
         type: 'country',
         greenGasType: 'co2',   
-    	  concentration: -5,
+    	  concentration: -0.5,
     },
     {
         name: 'Sustainable Development Goals',
@@ -36,7 +36,7 @@ const COUNTRY_ITEMS: ItemDataInterface[] = [
         group: 3,
         type: 'country',
         greenGasType: 'cfcs',   
-    	  concentration: -2,
+    	  concentration: -0.2,
     },
     {
         name: 'UN Environment Program',
@@ -48,7 +48,7 @@ const COUNTRY_ITEMS: ItemDataInterface[] = [
         group: 1,
         type: 'country',
         greenGasType: 'co2',   
-    	  concentration: -6,
+    	  concentration: -0.6,
     },
     {
         name: 'Land and crop management',
@@ -60,7 +60,7 @@ const COUNTRY_ITEMS: ItemDataInterface[] = [
         group: 2,
         type: 'country',
         greenGasType: 'ch4',   
-    	  concentration: -3,
+    	  concentration: -0.3,
     },
     {
         name: 'International Resource Panel',
@@ -72,7 +72,7 @@ const COUNTRY_ITEMS: ItemDataInterface[] = [
         group: 3,
         type: 'country',
         greenGasType: 'n2o',   
-    	  concentration: -2,
+    	  concentration: -0.2,
     },
     {
         name: 'United Nations Framework Convention on Climate Change',
@@ -84,10 +84,10 @@ const COUNTRY_ITEMS: ItemDataInterface[] = [
         group: 1,
         type: 'country',
         greenGasType: 'co2',   
-    	  concentration: -8,
+    	  concentration: -0.8,
     },
     {
-        name: 'Livestock/manure management',
+        name: 'Livestock or manure management',
         img: 'https://firebasestorage.googleapis.com/v0/b/green-5be28.appspot.com/o/itemsImg%2Fcountry%2Fsheeps-3437467_640.jpg?alt=media&token=8b04b309-2b92-43f6-909b-89c7f6088b00',
         story: 'This involves implementing measures to reduce greenhouse gas emissions from livestock, such as improving feed quality, reducing herd sizes, and using manure management techniques that capture and utilize methane.',
         tier: 3,
@@ -96,7 +96,7 @@ const COUNTRY_ITEMS: ItemDataInterface[] = [
         group: 2,
         type: 'country',
         greenGasType: 'n2o',   
-    	  concentration: -4,
+    	  concentration: -0.4,
     },
     {
         name: 'Sustainable Consumption and Production',
@@ -108,7 +108,7 @@ const COUNTRY_ITEMS: ItemDataInterface[] = [
         group: 3,
         type: 'country',
         greenGasType: 'cfcs',   
-    	  concentration: -5,
+    	  concentration: -0.5,
     },
     {
         name: 'Environmental Justice',
@@ -120,7 +120,7 @@ const COUNTRY_ITEMS: ItemDataInterface[] = [
         group: 1,
         type: 'country',
         greenGasType: 'cfcs',   
-    	  concentration: -6,
+    	  concentration: -0.6,
     },
     {
         name: 'Change of land use',
@@ -132,7 +132,7 @@ const COUNTRY_ITEMS: ItemDataInterface[] = [
         group: 2,
         type: 'country',
         greenGasType: 'ch4',   
-    	  concentration: -6,
+    	  concentration: -0.6,
     },
     {
         name: 'Marine Waste Management',
@@ -144,7 +144,7 @@ const COUNTRY_ITEMS: ItemDataInterface[] = [
         group: 3,
         type: 'country',
         greenGasType: 'n2o',   
-    	  concentration: -5,
+    	  concentration: -0.5,
     },
 ]
 export default COUNTRY_ITEMS

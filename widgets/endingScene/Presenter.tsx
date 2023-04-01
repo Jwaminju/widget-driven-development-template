@@ -24,7 +24,7 @@ const Presenter = ({
               <Heading2 label={"Greenhouse gas is reduced by " + gasDifference?.toFixed(3) + "%"}></Heading2>
             </CardHeader>
             <CardFooter>
-              <LinkToNext label={"Go back Main"} nextPageRoute={""} />
+              <LinkToNext label={"Go back To Main"} nextPageRoute={""} />
             </CardFooter>
           </Card>
         </Container>

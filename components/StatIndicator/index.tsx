@@ -6,12 +6,17 @@ interface Props {
     changeRate: number;
 }
 const DisplayedStatNumber = (label: string, statNum: number): string => {
-  if (label !== "GreenHouseEffect") {
+  if (label === "GreenHouseEffect") return statNum.toFixed(3) + "%";
+  else if (label !== "Cfcs") {
     const statNumberInPPM = statNum * 10000;
-    const indicatorNumber = statNumberInPPM.toFixed(5);
+    const indicatorNumber = statNumberInPPM.toFixed(3);
     return indicatorNumber + "(ppm)";
   }
-  return statNum.toFixed(5) + "%";
+  else {
+    const statNumberInPPM = statNum * 10000000;
+    const indicatorNumber = statNumberInPPM.toFixed(3);
+    return indicatorNumber + "(ppb)";
+  }
 }
 const StatIndicator = ({
   label,

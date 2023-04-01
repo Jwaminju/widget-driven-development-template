@@ -1,4 +1,4 @@
-import { Tab, TabList, TabPanel, TabPanels, Tabs, useColorModeValue } from "@chakra-ui/react";
+import {Tab, TabList, TabPanel, TabPanels, Tabs, useColorModeValue} from "@chakra-ui/react";
 import ItemCardWrap from "../../components/ItemCardWrap";
 import {ItemDataInterface, ItemSelectInterface} from "../../models/items.interface";
 
@@ -34,7 +34,7 @@ const ItemCards = (props:itemsSpec) => {
           </TabList>
           <TabPanels>
               {Array(3).fill('').map((_, i) => (
-                <TabPanel padding='1%'>
+                <TabPanel key={i} padding='1%'>
                   <ItemCardWrap
                     property={property.filter((item)=>
                       item.type===ItemGroupType[i])}
