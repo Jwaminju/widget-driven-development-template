@@ -1,20 +1,13 @@
-import {GameState, GreenHouseGases, ItemState, SerializedGas} from "../models/gamestate.types";
-import {useEffect, useRef, useState} from "react";
+import {GameState, ItemState} from "../models/gamestate.types";
+import {useEffect, useState} from "react";
 import {ItemDataInterface, ItemSelectInterface} from "../models/items.interface";
 import {updateConcentration} from "./useGreenHouseGases";
 import {get, onValue, set, update} from "firebase/database";
 import PERSON_ITEMS from "../data/items/personal_item";
 import COUNTRY_ITEMS from "../data/items/country_items";
 import ENTERPRISE_ITEMS from "../data/items/enterprise_items";
-import {defaultGreenHouseGases, GasFactory} from "../models/greenhousegas";
-import {
-  countryActivationRef,
-  enterpriseActivationRef, gameStateRef,
-  greenHouseGasesRef,
-  itemViewStateRef,
-  personalActivationRef,
-  phaseRef
-} from "./utils/dbRefs";
+import {GasFactory} from "../models/greenhousegas";
+import {gameStateRef, itemViewStateRef, phaseRef} from "./utils/dbRefs";
 import {defaultGameState, defaultItemViewState} from "../data/defaultGameState";
 
 export const useActionItems = () => {

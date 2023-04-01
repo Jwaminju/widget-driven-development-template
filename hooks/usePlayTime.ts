@@ -1,8 +1,6 @@
-import {get, onValue, set, update} from "firebase/database";
-import {useEffect, useRef, useState} from "react";
-import {ItemDataInterface} from "../models/items.interface";
-import {GameState} from "../models/gamestate.types";
-import {actionCountRef, gameStateRef, phaseRef, playTimeRef} from "./utils/dbRefs";
+import {onValue, set} from "firebase/database";
+import {useEffect, useState} from "react";
+import {playTimeRef} from "./utils/dbRefs";
 
 export const usePlayTime = () => {
   const [playTime, setPlayTime] = useState(2023);

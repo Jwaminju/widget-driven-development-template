@@ -1,6 +1,5 @@
 import {Avatar, AvatarBadge, Wrap, WrapItem} from "@chakra-ui/react";
 import {ItemDataInterface} from "../../models/items.interface";
-import {uuidv4} from "@firebase/util";
 
 interface Props {
     property: ItemDataInterface[];
