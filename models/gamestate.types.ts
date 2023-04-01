@@ -1,6 +1,6 @@
 export interface GameState {
   "playtime": number;
-  "greenHouseGases": GreenHouseGases;
+  "greenHouseGases": SerializedGas[];
   "items": Items;
   "phase": number;
   "itemViewState": string;
@@ -11,8 +11,6 @@ export type SerializedGas = {
   "concentration": number,
   "lastChangeRate": number,
 }
-
-export type GreenHouseGases = SerializedGas[];
 
 export interface ActivationState {
   [index: string]: boolean;
