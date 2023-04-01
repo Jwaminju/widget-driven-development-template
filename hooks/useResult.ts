@@ -1,4 +1,4 @@
-import {get, ref} from "firebase/database";
+import {get} from "firebase/database";
 import {useState} from "react";
 import {GameState} from "../models/gamestate.types";
 import {calculateGreenHouseEffect, defaultGreenHouseGases, GasFactory} from "../models/greenhousegas";

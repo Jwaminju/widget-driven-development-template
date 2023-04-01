@@ -1,8 +1,8 @@
-import {onValue, set} from "firebase/database";
+import {onValue} from "firebase/database";
 import {useEffect, useMemo, useState} from "react";
 import {calculateGreenHouseEffect, defaultGreenHouseGases, GasFactory, GreenHouseGas} from "../models/greenhousegas";
-import {GameState, GreenHouseGasType} from "../models/gamestate.types";
-import {gameStateRef, greenHouseGasesRef, playTimeRef} from "./utils/dbRefs";
+import {GreenHouseGasType} from "../models/gamestate.types";
+import {greenHouseGasesRef, playTimeRef} from "./utils/dbRefs";
 
 const greenHouseGasNames = ["co2", "n2o", "ch4", "cfcs"];
 export const greenHouseGasIndex:{[index: string]: number} = {
