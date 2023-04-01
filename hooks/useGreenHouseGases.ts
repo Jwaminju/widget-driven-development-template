@@ -28,12 +28,12 @@ export const useGreenHouseGases = () => {
     })
     onValue(playTimeRef(), (snapshot) => {
       if (!snapshot.exists()) return;
-      setGreenHouseGases((greenHouseGases) => {
+      setGreenHouseGases((prevGreenHouseGases) => {
         return greenHouseGasNames.map(gasName => {
           return GasFactory.createGas(
             gasName,
-            1.005 * greenHouseGases[greenHouseGasIndex[gasName]].concentration,
-            greenHouseGases[greenHouseGasIndex[gasName]].lastChangeRate
+            1.005 * prevGreenHouseGases[greenHouseGasIndex[gasName]].concentration,
+            prevGreenHouseGases[greenHouseGasIndex[gasName]].lastChangeRate
           );
         })
       })

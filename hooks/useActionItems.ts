@@ -2,7 +2,7 @@ import {GameState, ItemState} from "../models/gamestate.types";
 import {useEffect, useState} from "react";
 import {ItemDataInterface, ItemSelectInterface} from "../models/items.interface";
 import {updateConcentration} from "./useGreenHouseGases";
-import {get, onValue, set, update} from "firebase/database";
+import {get, onValue, update} from "firebase/database";
 import PERSON_ITEMS from "../data/items/personal_item";
 import COUNTRY_ITEMS from "../data/items/country_items";
 import ENTERPRISE_ITEMS from "../data/items/enterprise_items";
@@ -37,14 +37,6 @@ export const useActionItems = () => {
     })
   }, []);
 
-  const updateItemViewStateOnDB = (newItemViewState: ItemState) => {
-    set(itemViewStateRef(), JSON.stringify(newItemViewState));
-  }
-
-  const updatePhaseOnDB = (newPhase: number) => {
-    set(phaseRef(), newPhase);
-  }
-
   useEffect(() => {
     if (Object.keys(lastSelection).length === 0) return;
     get(gameStateRef())
@@ -52,7 +44,7 @@ export const useActionItems = () => {
         const newGameState: {[index: string]: any} = defaultGameState;
         if (snapshot.exists()) {
           const savedGameState = snapshot.val() as GameState;
-          const {greenHouseGases, playtime, itemViewState, phase} = savedGameState;
+          const {greenHouseGases, playtime, phase} = savedGameState;
           const newGreenHouseGases = updateConcentration(lastSelection.greenGasType, lastSelection.concentration, GasFactory.deserializeGases(greenHouseGases));
           newGameState["greenHouseGases"] = newGreenHouseGases.map(greenHouseGas => greenHouseGas.serialize());
           if (phase === 2) {
@@ -62,13 +54,9 @@ export const useActionItems = () => {
           else {
             newGameState["phase"] = phase + 1;
           }
-          newGameState["itemViewState"] = JSON.stringify(select);
-          update(gameStateRef(), newGameState);
         }
-        else {
-          newGameState["itemViewState"] = JSON.stringify(select);
-          update(gameStateRef(), newGameState);
-        }
+        newGameState["itemViewState"] = JSON.stringify(select);
+        update(gameStateRef(), newGameState);
       })
       .catch((err) => {
         console.log(err);
