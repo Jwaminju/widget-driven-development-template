@@ -8,7 +8,14 @@ import {changePlayTime} from "./usePlayTime";
 import PERSON_ITEMS from "../data/items/personal_item";
 import COUNTRY_ITEMS from "../data/items/country_items";
 import ENTERPRISE_ITEMS from "../data/items/enterprise_items";
-import {GasFactory} from "../models/greenhousegas";
+import {concentrations, defaultGreenHouseGases, GasFactory} from "../models/greenhousegas";
+import {
+  countryActivationRef,
+  enterpriseActivationRef,
+  greenHouseGasesRef,
+  itemStateRef,
+  personalActivationRef
+} from "./utils/dbRefs";
 
 const defaultPersonActionItems: Item[] = [
   {name: 'Riding public transportation', isActivated: false},
@@ -16,11 +23,11 @@ const defaultPersonActionItems: Item[] = [
   {name: 'Use of electric vehicles', isActivated: false},
   {name: 'Reduced travel demand', isActivated: false},
   {name: 'Reduce the use of disposable products', isActivated: false},
-  {name: 'By foot/bicycle', isActivated: false},
+  {name: 'By foot or bicycle', isActivated: false},
   {name: 'Use items produced at close range', isActivated: false},
   {name: 'Use of low-carbon footprint products', isActivated: false},
   {
-    name: 'Refrain from excessive cooling/heating',
+    name: 'Refrain from excessive cooling or heating',
     isActivated: false
   },
   {name: 'Saving energy', isActivated: false},
@@ -141,46 +148,49 @@ export const useActionItems = () => {
   }, []);
 
   const updatePersonalActivationStateOnDB = (newPersonaActivationState: ActivationState) => {
-    update(ref(database, auth.currentUser?.uid + "/items/personal"), {
+    update(personalActivationRef, {
       ...newPersonaActivationState
     })
   }
   const updateEnterpriseActivationStateOnDB = (newEnterpriseActivationState: ActivationState) => {
-    update(ref(database, auth.currentUser?.uid + "/items/enterprise"), {
+    update(enterpriseActivationRef, {
       ...newEnterpriseActivationState
     })
   }
   const updateCountryActivationStateOnDB = (newCountryActivationState: ActivationState) => {
-    update(ref(database, auth.currentUser?.uid + "/items/country"), {
+    update(countryActivationRef, {
       ...newCountryActivationState
     })
   }
 
   useEffect(() => {
     if (Object.keys(lastSelection).length === 0) return;
-    get(ref(database, auth.currentUser?.uid + "/greenHouseGases"))
+    get(greenHouseGasesRef)
       .then((snapshot) => {
         if (snapshot) {
           const greenHouseGases = snapshot.val();
           updateConcentration(lastSelection.greenGasType, lastSelection.concentration, GasFactory.deserializeGases(greenHouseGases));
-        };
+        }
+        else {
+          updateConcentration(lastSelection.greenGasType, lastSelection.concentration, defaultGreenHouseGases);
+        }
+        const itemName = lastSelection.name;
+        const itemType = lastSelection.type;
+        updateActivation(itemName, itemType);
+        changePlayTime(lastSelection);
+        updateItemViewStateOnDB(select);
+        setPhase((prevPhase) => {
+          if (prevPhase === 2) return 0;
+          return prevPhase + 1;
+        });
       })
       .catch((err) => {
         console.log(err);
       });
-    const itemName = lastSelection.name;
-    const itemType = lastSelection.type;
-    updateActivation(itemName, itemType);
-    changePlayTime(lastSelection);
-    updateItemViewStateOnDB(select);
-    setPhase((prevPhase) => {
-      if (prevPhase === 2) return 0;
-      return prevPhase + 1;
-    });
   }, [lastSelection]);
 
   const updateItemViewStateOnDB = (newItemViewState: ItemState) => {
-    set(ref(database, auth.currentUser?.uid + "/itemState"), JSON.stringify(newItemViewState));
+    set(itemStateRef, JSON.stringify(newItemViewState));
   }
 
   return {lastSelection, setLastSelection, select, getItemSelect, currItem, getCurrItem, getLastSelection, data, phase}

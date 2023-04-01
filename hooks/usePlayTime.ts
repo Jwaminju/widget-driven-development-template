@@ -3,6 +3,7 @@ import {auth, database} from "./useFirebase";
 import {useEffect, useRef, useState} from "react";
 import {ItemDataInterface} from "../models/items.interface";
 import {GameState} from "../models/gamestate.types";
+import {actionCountRef, gameStateRef, playtimeRef} from "./utils/dbRefs";
 
 export type ActionCount = {
   [index: string]: number;
@@ -34,14 +35,13 @@ export const usePlayTime = () => {
 
 export const updatePlayTimeOnDB = (newPlayTime: number) => {
   if (newPlayTime) {
-    set(ref(database, auth.currentUser?.uid + "/playtime"), newPlayTime);
+    set(playtimeRef, newPlayTime);
   }
   else {
-    set(ref(database, auth.currentUser?.uid + "/playtime"), 2023);
+    set(playtimeRef, 2023);
   }
 }
 export const changePlayTime = (actionItem: ItemDataInterface) => {
-  const actionCountRef = ref(database, auth.currentUser?.uid + "/actionCount");
   const actionType = actionItem.type;
   switch (actionType) {
     case "person":
@@ -54,7 +54,7 @@ export const changePlayTime = (actionItem: ItemDataInterface) => {
       update(actionCountRef, {"country": 0})
       break;
   }
-  get(ref(database, auth.currentUser?.uid)).then((snapshot) => {
+  get(gameStateRef).then((snapshot) => {
     const gameState = snapshot.val() as GameState;
     const {playtime, actionCount} = gameState;
     const totalCount = Object.values(actionCount).reduce((totalCount, count) => totalCount += count);
