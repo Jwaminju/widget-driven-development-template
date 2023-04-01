@@ -6,6 +6,25 @@ steps:
     entrypoint: yarn
     args: ['build']
   - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: "bash"
+    args:
+    - 'c'
+    - |
+        PROJECT_ID=$(gcloud config get-value project)
+        gcloud projects add-iam-policy-binding $PROJECT_ID \
+          --member=serviceAccount:$PROJECT_ID@cloudbuild.gserviceaccount.com \
+          --role=roles/run.admin
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: "bash"
+    args:
+    - 'c'
+    - |
+      PROJECT_ID=$(gcloud config get-value project)
+      gcloud projects add-iam-policy-binding $PROJECT_ID \
+        --member=serviceAccount:$PROJECT_ID@cloudbuild.gserviceaccount.com \
+        --role=roles/iam.serviceAccountUser
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: "bash"
     args:
     - 'run'
     - 'deploy'
