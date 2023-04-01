@@ -1,5 +1,5 @@
 import {useAuthState, useSignInWithGoogle, useSignOut} from "react-firebase-hooks/auth";
-import {auth, database} from "./utils/dbRefs";
+import {auth} from "./utils/dbRefs";
 
 export const useFirebaseSignIn = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);

@@ -1,9 +1,8 @@
-import {onValue, ref, set} from "firebase/database";
-import {auth, database} from "./useFirebase";
+import {onValue, set} from "firebase/database";
 import {useEffect, useMemo, useState} from "react";
 import {calculateGreenHouseEffect, defaultGreenHouseGases, GasFactory, GreenHouseGas} from "../models/greenhousegas";
 import {GreenHouseGasType} from "../models/gamestate.types";
-import {greenHouseGasesRef, playtimeRef} from "./utils/dbRefs";
+import {greenHouseGasesRef, playTimeRef} from "./utils/dbRefs";
 
 const greenHouseGasNames = ["co2", "n2o", "ch4", "cfcs"];
 export const greenHouseGasIndex:{[index: string]: number} = {
@@ -28,7 +27,7 @@ export const useGreenHouseGases = () => {
         setGreenHouseGases(GasFactory.deserializeGases(greenHouseGases))
       }
     })
-    onValue(playtimeRef, (snapshot) => {
+    onValue(playTimeRef, (snapshot) => {
       setGreenHouseGases((greenHouseGases) => {
         return greenHouseGasNames.map(gasName => {
           return GasFactory.createGas(

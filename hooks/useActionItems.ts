@@ -8,7 +8,7 @@ import {changePlayTime} from "./usePlayTime";
 import PERSON_ITEMS from "../data/items/personal_item";
 import COUNTRY_ITEMS from "../data/items/country_items";
 import ENTERPRISE_ITEMS from "../data/items/enterprise_items";
-import {concentrations, defaultGreenHouseGases, GasFactory} from "../models/greenhousegas";
+import {defaultGreenHouseGases, GasFactory} from "../models/greenhousegas";
 import {
   countryActivationRef,
   enterpriseActivationRef,

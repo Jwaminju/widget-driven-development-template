@@ -1,4 +1,4 @@
-import { Tab, TabList, TabPanel, TabPanels, Tabs, useColorModeValue } from "@chakra-ui/react";
+import {Tab, TabList, TabPanel, TabPanels, Tabs, useColorModeValue} from "@chakra-ui/react";
 import ItemCardWrap from "../../components/ItemCardWrap";
 import {ItemDataInterface, ItemSelectInterface} from "../../models/items.interface";
 

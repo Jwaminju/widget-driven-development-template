@@ -1,9 +1,8 @@
-import {get, onValue, ref, set, update} from "firebase/database";
-import {auth, database} from "./useFirebase";
+import {get, onValue, set, update} from "firebase/database";
 import {useEffect, useRef, useState} from "react";
 import {ItemDataInterface} from "../models/items.interface";
 import {GameState} from "../models/gamestate.types";
-import {actionCountRef, gameStateRef, playtimeRef} from "./utils/dbRefs";
+import {actionCountRef, gameStateRef, playTimeRef} from "./utils/dbRefs";
 
 export type ActionCount = {
   [index: string]: number;
@@ -14,8 +13,6 @@ export const defaultActionCount: ActionCount = {
   "country": 1
 }
 export const usePlayTime = () => {
-  const playTimeRef = ref(database, auth.currentUser?.uid + "/playtime");
-  const actionCountRef = ref(database, auth.currentUser?.uid + "/actionCount")
   const [playTime, setPlayTime] = useState(2023);
   const actionCountStore = useRef(defaultActionCount);
 
@@ -35,10 +32,10 @@ export const usePlayTime = () => {
 
 export const updatePlayTimeOnDB = (newPlayTime: number) => {
   if (newPlayTime) {
-    set(playtimeRef, newPlayTime);
+    set(playTimeRef, newPlayTime);
   }
   else {
-    set(playtimeRef, 2023);
+    set(playTimeRef, 2023);
   }
 }
 export const changePlayTime = (actionItem: ItemDataInterface) => {

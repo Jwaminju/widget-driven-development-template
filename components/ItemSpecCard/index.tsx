@@ -1,21 +1,21 @@
 import {
-    AlertDialog,
-    AlertDialogBody,
-    AlertDialogContent,
-    AlertDialogFooter,
-    AlertDialogHeader,
-    AlertDialogOverlay,
-    Badge,
-    Button,
-    Card,
-    CardBody,
-    CardFooter,
-    Heading,
-    Image,
-    Stack,
-    Text,
-    useDisclosure,
-    useToast
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay,
+  Badge,
+  Button,
+  Card,
+  CardBody,
+  CardFooter,
+  Heading,
+  Image,
+  Stack,
+  Text,
+  useDisclosure,
+  useToast
 } from '@chakra-ui/react'
 import {StarIcon} from '@chakra-ui/icons'
 import {ItemDataInterface, ItemSelectInterface} from '../../models/items.interface';

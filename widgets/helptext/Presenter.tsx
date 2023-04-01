@@ -1,6 +1,8 @@
 import {
   Button,
-  Divider, Heading, Link,
+  Divider,
+  Heading,
+  Link,
   Modal,
   ModalBody,
   ModalCloseButton,
