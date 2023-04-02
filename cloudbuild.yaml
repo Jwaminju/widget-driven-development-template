@@ -1,10 +1,15 @@
 steps:
-  - name: node
-    entrypoint: yarn
-    args: ['install']
-  - name: node
-    entrypoint: yarn
-    args: ['build']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/Carbon-Hero:carbon-hero', '.']
+
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: "bash"
+    args:
+      - ['auth', 'configure-docker']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'grc.io/$PROJECT_ID/Carbon-Hero:carbon-hero']
+
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: "bash"
     args:
@@ -23,14 +28,15 @@ steps:
       gcloud projects add-iam-policy-binding $PROJECT_ID \
         --member=serviceAccount:$PROJECT_ID@cloudbuild.gserviceaccount.com \
         --role=roles/iam.serviceAccountUser
+
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: "bash"
     args:
     - 'run'
     - 'deploy'
-    - 'cloudrunservice'
+    - 'Carbon-Hero'
     - '--image'
-    - 'us-docker.pkg.dev/cloudrun/container/auth'
+    - 'grc.io/$PROJECT_ID/Carbon-Hero'
     - '--port'
     - '3000'
     - '--region'
